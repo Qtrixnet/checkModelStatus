@@ -7,7 +7,7 @@ import {
 import findModel from '../scripts/components/finder.js'
 
 (async () => {
-  const response = await fetch("./checkModelStatus/database/new.json");
+  const response = await fetch("./database/new.json");
   const models = await response.json();
 
   statistics.textContent = `База содержит ${models.length} наименований Hikvision & HiLook`;
