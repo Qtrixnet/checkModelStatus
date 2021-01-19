@@ -12,7 +12,23 @@ import {
 export default function findModel(models) {
   let modelObj;
   modelObj = models.find(
-    (o) => o.model.toLowerCase() === input.value.toLowerCase()
+    (o) =>
+      o.model
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/\(+/g, "")
+        .replace(/\)+/g, "")
+        .replace(/\-+/g, "")
+        .replace(/\/+/g, "")
+        .replace(/^ds/, "")
+        === input.value
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/\(+/g, "")
+        .replace(/\)+/g, "")
+        .replace(/\-+/g, "")
+        .replace(/\/+/g, "")
+        .replace(/^ds/, "")
   );
 
   //* Если такой модели не найдено
@@ -22,7 +38,7 @@ export default function findModel(models) {
     result.textContent = `Модель ${input.value} не найдена.`;
 
     product.classList.add("active");
-    product.textContent = `Проверьте корректность наименования или уточните информацию в отделе СВН`
+    product.textContent = `Проверьте корректность наименования или уточните информацию в отделе СВН`;
     form.classList.add("form__input_error");
   } else {
     //* Если найдено и если модель снята с производства
