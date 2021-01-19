@@ -1,0 +1,4 @@
+.form__input_warning {
+  box-shadow: 0 -30px 100px rgba(251, 255, 0, 0.3);
+  border-bottom: 3px solid rgba(251, 255, 0, 1);
+}

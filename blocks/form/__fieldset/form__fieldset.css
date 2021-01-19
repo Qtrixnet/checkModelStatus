@@ -1,0 +1,9 @@
+.form__fieldset {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  margin-bottom: 10px;
+}

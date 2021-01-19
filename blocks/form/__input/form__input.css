@@ -1,0 +1,19 @@
+.form__input {
+  max-width: 80%;
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid gray;
+  color: white;
+}
+
+.form__input::placeholder {
+  color: lightslategray;
+}
+
+.form__input:focus {
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding-left: 20px;
+  border-radius: 10px 0 0 0;
+}

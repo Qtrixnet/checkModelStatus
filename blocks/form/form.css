@@ -1,0 +1,21 @@
+@import url(./__button/form__button.css);
+@import url(./__fieldset/form__fieldset.css);
+@import url(./__input/form__input.css);
+@import url(./__input/_success/form__input_success.css);
+@import url(./__input/_error/form__input_error.css);
+@import url(./__input/_warning/form___input_warning.css);
+@import url(./__info/form__info.css);
+@import url(./__info/_category/form__info_category.css);
+@import url(./__info/_link/form__info_link.css);
+@import url(./__info/_product/form__info_product.css);
+@import url(./__info/_replacement/form__info_replacement.css);
+@import url(./__info/_result/form__info_result.css);
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-radius: 20px;
+  background-color: #33333f;
+  padding: 20px;
+}

@@ -1,0 +1,8 @@
+.title {
+  max-width: 100%;
+  text-align: center;
+  font-size: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  z-index: 10;
+}

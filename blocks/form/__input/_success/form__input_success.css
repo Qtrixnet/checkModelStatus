@@ -1,0 +1,4 @@
+.form__input_success {
+  box-shadow: 0 -30px 100px rgba(0, 255, 106, 0.3);
+  border-bottom: 3px solid rgba(0, 255, 106, 1);
+}

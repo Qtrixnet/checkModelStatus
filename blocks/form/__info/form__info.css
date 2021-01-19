@@ -1,0 +1,23 @@
+.form__info {
+  width: 100%;
+  margin: 0 auto;
+  margin: 5px 0;
+  display: none;
+  align-items: center;
+  list-style-type: circle;
+  list-style: decimal;
+  position: relative;
+  padding-left: 20px;
+}
+
+.form__info::before {
+  content: '•';
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translate(-50%, -50%);
+}
+
+.active {
+  display: flex;
+}

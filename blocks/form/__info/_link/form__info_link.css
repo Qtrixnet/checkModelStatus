@@ -1,0 +1,18 @@
+.form__info_link {
+  background-color: rgba(0, 255, 106, 1);
+  color: #33333f;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.form__info_link:hover {
+  background-color: rgb(0, 197, 82);
+}
+
+.form__info_link::before {
+  content: '';
+}
