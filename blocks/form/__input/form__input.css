@@ -1,10 +1,19 @@
-.form__input {
+/* .form__input {
   max-width: 80%;
   width: 100%;
   background-color: transparent;
   border: 0;
   border-bottom: 2px solid gray;
   color: white;
+} */
+
+.form__input {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid gray;
+  color: white;
+  padding: 10px 0;
 }
 
 .form__input::placeholder {
@@ -14,6 +23,6 @@
 .form__input:focus {
   outline: 0;
   background-color: rgba(0, 0, 0, 0.2);
-  padding-left: 20px;
-  border-radius: 10px 0 0 0;
+  padding-left: 17px;
+  border-radius: 10px 10px 0 0;
 }

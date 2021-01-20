@@ -21,6 +21,7 @@ export default function findModel(models) {
         .replace(/\-+/g, "")
         .replace(/\/+/g, "")
         .replace(/^ds/, "")
+        .replace(/black$/, "")
         === input.value
         .toLowerCase()
         .replace(/\s+/g, "")
@@ -29,7 +30,10 @@ export default function findModel(models) {
         .replace(/\-+/g, "")
         .replace(/\/+/g, "")
         .replace(/^ds/, "")
+        .replace(/black$/, "")
   );
+
+  console.log(modelObj)
 
   //* Если такой модели не найдено
   if (!modelObj) {
@@ -50,12 +54,25 @@ export default function findModel(models) {
       result.classList.add("active");
       result.textContent = `Модель ${modelObj.model} снята с производства`;
 
-      replacement.classList.add("active");
-      replacement.textContent = `Рекомендуемая замена: ${modelObj.replacement}`;
+      if(modelObj.replacement) {
+        replacement.classList.add("active");
+        replacement.textContent = `Рекомендуемая замена ${modelObj.replacement}`;
+      } else {
+        replacement.classList.add("active");
+        replacement.textContent = `Рекомендуемая замена не предусмотрена`;
+      }
+
+      if (modelObj.category === "D") {
+        category.classList.add("active");
+        category.textContent = `Относилась к дистрибуционной линейке`;
+      } else {
+        category.classList.add("active");
+        category.textContent = `Относилась к проектной линейке`;
+      }
     }
     //* Если найдено и если модель НЕ снята с производства
     else {
-      console.log(modelObj);
+      // console.log(modelObj);
 
       resetStatus();
 

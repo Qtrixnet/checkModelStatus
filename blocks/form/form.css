@@ -14,7 +14,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
   border-radius: 20px;
   background-color: #33333f;
   padding: 20px;
