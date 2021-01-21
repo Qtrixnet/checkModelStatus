@@ -662,7 +662,7 @@
     "product": "2020 Q4 VMS Products",
     "category": "P",
     "relevance": "false",
-    "replacement": "HikCentral-P-RSM-1Site"
+    "replacement": "HikCentral-P-VSS-1Ch"
   },
   {
     "model": "HikCentral-RSM-Base/2Site",
