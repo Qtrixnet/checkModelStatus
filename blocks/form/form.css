@@ -10,10 +10,14 @@
 @import url(./__info/_product/form__info_product.css);
 @import url(./__info/_replacement/form__info_replacement.css);
 @import url(./__info/_result/form__info_result.css);
+@import url(./__details/form__details.css);
+@import url(./__details-title/form__details-title.css);
+@import url(./__details-text/form__details-text.css);
 
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 50%;
   border-radius: 20px;
   background-color: #33333f;

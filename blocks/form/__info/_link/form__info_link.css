@@ -7,6 +7,8 @@
   text-decoration: none;
   justify-content: center;
   font-weight: bold;
+  display: none;
+  margin: 5px 0 0;
 }
 
 .form__info_link:hover {
