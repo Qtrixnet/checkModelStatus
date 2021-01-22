@@ -66,9 +66,10 @@ export default function findModel(AllModelsArray) {
                     result.classList.add("active");
                     result.textContent = `Модель ${findModelInArr(foundModels, inputValue).model} снята с производства`;
                     //* Если есть на что заменить
-                    if (findModelInArr(foundModels, inputValue)) {
+                    // console.log(findModelInArr(foundModels, inputValue))
+                    if (findModelInArr(foundModels, inputValue).replacement !== '') {
                         replacement.classList.add("active");
-                        replacement.textContent = `Рекомендуемая замена: `;
+                        replacement.textContent = `Рекомендуемая замена:`;
                         replacement.insertAdjacentHTML('beforeend', ` <span class="form__details-model">${findModelInArr(foundModels, inputValue).replacement}</span>`)
                     } else {
                         //* Если нет замены
