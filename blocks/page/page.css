@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
   /* outline: 1px dotted lightseagreen; */
-  transition: all .1s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 .page {
   font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #33333f;
+  background-color: #282831;
   color: #fff;
   display: flex;
   justify-content: center;

@@ -8,7 +8,6 @@ import {
     resetStatus,
     link,
     details,
-    detailsTitle,
     detailsText,
 } from "../utils/utils.js";
 
@@ -20,9 +19,9 @@ export default function findModel(AllModelsArray) {
     //* Находим все подходящие модели
     AllModelsArray.forEach((model) => {
         if (
-            (inputValue.length >= 3 &&
+            (inputValue.length >= 1 &&
                 model.model.toLowerCase().includes(inputValue)) ||
-            (inputValue.length >= 3 &&
+            (inputValue.length >= 1 &&
                 inputValue.includes(model.model.toLowerCase()))
         ) {
             foundModels.push(model);
@@ -111,7 +110,7 @@ export default function findModel(AllModelsArray) {
                 result.classList.add("active");
                 result.textContent = `Похожие модели: ${foundModels.length} шт.`;
                 //* Если количество найденных моделей меньше 10
-                if (foundModels.length <= 10) {
+                if (foundModels.length <= 15) {
                     details.classList.add("active");
                     detailsText.textContent = modelsToString(foundModels);
                 }
