@@ -1,4 +1,5 @@
 .form__button {
+  display: none;
   min-width: 100px;
   width: 20%;
   height: 100%;

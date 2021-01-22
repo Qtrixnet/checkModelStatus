@@ -13,8 +13,11 @@ import findModel from '../scripts/components/finder.js'
   statistics.textContent = `Общее количество моделей Hikvision & HiLook в базе поиска: ${models.length} шт.`;
   resetStatus();
 
-  form.addEventListener("input", (evt) => {
-    evt.preventDefault();
+  form.addEventListener("input", () => {
     findModel(models);
   });
+
+  form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+  })
 })();
