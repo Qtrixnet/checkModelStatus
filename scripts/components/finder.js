@@ -15,6 +15,7 @@ export default function findModel(AllModelsArray) {
     let foundModels = [];
     let inputValue = input.value.toLowerCase();
     let foundModelsList = "";
+    let eachModel = {}
 
     //* Находим все подходящие модели
     AllModelsArray.forEach((model) => {
@@ -67,7 +68,8 @@ export default function findModel(AllModelsArray) {
                     //* Если есть на что заменить
                     if (findModelInArr(foundModels, inputValue)) {
                         replacement.classList.add("active");
-                        replacement.textContent = `Рекомендуемая замена ${findModelInArr(foundModels, inputValue).replacement}`;
+                        replacement.textContent = `Рекомендуемая замена: `;
+                        replacement.insertAdjacentHTML('beforeend', ` <span class="form__details-model">${findModelInArr(foundModels, inputValue).replacement}</span>`)
                     } else {
                         //* Если нет замены
                         replacement.classList.add("active");
@@ -112,7 +114,9 @@ export default function findModel(AllModelsArray) {
                 //* Если количество найденных моделей меньше 10
                 if (foundModels.length <= 15) {
                     details.classList.add("active");
-                    detailsText.textContent = modelsToString(foundModels);
+                    foundModels.forEach(model => {
+                        detailsText.insertAdjacentHTML('beforeend', `<span class="form__details-model">${model.model}</span>`);
+                    })
                 }
             }
         } else {

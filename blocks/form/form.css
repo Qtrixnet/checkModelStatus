@@ -13,6 +13,7 @@
 @import url(./__details/form__details.css);
 @import url(./__details-title/form__details-title.css);
 @import url(./__details-text/form__details-text.css);
+@import url(./__details-model/form__details-model.css);
 
 .form {
   display: flex;

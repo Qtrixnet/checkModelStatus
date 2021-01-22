@@ -1,0 +1,11 @@
+.form__details-model {
+    text-decoration: underline;
+    display: inline-block;
+    margin: 5px 10px 5px 5px;
+}
+
+.form__details-model:hover {
+    cursor: pointer;
+    /* opacity: 0.6; */
+    color: rgba(251, 255, 0, 1);
+}
