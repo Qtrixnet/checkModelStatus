@@ -66,7 +66,6 @@ export default function findModel(AllModelsArray) {
                     result.classList.add("active");
                     result.textContent = `Модель ${findModelInArr(foundModels, inputValue).model} снята с производства`;
                     //* Если есть на что заменить
-                    // console.log(findModelInArr(foundModels, inputValue))
                     if (findModelInArr(foundModels, inputValue).replacement !== '') {
                         replacement.classList.add("active");
                         replacement.textContent = `Рекомендуемая замена:`;
@@ -74,7 +73,7 @@ export default function findModel(AllModelsArray) {
                     } else {
                         //* Если нет замены
                         replacement.classList.add("active");
-                        replacement.textContent = `Рекомендуемая замена не предусмотрена`;
+                        replacement.textContent = `Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН`;
                     }
                     //* Если относится к дистрибуционной линейке
                     if (findModelInArr(foundModels, inputValue).category === "D") {
@@ -116,7 +115,11 @@ export default function findModel(AllModelsArray) {
                 if (foundModels.length <= 15) {
                     details.classList.add("active");
                     foundModels.forEach(model => {
-                        detailsText.insertAdjacentHTML('beforeend', `<span class="form__details-model">${model.model}</span>`);
+                        if(model.relevance === 'false') {
+                            detailsText.insertAdjacentHTML('beforeend', `<span title="Снятая с производства" class="form__details-model discontinued">${model.model}</span>`);
+                        } else {
+                            detailsText.insertAdjacentHTML('beforeend', `<span title="Актуальная модель" class="form__details-model">${model.model}</span>`);
+                        }
                     })
                 }
             }
@@ -125,7 +128,7 @@ export default function findModel(AllModelsArray) {
             resetStatus();
             form.classList.add("form__input_error");
             result.classList.add("active");
-            result.textContent = `Модель "${input.value}" не найдена.`;
+            result.textContent = `По запросу "${input.value}" ни одной модели не найдено.`;
             product.classList.add("active");
             product.textContent = `Проверьте корректность наименования или уточните информацию в отделе СВН`;
         }

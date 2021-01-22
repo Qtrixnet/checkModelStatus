@@ -1,0 +1,7 @@
+.discontinued {
+    color: rgb(163, 163, 163);
+}
+
+.discontinued:hover {
+    border-color: rgba(255, 0, 0, 1);
+}

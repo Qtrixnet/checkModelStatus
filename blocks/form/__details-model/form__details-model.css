@@ -1,10 +1,11 @@
 .form__details-model {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    border-bottom: 2px solid transparent;
     display: inline-block;
-    margin: 5px 10px 5px 5px;
+    margin: 5px 5px 5px 5px;
 }
 
 .form__details-model:hover {
     cursor: pointer;
-    color: rgba(251, 255, 0, 1);
+    border-color: rgba(0, 255, 106, 1);
 }
