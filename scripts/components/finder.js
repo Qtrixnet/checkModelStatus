@@ -94,6 +94,7 @@ export default function findModel(AllModelsArray) {
                     link.classList.add("active");
                     link.textContent = "Искать на hikvision.com";
                     link.href = `https://www.hikvision.com/en/search/?q=${findModelInArr(foundModels, inputValue).model}`;
+                    link.target = `_blank`
 
                     //* Если относится к дистрибуционной линейке
                     if (findModelInArr(foundModels, inputValue).category === "D") {

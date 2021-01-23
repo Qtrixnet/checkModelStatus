@@ -1,0 +1,8 @@
+.form__info_danger {
+    background-color: rgb(112, 112, 112);
+}
+
+.form__info_danger:hover {
+    background-color: rgb(185, 185, 185);
+    cursor:not-allowed;
+}
