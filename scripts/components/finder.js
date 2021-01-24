@@ -13,9 +13,8 @@ import {
 
 export default function findModel(AllModelsArray) {
     let foundModels = [];
-    let inputValue = input.value.toLowerCase();
+    let inputValue = input.value.toLowerCase().replace(/\s+/g, '');
     let foundModelsList = "";
-    let eachModel = {}
 
     //* Находим все подходящие модели
     AllModelsArray.forEach((model) => {

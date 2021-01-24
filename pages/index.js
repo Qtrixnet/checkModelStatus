@@ -27,14 +27,12 @@ import findModel from "../scripts/components/finder.js";
     detailsText.addEventListener("click", (evt) => {
         if(evt.target.classList.contains('form__details-model')){
             input.value = evt.target.textContent;
-            console.log(evt.target)
             findModel(models);
         }
     });
     replacement.addEventListener("click", (evt) => {
         if(evt.target.classList.contains('form__details-model')){
             input.value = evt.target.textContent;
-            console.log(evt.target)
             findModel(models);
         }
     });
