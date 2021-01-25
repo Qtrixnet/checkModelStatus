@@ -78,10 +78,13 @@ export default function findModel(AllModelsArray) {
                     if (findModelInArr(foundModels, inputValue).category === "D") {
                         category.classList.add("active");
                         category.textContent = `Относилась к дистрибуционной линейке`;
-                    } else {
+                    } else if(findModelInArr(foundModels, inputValue).category === "P"){
                         //* Если относится к проектной линейке
                         category.classList.add("active");
                         category.textContent = `Относилась к проектной линейке`;
+                    } else {
+                        category.classList.add("active");
+                        category.textContent = `Линейка продукта неизвестна`;
                     }
                 } else {
                     //* Если модель актуальна
@@ -99,10 +102,13 @@ export default function findModel(AllModelsArray) {
                     if (findModelInArr(foundModels, inputValue).category === "D") {
                         category.classList.add("active");
                         category.textContent = `Относится к дистрибуционной линейке`;
-                    } else {
+                    } else if(findModelInArr(foundModels, inputValue).category === "P"){
                         //* Если относится к проектной линейке
                         category.classList.add("active");
                         category.textContent = `Относится к проектной линейке`;
+                    } else {
+                        category.classList.add("active");
+                        category.textContent = `Линейка продукта неизвестна`;
                     }
                 }
             } else {
