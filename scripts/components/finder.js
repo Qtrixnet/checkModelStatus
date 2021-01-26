@@ -20,9 +20,9 @@ export default function findModel(AllModelsArray) {
     AllModelsArray.forEach((model) => {
         if (
             (inputValue.length >= 1 &&
-                model.model.toLowerCase().includes(inputValue)) ||
+                model.model.toLowerCase().replace(/\s+/g, '').includes(inputValue)) ||
             (inputValue.length >= 1 &&
-                inputValue.includes(model.model.toLowerCase()))
+                inputValue.includes(model.model.toLowerCase().replace(/\s+/g, '')))
         ) {
             foundModels.push(model);
         }
