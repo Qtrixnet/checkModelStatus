@@ -13,7 +13,9 @@ import findModel from "../scripts/components/finder.js";
     const response = await fetch("./database/models.json")
     const models = await response.json()
 
-    statistics.textContent = `Общее количество моделей Hikvision & HiLook в базе поиска: ${models.length} шт.`;
+    console.log(models)
+
+    statistics.textContent = `Общее количество моделей в базе поиска: ${models.length} шт.`;
     resetStatus();
 
     form.addEventListener("input", () => {

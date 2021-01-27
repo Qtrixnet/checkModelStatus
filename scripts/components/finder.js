@@ -13,97 +13,148 @@ import {
 
 export default function findModel(AllModelsArray) {
     let foundModels = [];
-    let inputValue = input.value.toLowerCase().replace(/\s+/g, '');
+    let inputValue = input.value.toLowerCase().replace(/\s+/g, "");
     let foundModelsList = "";
 
-    //* Находим все подходящие модели
+    //* Находим в базе данных все, что похоже на введенную пользователем модель
     AllModelsArray.forEach((model) => {
         if (
             (inputValue.length >= 1 &&
-                model.model.toLowerCase().replace(/\s+/g, '').includes(inputValue)) ||
+                model.model
+                    .toLowerCase()
+                    .replace(/\s+/g, "")
+                    .includes(inputValue)) ||
             (inputValue.length >= 1 &&
-                inputValue.includes(model.model.toLowerCase().replace(/\s+/g, '')))
+                inputValue.includes(
+                    model.model.toLowerCase().replace(/\s+/g, "")
+                ))
         ) {
             foundModels.push(model);
         }
     });
 
-    //* Содержится ли искомая модель в общем массиве найденных моделей
+    //* Содержится ли введенная пользователем модель в общем массиве найденных моделей
     function checkAvailability(arr, model) {
         return arr.some(function (arrModel) {
             return model === arrModel.model.toLowerCase();
         });
     }
 
-    //* Найти объект искомой модели в массиве найденных моделей
+    //* Находим объект с информацией об искомой модели в массиве найденных моделей
     function findModelInArr(arr, model) {
         return arr.find(function (arrModel) {
-            return model === arrModel.model.toLowerCase()
+            return model === arrModel.model.toLowerCase();
         });
     }
 
-    //* Делаем из массива строку
-    function modelsToString(arr) {
-        arr.forEach((modelObj) => {
-            foundModelsList += `, ${modelObj.model}`;
-        });
-        return foundModelsList.replace(/^, /, "");
-    }
-
-    //* Если поле для ввода пустое
+    //* Если в поле ввода ничего не ввели, то скидываем все статусы
     if (inputValue === "") {
         resetStatus();
     } else {
-        //* Если поле не пустое и если моделей найдено больше 1й
+        //* Если в поле ввода есть текст если моделей найдено 1 или более
         if (foundModels.length >= 1) {
             //* Если среди найденных моделей есть точное совпадение
             if (checkAvailability(foundModels, inputValue)) {
-                //* Если Модель снята с производства
-                if (findModelInArr(foundModels, inputValue).relevance === "false") {
+                //! Если модель найденная снята с производства и если это не Dahua
+                if (
+                    findModelInArr(foundModels, inputValue).relevance ===
+                        "false" &&
+                    findModelInArr(foundModels, inputValue).brand !== "Dahua"
+                ) {
                     resetStatus();
                     form.classList.add("form__input_warning");
                     result.classList.add("active");
-                    result.textContent = `Модель ${findModelInArr(foundModels, inputValue).model} снята с производства`;
-                    //* Если есть на что заменить
-                    if (findModelInArr(foundModels, inputValue).replacement !== '') {
+                    result.textContent = `Модель ${
+                        findModelInArr(foundModels, inputValue).model
+                    } снята с производства`;
+                    //* Если есть на что заменить найденную модель
+                    if (
+                        findModelInArr(foundModels, inputValue).replacement !==
+                        ""
+                    ) {
                         replacement.classList.add("active");
                         replacement.textContent = `Рекомендуемая замена:`;
-                        replacement.insertAdjacentHTML('beforeend', ` <span class="form__details-model">${findModelInArr(foundModels, inputValue).replacement}</span>`)
+                        replacement.insertAdjacentHTML(
+                            "beforeend",
+                            ` <span class="form__details-model">${
+                                findModelInArr(foundModels, inputValue)
+                                    .replacement
+                            }</span>`
+                        );
                     } else {
-                        //* Если нет замены
+                        //* Если нет замены для найденной модели
                         replacement.classList.add("active");
                         replacement.textContent = `Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН`;
                     }
-                    //* Если относится к дистрибуционной линейке
-                    if (findModelInArr(foundModels, inputValue).category === "D") {
+                    //* Если найденная модель относится к дистрибуционной линейке
+                    if (
+                        findModelInArr(foundModels, inputValue).category === "D"
+                    ) {
                         category.classList.add("active");
                         category.textContent = `Относилась к дистрибуционной линейке`;
-                    } else if(findModelInArr(foundModels, inputValue).category === "P"){
-                        //* Если относится к проектной линейке
+                    } else if (
+                        findModelInArr(foundModels, inputValue).category === "P"
+                    ) {
+                        //* Если найденная модель относится к проектной линейке
                         category.classList.add("active");
                         category.textContent = `Относилась к проектной линейке`;
                     } else {
                         category.classList.add("active");
                         category.textContent = `Линейка продукта неизвестна`;
                     }
+                } else if (
+                    //! Если введена модель Dahua
+                    findModelInArr(foundModels, inputValue).relevance ===
+                        "false" &&
+                    findModelInArr(foundModels, inputValue).brand === "Dahua"
+                ) {
+                    resetStatus();
+                    form.classList.add("form__input_warning");
+                    //* Если есть на что заменить Dahua
+                    if (
+                        findModelInArr(foundModels, inputValue).replacement !==
+                        ""
+                    ) {
+                        replacement.classList.add("active");
+                        replacement.textContent = `Аналогичное оборудование на Hikvision:`;
+                        replacement.insertAdjacentHTML(
+                            "beforeend",
+                            ` <span class="form__details-model">${
+                                findModelInArr(foundModels, inputValue)
+                                    .replacement
+                            }</span>`
+                        );
+                    } else {
+                        //* Если нет замены для Dahua
+                        replacement.classList.add("active");
+                        replacement.textContent = `У Hikvision нет аналогичной модели, обратитесь в отдел СВН`;
+                    }
                 } else {
-                    //* Если модель актуальна
+                    //* Если введенная модель (не Dahua) актуальна
                     resetStatus();
                     form.classList.add("form__input_success");
 
                     result.classList.add("active");
-                    result.textContent = `Модель "${findModelInArr(foundModels, inputValue).model}" доступна к заказу`;
+                    result.textContent = `Модель "${
+                        findModelInArr(foundModels, inputValue).model
+                    }" доступна к заказу`;
                     link.classList.add("active");
                     link.textContent = "Искать на hikvision.com";
-                    link.href = `https://www.hikvision.com/en/search/?q=${findModelInArr(foundModels, inputValue).model}`;
-                    link.target = `_blank`
+                    link.href = `https://www.hikvision.com/en/search/?q=${
+                        findModelInArr(foundModels, inputValue).model
+                    }`;
+                    link.target = `_blank`;
 
-                    //* Если относится к дистрибуционной линейке
-                    if (findModelInArr(foundModels, inputValue).category === "D") {
+                    //* Если введенная модель относится к дистрибуционной линейке
+                    if (
+                        findModelInArr(foundModels, inputValue).category === "D"
+                    ) {
                         category.classList.add("active");
                         category.textContent = `Относится к дистрибуционной линейке`;
-                    } else if(findModelInArr(foundModels, inputValue).category === "P"){
-                        //* Если относится к проектной линейке
+                    } else if (
+                        findModelInArr(foundModels, inputValue).category === "P"
+                    ) {
+                        //* Если введенная модель относится к проектной линейке
                         category.classList.add("active");
                         category.textContent = `Относится к проектной линейке`;
                     } else {
@@ -120,13 +171,19 @@ export default function findModel(AllModelsArray) {
                 //* Если количество найденных моделей меньше 10
                 if (foundModels.length <= 15) {
                     details.classList.add("active");
-                    foundModels.forEach(model => {
-                        if(model.relevance === 'false') {
-                            detailsText.insertAdjacentHTML('beforeend', `<span title="Снятая с производства" class="form__details-model discontinued">${model.model}</span>`);
+                    foundModels.forEach((model) => {
+                        if (model.relevance === "false") {
+                            detailsText.insertAdjacentHTML(
+                                "beforeend",
+                                `<span title="Снятая с производства" class="form__details-model discontinued">${model.model}</span>`
+                            );
                         } else {
-                            detailsText.insertAdjacentHTML('beforeend', `<span title="Актуальная модель" class="form__details-model">${model.model}</span>`);
+                            detailsText.insertAdjacentHTML(
+                                "beforeend",
+                                `<span title="Актуальная модель" class="form__details-model">${model.model}</span>`
+                            );
                         }
-                    })
+                    });
                 }
             }
         } else {

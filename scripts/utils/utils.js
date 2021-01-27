@@ -13,7 +13,7 @@ export const detailsText = details.querySelector(".form__details-text");
 export const title = document.querySelector(".title");
 
 export function resetStatus() {
-    title.textContent = "Какую модель проверяем на актуальность?";
+    title.textContent = "Введите модель оборудования";
     result.textContent = "";
     result.classList.remove("active");
 
