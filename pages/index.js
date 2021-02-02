@@ -22,11 +22,11 @@ const initialModels = api.getModels();
 let models = Promise.all([initialModels])
     .then((arr) => {
         models = arr[0];
+        statistics.textContent = `Общее количество моделей в базе поиска: ${models.length} шт.`;
+        resetStatus();
     })
     .catch((err) => console.log(err));
 
-statistics.textContent = `Общее количество моделей в базе поиска: ${models.length} шт.`;
-resetStatus();
 
 form.addEventListener("input", () => {
     findModel(models);
