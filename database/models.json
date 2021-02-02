@@ -3413,7 +3413,7 @@
         "category": "D",
         "relevance": "false",
         "brand": "Hikvision",
-        "replacement": "DS-2DE7432IW-AE (S5)"
+        "replacement": "DS-2DE7432IW-AE(S5)"
     },
     {
         "model": "DS-2DF8225IH-AEL",
@@ -3677,7 +3677,7 @@
         "category": "P",
         "relevance": "false",
         "brand": "Hikvision",
-        "replacement": "DS-2XM6726FWD-I"
+        "replacement": "DS-2XM6122G0-IM/ND - DS-2XM6122G0-IDM - DS-2XM6122G0-I/ND - DS-2XM6122G0-ID"
     },
     {
         "model": "DS-2CD6520D-IO",
@@ -15592,7 +15592,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE7432IW-AE (S5)",
+        "model": "DS-2DE7432IW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15608,7 +15608,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE7425IW-AE (S5)",
+        "model": "DS-2DE7425IW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15640,7 +15640,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE7225IW-AE (S5)",
+        "model": "DS-2DE7225IW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15656,7 +15656,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE7A232MW-AE (S5)",
+        "model": "DS-2DE7A232MW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15664,7 +15664,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2SE7C124IW-AE (S5)",
+        "model": "DS-2SE7C124IW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15680,7 +15680,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE5432IW-AE (S5)",
+        "model": "DS-2DE5432IW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15688,7 +15688,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE5425IW-AE  (S5)",
+        "model": "DS-2DE5425IW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15696,7 +15696,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE5232IW-AE  (S5)",
+        "model": "DS-2DE5232IW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15704,7 +15704,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE5225IW-AE  (S5)",
+        "model": "DS-2DE5225IW-AE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15808,7 +15808,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE4425IW-DE  (S5)",
+        "model": "DS-2DE4425IW-DE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15824,7 +15824,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE4415IW-DE  (S5)",
+        "model": "DS-2DE4415IW-DE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15840,7 +15840,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE4225IW-DE  (S5)",
+        "model": "DS-2DE4225IW-DE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -15856,7 +15856,7 @@
         "replacement": ""
     },
     {
-        "model": "DS-2DE4215IW-DE  (S5)",
+        "model": "DS-2DE4215IW-DE(S5)",
         "product": "2020 Q4 IP products type D",
         "category": "D",
         "relevance": "true",
@@ -18931,49 +18931,65 @@
         "model": "DS-2TD2336-50",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD2367-50/P"
     },
     {
         "model": "DS-2TD2336-75",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD2367-75/P"
     },
     {
         "model": "DS-2TD2336-100",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD2367-100/P"
     },
     {
         "model": "DS-2TD2366-50",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD2367-50/P"
     },
     {
         "model": "DS-2TD2366-75",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD2367-75/P"
     },
     {
         "model": "DS-2TD2366-100",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD2367-100/P"
+    },
+    {
+        "model": "DS-2TD2636T-10",
+        "product": "2020 Q4 Thermal",
+        "category": "P",
+        "relevance": "false",
+        "brand": "Hikvision",
+        "replacement": "DS-2TD2637T-10/P"
+    },
+    {
+        "model": "DS-2TD2636T-15",
+        "product": "2020 Q4 Thermal",
+        "category": "P",
+        "relevance": "false",
+        "brand": "Hikvision",
+        "replacement": "DS-2TD2637T-15/P"
     },
     {
         "model": "DS-2TD2466-25Y",
@@ -19259,17 +19275,17 @@
         "model": "DS-2TD4136-25/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD4137-25/W"
     },
     {
         "model": "DS-2TD4136-50/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD4137-50/W"
     },
     {
         "model": "DS-2TD4136T-9",
@@ -19283,25 +19299,25 @@
         "model": "DS-2TD4136T-25",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD4137T-25"
     },
     {
         "model": "DS-2TD4166-25/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD4167-25/W"
     },
     {
         "model": "DS-2TD4166-50/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD4167-50/W"
     },
     {
         "model": "DS-2TD4166T-9",
@@ -19315,9 +19331,49 @@
         "model": "DS-2TD4166T-25",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD4167T-25"
+    },
+    {
+        "model": "DS-2TD8166-75C2F/V2",
+        "product": "2020 Q4 Thermal",
+        "category": "P",
+        "relevance": "false",
+        "brand": "Hikvision",
+        "replacement": "DS-2TD6267-75C4L/W"
+    },
+    {
+        "model": "DS-2TD8166-100C2F/V2",
+        "product": "2020 Q4 Thermal",
+        "category": "P",
+        "relevance": "false",
+        "brand": "Hikvision",
+        "replacement": "DS-2TD6267-100C4L/W"
+    },
+    {
+        "model": "DS-2TD8166-150ZE2F/V2",
+        "product": "2020 Q4 Thermal",
+        "category": "P",
+        "relevance": "false",
+        "brand": "Hikvision",
+        "replacement": "DS-2TD8167-150ZE2F/W"
+    },
+    {
+        "model": "DS-2TD8166-150ZH2F/V2",
+        "product": "2020 Q4 Thermal",
+        "category": "P",
+        "relevance": "false",
+        "brand": "Hikvision",
+        "replacement": "DS-2TD8167-150ZC4F/W"
+    },
+    {
+        "model": "DS-2TD8166-180ZE2FL/V2",
+        "product": "2020 Q4 Thermal",
+        "category": "P",
+        "relevance": "false",
+        "brand": "Hikvision",
+        "replacement": "DS-2TD8167-190ZE2FL/W"
     },
     {
         "model": "DS-2TX3636-15A/V1",
@@ -19347,41 +19403,41 @@
         "model": "DS-2TD6236-50H2L/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD6237-50H4L/W"
     },
     {
         "model": "DS-2TD6236-75C2L/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD6237-75C4L/W"
     },
     {
         "model": "DS-2TD6266-50H2L/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD6267-50H4L/W"
     },
     {
         "model": "DS-2TD6266-75C2L/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD6267-75C4L/W"
     },
     {
         "model": "DS-2TD6266-100C2L/V2",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD6267-100C4L/W"
     },
     {
         "model": "DS-2TD6236T-25H2L",
@@ -19403,17 +19459,17 @@
         "model": "DS-2TD6266T-25H2L",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD6267T-25H4L/W"
     },
     {
         "model": "DS-2TD6266T-50H2L",
         "product": "2020 Q4 Thermal",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-2TD6267T-50H4L/W"
     },
     {
         "model": "DS-2TD8166-100C2F/V2",
@@ -29867,17 +29923,17 @@
         "model": "DS-NC908-E",
         "product": "IP products type P",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-NC904-E"
     },
     {
         "model": "DS-NC916-E",
         "product": "IP products type P",
         "category": "P",
-        "relevance": "true",
+        "relevance": "false",
         "brand": "Hikvision",
-        "replacement": ""
+        "replacement": "DS-NC904-E"
     },
     {
         "model": "iDS-9632NXI-I8/4F",
