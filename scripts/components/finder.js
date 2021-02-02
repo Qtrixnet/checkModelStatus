@@ -52,6 +52,7 @@ export default function findModel(AllModelsArray) {
     } else {
         //* Если в поле ввода есть текст если моделей найдено 1 или более
         if (foundModels.length >= 1) {
+            console.log(inputValue)
             //* Если среди найденных моделей есть точное совпадение
             if (checkAvailability(foundModels, inputValue)) {
                 //! Если модель найденная снята с производства и если это не Dahua
