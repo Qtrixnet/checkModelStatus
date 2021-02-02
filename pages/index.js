@@ -1,41 +1,51 @@
+import Api from "../scripts/components/Api.js";
+// import Finder from "../scripts/components/Finder2.js";
+import findModel from "../scripts/components/finder.js";
 import {
-    form,
-    resetStatus,
     statistics,
-    detailsText,
+    // result,
     input,
+    form,
+    // product,
+    // category,
     replacement,
+    resetStatus,
+    // link,
+    // details,
+    detailsText,
 } from "../scripts/utils/utils.js";
 
-import findModel from "../scripts/components/finder.js";
+const api = new Api("./database/models.json");
 
-(async () => {
-    const response = await fetch("./database/models.json")
-    const models = await response.json()
+const initialModels = api.getModels();
 
-    console.log(models)
+let models = Promise.all([initialModels])
+    .then((arr) => {
+        models = arr[0];
+    })
+    .catch((err) => console.log(err));
 
-    statistics.textContent = `Общее количество моделей в базе поиска: ${models.length} шт.`;
-    resetStatus();
+statistics.textContent = `Общее количество моделей в базе поиска: ${models.length} шт.`;
+resetStatus();
 
-    form.addEventListener("input", () => {
+form.addEventListener("input", () => {
+    findModel(models);
+});
+
+form.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+});
+
+detailsText.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("form__details-model")) {
+        input.value = evt.target.textContent;
         findModel(models);
-    });
+    }
+});
 
-    form.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-    });
-
-    detailsText.addEventListener("click", (evt) => {
-        if(evt.target.classList.contains('form__details-model')){
-            input.value = evt.target.textContent;
-            findModel(models);
-        }
-    });
-    replacement.addEventListener("click", (evt) => {
-        if(evt.target.classList.contains('form__details-model')){
-            input.value = evt.target.textContent;
-            findModel(models);
-        }
-    });
-})();
+replacement.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("form__details-model")) {
+        input.value = evt.target.textContent;
+        findModel(models);
+    }
+});
