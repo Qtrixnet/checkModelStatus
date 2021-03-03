@@ -1,0 +1,7 @@
+@import url(./__list-item/note__list-item.css);
+@import url(./__list/note__list.css);
+@import url(./__title/note__title.css);
+
+.note {
+    z-index: 9999;
+}
