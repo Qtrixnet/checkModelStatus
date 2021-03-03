@@ -13,31 +13,31 @@ export const detailsText = details.querySelector(".form__details-text");
 export const title = document.querySelector(".title");
 
 export function resetStatus() {
-    title.textContent = "Введите модель оборудования";
-    result.textContent = "";
-    result.classList.remove("active");
+  title.textContent = "Введите модель оборудования";
+  result.textContent = "";
+  result.classList.remove("active");
 
-    product.textContent = "";
-    product.classList.remove("active");
+  product.textContent = "";
+  product.classList.remove("active");
 
-    category.textContent = "";
-    category.classList.remove("active");
+  category.textContent = "";
+  category.classList.remove("active");
 
-    replacement.textContent = "";
-    replacement.classList.remove("active");
+  replacement.textContent = "";
+  replacement.classList.remove("active");
 
-    link.textContent = "asd";
-    link.href = "#";
-    link.target = "";
-    link.classList.remove("active");
-    link.classList.remove('form__info_danger');
+  link.textContent = "asd";
+  link.href = "#";
+  link.target = "";
+  link.classList.remove("active");
+  link.classList.remove("form__info_danger");
 
-    form.classList.remove("form__input_success");
-    form.classList.remove("form__input_error");
-    form.classList.remove("form__input_warning");
-    input.classList.add("active");
+  form.classList.remove("form__input_success");
+  form.classList.remove("form__input_error");
+  form.classList.remove("form__input_warning");
+  input.classList.add("active");
 
-    detailsText.textContent = "";
+  detailsText.textContent = "";
 
-    details.classList.remove("active");
+  details.classList.remove("active");
 }
