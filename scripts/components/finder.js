@@ -15,7 +15,7 @@ export default function findModel(AllModelsArray) {
   let foundModels = [];
   let inputValue = input.value.toLowerCase().replace(/\s+/g, "");
 
-  //* Находим в базе данных все, что похоже на введенную пользователем модель
+  //* Находим в общей базе все, что похоже на введенную пользователем модель и кладем в пустой массив foundModels
   AllModelsArray.forEach((model) => {
     if (
       (inputValue.length >= 1 &&

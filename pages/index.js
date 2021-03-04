@@ -10,9 +10,7 @@ import {
 } from "../scripts/utils/utils.js";
 
 const api = new Api("./database/models.json");
-
 const initialModels = api.getModels();
-
 let models = Promise.all([initialModels])
   .then((arr) => {
     models = arr[0];
