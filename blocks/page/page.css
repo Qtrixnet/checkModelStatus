@@ -21,28 +21,30 @@
 
 .page::before {
   content: '';
-  width: 500vw;
-  height: 500vh;
+  width: 200vw;
+  height: 100vh;
   position: absolute;
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   z-index: -1;
   animation: rotation 90s infinite;
   top: 50%;
-  left: -130%;
+  right: -30%;
   transform: translate(-50%, -50%);
+  border: 1px solid #3398dc;
 }
 
 .page::after {
   content: '';
-  width: 500vw;
-  height: 500vh;
+  width: 250vw;
+  height: 100vh;
   position: absolute;
-  background-color: rgba(10, 10, 10, 0.1);
+  background-color: rgba(10, 10, 10, .1);
   z-index: -1;
-  animation: rotation 120s infinite;
+  animation: rotation2 120s infinite;
   top: 30%;
-  left: 10px;
+  left: -200px;
   transform: translate(-50%, -50%);
+  border: 1px solid #3398dc;
 }
 
 @keyframes rotation {
@@ -51,5 +53,14 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation2 {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
   }
 }
