@@ -1,11 +1,35 @@
 .form__details-model {
-    /* text-decoration: underline; */
-    border-bottom: 2px solid transparent;
     display: inline-block;
-    margin: 5px 5px 5px 5px;
+    margin: 5px 10px 15px 10px;
+    position: relative;
 }
 
 .form__details-model:hover {
     cursor: pointer;
-    border-color: rgba(0, 255, 106, 1);
+    color: rgba(0, 255, 106, 1);
+}
+
+/* .form__details-model::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-12px, -50%);
+  border-radius: 50%;
+} */
+
+.form__details-model::after {
+  content: 'доступно';
+  width: 100px;
+  text-align: center;
+  color: rgba(0, 255, 106, 1);
+  font-size: 12px;
+  line-height: 1.2;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }

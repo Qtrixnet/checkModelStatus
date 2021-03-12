@@ -40,4 +40,6 @@ export function resetStatus() {
   detailsText.textContent = "";
 
   details.classList.remove("active");
+
+  form.style.cssText = "width: 50%"
 }

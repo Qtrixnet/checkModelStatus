@@ -1,7 +1,13 @@
 .discontinued {
     color: rgb(163, 163, 163);
+    position: relative;
 }
 
 .discontinued:hover {
-    border-color: rgba(255, 0, 0, 1);
+    color: 	#FF0000;
+}
+
+.discontinued::after {
+  content: 'не доступно';
+  color: 	#FF0000;
 }

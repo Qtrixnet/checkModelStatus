@@ -146,6 +146,11 @@ export default function findModel(AllModelsArray) {
         result.textContent = `Похожие модели: ${foundModels.length} шт.`;
         //* Если количество найденных моделей меньше 10
         if (foundModels.length <= 15) {
+          if (foundModels.length <= 15 && foundModels.length > 5) {
+            form.style.cssText = "width: 80%"
+          } else if (foundModels.length <= 5) {
+            form.style.cssText = "width: 50%"
+          }
           details.classList.add("active");
           foundModels.forEach((model) => {
             if (model.relevance === "false") {
