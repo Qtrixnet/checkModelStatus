@@ -8,6 +8,6 @@
 }
 
 .discontinued::after {
-  content: 'не доступно';
+  content: 'Недоступно';
   color: 	#FF0000;
 }
