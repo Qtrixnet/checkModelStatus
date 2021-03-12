@@ -17,3 +17,38 @@
     overflow: hidden;
     position: relative;
 }
+
+.page::before {
+  content: '';
+  width: 250vw;
+  height: 1vh;
+  position: absolute;
+  background-color: rgba(10, 10, 10, 0.1);
+  z-index: -1;
+  animation: rotation 90s infinite;
+  top: 50%;
+  left: -130%;
+  transform: translate(-50%, -50%);
+}
+
+.page::after {
+  content: '';
+  width: 200vw;
+  height: 1vh;
+  position: absolute;
+  background-color: rgba(10, 10, 10, 0.1);
+  z-index: -1;
+  animation: rotation 120s infinite;
+  top: 30%;
+  left: 10px;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
