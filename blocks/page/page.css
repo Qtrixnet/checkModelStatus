@@ -16,12 +16,13 @@
     width: 100%;
     overflow: hidden;
     position: relative;
+    overflow: hidden;
 }
 
 .page::before {
   content: '';
-  width: 250vw;
-  height: 1vh;
+  width: 500vw;
+  height: 500vh;
   position: absolute;
   background-color: rgba(10, 10, 10, 0.1);
   z-index: -1;
@@ -33,8 +34,8 @@
 
 .page::after {
   content: '';
-  width: 200vw;
-  height: 1vh;
+  width: 500vw;
+  height: 500vh;
   position: absolute;
   background-color: rgba(10, 10, 10, 0.1);
   z-index: -1;
