@@ -30,7 +30,7 @@
   top: 50%;
   right: -30%;
   transform: translate(-50%, -50%);
-  border: 1px solid #3398dc;
+  border: 1px solid #3398dc34;
 }
 
 .page::after {
@@ -44,7 +44,7 @@
   top: 30%;
   left: -200px;
   transform: translate(-50%, -50%);
-  border: 1px solid #3398dc;
+  border: 1px solid #3398dc34;
 }
 
 @keyframes rotation {

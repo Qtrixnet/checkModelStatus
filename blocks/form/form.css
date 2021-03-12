@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: center;
   width: 50%;
+  background-color: transparent;
   border-radius: 20px;
-  background-color:  #282831;
-  padding: 20px;
+  padding: 10px;
 }
