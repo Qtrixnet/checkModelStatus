@@ -8,10 +8,11 @@
   padding: 10px 0 10px 10px;
   border-radius: 10px;
   transition: all 0s linear;
+  caret-color: #3398dc;
 }
 
 .form__input::placeholder {
-  color: lightslategray;
+  color: #3398dc;
 }
 
 .form__input:focus {

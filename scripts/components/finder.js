@@ -45,7 +45,7 @@ export default function findModel(AllModelsArray) {
   if (inputValue === "") {
     resetStatus();
   } else {
-    //* Если в поле ввода есть текст если моделей найдено 1 или более
+    //* Если в поле ввода есть текст и если моделей найдено 1 или более
     if (foundModels.length >= 1) {
       //* Если среди найденных моделей есть точное совпадение
       if (checkAvailability(foundModels, inputValue)) {
