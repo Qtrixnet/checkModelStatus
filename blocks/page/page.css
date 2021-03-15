@@ -22,27 +22,27 @@
 .page::before {
   content: '';
   width: 200vw;
-  height: 100vh;
+  height: 220vh;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.1);
   z-index: -1;
   animation: rotation 90s infinite;
   top: 50%;
-  right: -30%;
+  right: -50%;
   transform: translate(-50%, -50%);
   border: 1px solid #3398dc34;
 }
 
 .page::after {
   content: '';
-  width: 250vw;
-  height: 100vh;
+  width: 200vw;
+  height: 220vh;
   position: absolute;
   background-color: rgba(10, 10, 10, .1);
   z-index: -1;
   animation: rotation2 120s infinite;
-  top: 30%;
-  left: -200px;
+  top: 50%;
+  left: -50%;
   transform: translate(-50%, -50%);
   border: 1px solid #3398dc34;
 }
