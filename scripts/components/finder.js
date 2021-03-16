@@ -44,9 +44,12 @@ export default function findModel(AllModelsArray) {
   //* Если в поле ввода ничего не ввели, то скидываем все статусы
   if (inputValue === "") {
     resetStatus();
+    input.style.cssText = "border-bottom: 3px solid #3398dc;"
   } else {
+    input.style.cssText = "border: 0;"
     //* Если в поле ввода есть текст и если моделей найдено 1 или более
     if (foundModels.length >= 1) {
+
       //* Если среди найденных моделей есть точное совпадение
       if (checkAvailability(foundModels, inputValue)) {
         //! Если модель найденная снята с производства и если это не Dahua
@@ -156,12 +159,12 @@ export default function findModel(AllModelsArray) {
             if (model.relevance === "false") {
               detailsText.insertAdjacentHTML(
                 "beforeend",
-                `<span title="Снятая с производства" class="form__details-model discontinued">${model.model}</span>`
+                `<span title="Недоступно к заказу" class="form__details-model discontinued">${model.model}</span>`
               );
             } else {
               detailsText.insertAdjacentHTML(
                 "beforeend",
-                `<span title="Актуальная модель" class="form__details-model">${model.model}</span>`
+                `<span title="Доступно к заказу" class="form__details-model">${model.model}</span>`
               );
             }
           });

@@ -1,12 +1,15 @@
 .form__details-model {
     display: inline-block;
-    margin: 5px 10px 15px 10px;
     position: relative;
+    padding: 10px 10px 20px;
+    margin: 0 5px;
+    border-radius: 10px;
 }
 
 .form__details-model:hover {
     cursor: pointer;
     color: rgba(0, 255, 106, 1);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* .form__details-model::before {
@@ -22,14 +25,15 @@
 } */
 
 .form__details-model::after {
+  font-style: italic;
   content: 'Доступно';
   width: 100px;
   text-align: center;
   color: rgba(0, 255, 106, 1);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.2;
   position: absolute;
-  top: 15px;
+  top: 25px;
   left: 50%;
   transform: translate(-50%, 0%);
 }

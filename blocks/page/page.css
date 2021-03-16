@@ -1,26 +1,28 @@
 * {
-    box-sizing: border-box;
-    /* outline: 1px dotted lightseagreen; */
-    transition: all 0.1s ease-in-out;
+  box-sizing: border-box;
+  /* outline: 1px dotted lightseagreen; */
+  transition: all 0.1s ease-in-out;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 .page {
-    font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
-    background-color: #282831;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+  background-color: #282831;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .page::before {
-  content: '';
+  content: "";
   width: 200vw;
   height: 220vh;
   position: absolute;
@@ -34,11 +36,11 @@
 }
 
 .page::after {
-  content: '';
+  content: "";
   width: 200vw;
   height: 220vh;
   position: absolute;
-  background-color: rgba(10, 10, 10, .1);
+  background-color: rgba(10, 10, 10, 0.1);
   z-index: -1;
   animation: rotation2 120s infinite;
   top: 50%;

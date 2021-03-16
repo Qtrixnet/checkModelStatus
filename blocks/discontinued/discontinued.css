@@ -4,10 +4,10 @@
 }
 
 .discontinued:hover {
-    color: 	#FF0000;
+  color: 	#ff1024;
 }
 
 .discontinued::after {
   content: 'Недоступно';
-  color: 	#FF0000;
+  color: 	#ff1024;
 }
