@@ -62,7 +62,7 @@ export default function findModel(AllModelsArray) {
           result.classList.add("active");
           result.textContent = `Модель ${
             findModelInArr(foundModels, inputValue).model
-          } снята с производства`;
+          } снята с производства ⚠️`;
           //* Если есть на что заменить найденную модель
           if (findModelInArr(foundModels, inputValue).replacement !== "") {
             replacement.classList.add("active");
@@ -120,7 +120,7 @@ export default function findModel(AllModelsArray) {
           result.classList.add("active");
           result.textContent = `Модель "${
             findModelInArr(foundModels, inputValue).model
-          }" доступна к заказу`;
+          }" доступна к заказу 👌`;
           link.classList.add("active");
           link.textContent = "Искать на hikvision.com";
           link.href = `https://www.hikvision.com/en/search/?q=${
@@ -175,7 +175,7 @@ export default function findModel(AllModelsArray) {
       resetStatus();
       form.classList.add("form__input_error");
       result.classList.add("active");
-      result.textContent = `По запросу "${input.value}" ни одной модели не найдено.`;
+      result.textContent = `По запросу "${input.value}" ни одной модели не найдено ⚠️`;
       product.classList.add("active");
       product.textContent = `Проверьте корректность наименования или уточните информацию в отделе СВН`;
     }
