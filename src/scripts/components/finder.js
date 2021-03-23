@@ -11,6 +11,7 @@ import {
   detailsText,
 } from "../utils/utils.js";
 
+
 export default function findModel(AllModelsArray) {
   let foundModels = [];
   let inputValue = input.value.toLowerCase().replace(/\s+/g, "");
@@ -52,7 +53,7 @@ export default function findModel(AllModelsArray) {
 
       //* Если среди найденных моделей есть точное совпадение
       if (checkAvailability(foundModels, inputValue)) {
-        //! Если модель найденная снята с производства и если это не Dahua
+        //* Если модель найденная снята с производства и если это не Dahua
         if (
           findModelInArr(foundModels, inputValue).relevance === "false" &&
           findModelInArr(foundModels, inputValue).brand !== "Dahua"
@@ -91,7 +92,7 @@ export default function findModel(AllModelsArray) {
             category.textContent = `Линейка продукта неизвестна`;
           }
         } else if (
-          //! Если введена модель Dahua
+          //* Если введена модель Dahua
           findModelInArr(foundModels, inputValue).relevance === "false" &&
           findModelInArr(foundModels, inputValue).brand === "Dahua"
         ) {
