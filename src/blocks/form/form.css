@@ -15,6 +15,7 @@
 @import url(./__details-text/form__details-text.css);
 @import url(./__details-model/form__details-model.css);
 @import url(./__info/_danger/form__info_danger.css);
+@import url(./__reset/form__reset.css);
 
 .form {
   display: flex;
@@ -24,4 +25,10 @@
   background-color: transparent;
   border-radius: 20px;
   padding: 10px;
+}
+
+@media screen and (max-width: 425px) {
+  .form {
+    width: 90%;
+  }
 }

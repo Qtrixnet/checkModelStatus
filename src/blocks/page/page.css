@@ -16,6 +16,7 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
   overflow: hidden;
@@ -64,5 +65,11 @@
   }
   to {
     transform: rotate(-360deg);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .form {
+    width: 90%;
   }
 }

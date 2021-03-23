@@ -7,6 +7,7 @@ import {
   replacement,
   resetStatus,
   detailsText,
+  resetButton
 } from "../scripts/utils/utils.js";
 
 import './index.css'
@@ -44,3 +45,8 @@ replacement.addEventListener("click", (evt) => {
     findModel(models);
   }
 });
+
+resetButton.addEventListener("click", (evt) => {
+  resetStatus();
+  input.value = '';
+})

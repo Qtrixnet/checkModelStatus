@@ -11,6 +11,7 @@ export const details = form.querySelector(".form__details");
 export const detailsTitle = details.querySelector(".form__details-title");
 export const detailsText = details.querySelector(".form__details-text");
 export const title = document.querySelector(".title");
+export const resetButton = document.querySelector(".form__reset");
 
 export function resetStatus() {
   title.textContent = "Введите модель оборудования";
@@ -42,4 +43,6 @@ export function resetStatus() {
   details.classList.remove("active");
 
   form.style.cssText = "width: 50%"
+
+  // input.style.cssText = "border-bottom: 3px solid #3398dc;"
 }

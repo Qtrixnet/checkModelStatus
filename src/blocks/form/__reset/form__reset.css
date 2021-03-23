@@ -1,0 +1,18 @@
+.form__reset {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 0;
+  border-bottom: 3px solid #3398dc;
+  color: white;
+  border-radius: 10px;
+  padding: 0 25px;
+  margin-right: 10px;
+}
+
+.form__reset:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.form__reset:focus {
+  outline: 0;
+}
