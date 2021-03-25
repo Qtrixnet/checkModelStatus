@@ -1,32 +1,25 @@
 .form__details-model {
-    display: inline-block;
-    position: relative;
-    padding: 10px 10px 20px;
-    margin: 0 5px;
-    border-radius: 10px;
+  display: inline-block;
+  position: relative;
+  padding: 10px 10px 20px;
+  margin: 0 10px;
+  border-radius: 10px;
+  border-bottom: 2px solid transparent;
 }
 
 .form__details-model:hover {
-    cursor: pointer;
-    color: rgba(0, 255, 106, 1);
-    background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  color: rgba(0, 255, 106, 1);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* .form__details-model::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  background-color: white;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(-12px, -50%);
-  border-radius: 50%;
-} */
+.form__details-model:active {
+  border-color: #3398dc;
+}
 
 .form__details-model::after {
   font-style: italic;
-  content: 'Доступно';
+  content: "Доступно";
   width: 100px;
   text-align: center;
   color: rgba(0, 255, 106, 1);

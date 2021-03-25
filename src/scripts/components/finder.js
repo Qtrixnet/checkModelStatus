@@ -5,12 +5,12 @@ import {
   product,
   category,
   replacement,
-  resetStatus,
   link,
   details,
   detailsText,
-} from "../utils/utils.js";
-
+  resetButton
+} from "../utils/constants";
+import { resetStatus } from '../utils/utils'
 
 export default function findModel(AllModelsArray) {
   let foundModels = [];
@@ -45,9 +45,7 @@ export default function findModel(AllModelsArray) {
   //* Если в поле ввода ничего не ввели, то скидываем все статусы
   if (inputValue === "") {
     resetStatus();
-    // input.style.cssText = "border-bottom: 3px solid #3398dc;"
   } else {
-    // input.style.cssText = "border: 0;"
     //* Если в поле ввода есть текст и если моделей найдено 1 или более
     if (foundModels.length >= 1) {
 

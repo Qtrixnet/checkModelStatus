@@ -1,11 +1,12 @@
 import {
   form,
-  resetStatus,
   statistics,
   input,
   link,
   title,
-} from "../utils/utils.js";
+} from "../utils/constants";
+
+import { resetStatus } from '../utils/utils';
 
 //* Класс для запроса списка оборудования
 export default class Api {
