@@ -32,7 +32,6 @@ export function resetStatus() {
   input.classList.add("active");
   detailsText.textContent = "";
   details.classList.remove("active");
-  form.style.cssText = "width: 50%"
 }
 
 export function transformData(data) {

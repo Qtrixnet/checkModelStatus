@@ -21,14 +21,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  min-width: 40%;
+  max-width: 80%;
   background-color: transparent;
   border-radius: 20px;
   padding: 10px;
-}
-
-@media screen and (max-width: 425px) {
-  .form {
-    width: 90%;
-  }
 }
