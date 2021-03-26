@@ -1,5 +1,6 @@
 .statistics {
   margin: 20px 0 0 0;
   font-style: italic;
-  opacity: .5;
+  color: rgba(255, 255, 255, 0.5);
+  /* display: none; */
 }

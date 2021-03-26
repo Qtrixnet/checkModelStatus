@@ -9,10 +9,10 @@ import {
   input, 
   details, 
   detailsText,
+  resetButton
 } from './constants';
 
 export function resetStatus() {
-  title.textContent = "Введите модель оборудования";
   result.textContent = "";
   result.classList.remove("active");
   product.textContent = "";
@@ -41,5 +41,6 @@ export function transformData(data) {
     model: data.gsx$model.$t,
     product: data.gsx$product.$t,
     relevance: data.gsx$relevance.$t,
+    replacement: data.gsx$replacement.$t,
   }
 }

@@ -12,3 +12,4 @@ export const detailsTitle = details.querySelector(".form__details-title");
 export const detailsText = details.querySelector(".form__details-text");
 export const title = document.querySelector(".title");
 export const resetButton = document.querySelector(".form__reset");
+export const noteInfo = document.querySelector('.note');

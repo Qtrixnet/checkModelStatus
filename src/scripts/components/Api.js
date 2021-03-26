@@ -1,13 +1,3 @@
-import {
-  form,
-  statistics,
-  input,
-  link,
-  title,
-} from "../utils/constants";
-
-import { resetStatus } from '../utils/utils';
-
 //* Класс для запроса списка оборудования
 export default class Api {
   constructor(url) {
@@ -18,15 +8,6 @@ export default class Api {
     if (res.ok) {
       return res.json();
     } else {
-      resetStatus();
-      input.remove();
-      title.textContent = "Что-то пошло не так";
-      form.classList.add("form__input_error");
-      link.textContent = "Поиск не работает";
-      link.href = "#";
-      link.classList.add("active");
-      link.classList.add("form__info_danger");
-      statistics.textContent = "";
       return Promise.reject(
         `Что-то пошло не так: Ошибка ${res.status} - ${res.statusText}`
       );
