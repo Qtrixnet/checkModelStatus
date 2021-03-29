@@ -9,24 +9,24 @@ import {
   details,
   detailsText,
   resetButton,
-} from "../utils/constants";
-import { resetStatus } from "../utils/utils";
+} from '../utils/constants';
+import { resetStatus } from '../utils/utils';
 
-let inputValue = "";
+let inputValue = '';
 let foundModels;
 
 export default function findModel2(pureModels) {
-  inputValue = input.value.toLowerCase().replace(/\s+/g, "");
+  inputValue = input.value.toLowerCase().replace(/\s+/g, '');
   foundModels = [];
   // resetStatus();
 
   //* Находим в общей базе все, что похоже на введенную пользователем модель и кладем в пустой массив foundModels
   pureModels.forEach((pureModel) => {
     if (
-      (inputValue.length >= 1 &&
-        pureModel.model.toLowerCase().replace(/\s+/g).includes(inputValue)) ||
-      (inputValue.length >= 1 &&
-        inputValue.includes(pureModel.model.toLowerCase().replace(/\s+/g)))
+      (inputValue.length >= 1
+        && pureModel.model.toLowerCase().replace(/\s+/g).includes(inputValue))
+      || (inputValue.length >= 1
+        && inputValue.includes(pureModel.model.toLowerCase().replace(/\s+/g)))
     ) {
       foundModels.push(pureModel);
     }
@@ -34,72 +34,72 @@ export default function findModel2(pureModels) {
   console.log(foundModels); //!
 
   //* 1. Если в инпут не пустой
-  if (input.value !== "") {
+  if (input.value !== '') {
     //* 2. Если ничего не найдено
     if (foundModels.length === 0) {
       resetStatus();
-      form.classList.add("form__input_error");
-      result.classList.add("active");
+      form.classList.add('form__input_error');
+      result.classList.add('active');
       result.textContent = `По запросу "${input.value}" ни одной модели не найдено ⚠️`;
-      product.classList.add("active");
-      product.textContent = `Проверьте корректность наименования или уточните информацию в отделе СВН`;
+      product.classList.add('active');
+      product.textContent = 'Проверьте корректность наименования или уточните информацию в отделе СВН';
     }
 
     //* 2. Если найдена одна модель
     else if (foundModels.length === 1) {
       //* 3. Если эта модель актуальна
-      if (foundModels[0].relevance === "yes") {
+      if (foundModels[0].relevance === 'yes') {
         resetStatus();
-        form.classList.add("form__input_success");
-        result.classList.add("active");
+        form.classList.add('form__input_success');
+        result.classList.add('active');
         result.textContent = `Модель "${foundModels[0].model}" доступна к заказу`;
-        link.classList.add("active");
-        link.textContent = "Искать на hikvision.com";
+        link.classList.add('active');
+        link.textContent = 'Искать на hikvision.com';
         link.href = `https://www.hikvision.com/en/search/?q=${foundModels[0].model}`;
-        link.target = `_blank`;
+        link.target = '_blank';
       }
       //* 3. Если модель не актуальна
-      else if (foundModels[0].relevance === "no") {
+      else if (foundModels[0].relevance === 'no') {
         resetStatus();
-        form.classList.add("form__input_warning");
-        result.classList.add("active");
+        form.classList.add('form__input_warning');
+        result.classList.add('active');
         result.textContent = `Модель ${foundModels[0].model} снята с производства`;
         //* 4. Если есть замена
-        if (foundModels[0].replacement !== "") {
-          replacement.classList.add("active");
-          replacement.textContent = `Рекомендуемая замена:`;
+        if (foundModels[0].replacement !== '') {
+          replacement.classList.add('active');
+          replacement.textContent = 'Рекомендуемая замена:';
           replacement.insertAdjacentHTML(
-            "beforeend",
-            ` <span class="form__details-model">${foundModels[0].replacement}</span>`
+            'beforeend',
+            ` <span class="form__details-model">${foundModels[0].replacement}</span>`,
           );
         }
         //* 4. Если замены нет
         else {
-          replacement.classList.add("active");
-          replacement.textContent = `Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН`;
+          replacement.classList.add('active');
+          replacement.textContent = 'Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН';
         }
       }
     }
     //* 2. Если модель не одна
     else {
       resetStatus();
-      form.classList.add("form__input_warning");
-      result.classList.add("active");
+      form.classList.add('form__input_warning');
+      result.classList.add('active');
       result.textContent = `Похожие модели: ${foundModels.length} шт.`;
       //* 3. Если найденных моделей меньше или 15
       if (foundModels.length <= 15) {
-        details.classList.add("active");
+        details.classList.add('active');
         foundModels.forEach((model) => {
           //* Если модель в массиве актуальна
-          if (model.relevance === "yes") {
+          if (model.relevance === 'yes') {
             detailsText.insertAdjacentHTML(
-              "beforeend",
-              `<span title="Доступно к заказу" class="form__details-model">${model.model}</span>`
+              'beforeend',
+              `<span title="Доступно к заказу" class="form__details-model">${model.model}</span>`,
             );
           } else {
             detailsText.insertAdjacentHTML(
-              "beforeend",
-              `<span title="Недоступно к заказу" class="form__details-model discontinued">${model.model}</span>`
+              'beforeend',
+              `<span title="Недоступно к заказу" class="form__details-model discontinued">${model.model}</span>`,
             );
           }
         });

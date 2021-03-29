@@ -7,11 +7,10 @@ export default class Api {
   _requestResult(res) {
     if (res.ok) {
       return res.json();
-    } else {
-      return Promise.reject(
-        `Что-то пошло не так: Ошибка ${res.status} - ${res.statusText}`
-      );
     }
+    return Promise.reject(
+      `Что-то пошло не так: Ошибка ${res.status} - ${res.statusText}`,
+    );
   }
 
   getModels() {
