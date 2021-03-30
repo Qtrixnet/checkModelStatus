@@ -7,8 +7,8 @@
   text-decoration: none;
   justify-content: center;
   font-weight: bold;
-  /* display: none; */
-  /* opacity: 0; */
+  display: none;
+  opacity: 0;
   margin: 5px 0 0;
 }
 

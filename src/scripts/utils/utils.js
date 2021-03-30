@@ -12,6 +12,7 @@ import {
   resetButton,
 } from './constants';
 
+//* Сброс статусов поиска
 export function resetStatus() {
   result.textContent = '';
   result.classList.remove('active');
@@ -30,10 +31,11 @@ export function resetStatus() {
   form.classList.remove('form__input_error');
   form.classList.remove('form__input_warning');
   input.classList.add('active');
-  detailsText.textContent = '';
-  details.classList.remove('active');
+  // detailsText.textContent = '';
+  // details.classList.remove('active');
 }
 
+//* Трансформация данных
 export function transformData(data) {
   return {
     brand: data.gsx$brand.$t,
@@ -42,5 +44,22 @@ export function transformData(data) {
     product: data.gsx$product.$t,
     relevance: data.gsx$relevance.$t,
     replacement: data.gsx$replacement.$t,
+    id: data.gsx$id.$t,
   };
+}
+
+//* деактивация кнопки очистки инпута
+export function disableButton() {
+  resetStatus();
+  resetButton.setAttribute('disabled', true)
+  resetButton.classList.add('disabled')
+  resetButton.setAttribute('title', 'В поле ввода ничего нет');
+}
+
+//* активация кнопки очистки инпута
+export function enableButton() {
+  resetStatus();
+  resetButton.removeAttribute('disabled', false)
+  resetButton.classList.remove('disabled')
+  resetButton.setAttribute('title', 'Очистить поле ввода');
 }

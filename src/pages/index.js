@@ -10,8 +10,9 @@ import {
   title,
   noteInfo,
   link,
+  product
 } from '../scripts/utils/constants';
-import { resetStatus, transformData } from '../scripts/utils/utils';
+import { resetStatus, transformData, disableButton} from '../scripts/utils/utils';
 import './index.css';
 
 //! Новые данные
@@ -27,9 +28,9 @@ let newModels = Promise.all([initialModels2])
     });
     console.log(pureModels);
     resetStatus();
-    (title.textContent = 'Введите модель оборудования'),
+    disableButton();
+    (title.textContent = 'Введите модель оборудования');
     input.classList.add('active');
-    resetButton.classList.add('active');
     noteInfo.classList.add('active');
     statistics.classList.add('active');
     statistics.textContent = `Общее количество моделей в базе поиска: ${pureModels.length} шт.`;
@@ -66,7 +67,7 @@ input.addEventListener('input', () => {
   findModel2(pureModels);
 });
 
-detailsText.addEventListener('click', (evt) => {
+product.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('form__details-model')) {
     input.value = evt.target.textContent;
     findModel2(pureModels);
@@ -83,4 +84,5 @@ replacement.addEventListener('click', (evt) => {
 resetButton.addEventListener('click', (evt) => {
   resetStatus();
   input.value = '';
+  disableButton();
 });
