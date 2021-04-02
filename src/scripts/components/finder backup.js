@@ -1,186 +1,154 @@
-import {
-  result,
-  input,
-  form,
-  product,
-  category,
-  replacement,
-  link,
-  details,
-  detailsText,
-  resetButton,
-} from "../utils/constants";
-import { resetStatus, disableButton, enableButton } from "../utils/utils";
+// import {
+//   result,
+//   input,
+//   form,
+//   product,
+//   category,
+//   replacement,
+//   link,
+//   details,
+//   detailsText,
+//   resetButton,
+// } from "../utils/constants";
+// import {
+//   resetStatus,
+//   disableButton,
+//   enableButton,
+//   checkAvailability,
+//   findModelInArr,
+// } from "../utils/utils";
+ 
+// let inputValue = "";
+// let foundModels;
 
-let inputValue = "";
-let foundModels;
+// export default function findModel2(pureModels) {
+//   inputValue = input.value.toLowerCase().replace(/\s+/g, "");
+//   foundModels = [];
 
-export default function findModel2(pureModels) {
-  inputValue = input.value.toLowerCase().replace(/\s+/g, "");
-  foundModels = [];
+//   //* Находим в общей базе все, что похоже на введенную пользователем модель и кладем в пустой массив foundModels
+//   pureModels.forEach((pureModel) => {
+//     if (
+//       (inputValue.length >= 1 &&
+//         pureModel.model.toLowerCase().replace(/\s+/g).includes(inputValue)) ||
+//       (inputValue.length >= 1 &&
+//         inputValue.includes(pureModel.model.toLowerCase().replace(/\s+/g)))
+//     ) {
+//       foundModels.push(pureModel);
+//     }
+//   });
 
-  //* Находим в общей базе все, что похоже на введенную пользователем модель и кладем в пустой массив foundModels
-  pureModels.forEach((pureModel) => {
-    if (
-      (inputValue.length >= 1 &&
-        pureModel.model.toLowerCase().replace(/\s+/g).includes(inputValue)) ||
-      (inputValue.length >= 1 &&
-        inputValue.includes(pureModel.model.toLowerCase().replace(/\s+/g)))
-    ) {
-      foundModels.push(pureModel);
-    }
-  });
+//   console.log(foundModels); //!
 
-  //* Содержится ли введенная пользователем модель в общем массиве найденных моделей
-  function checkAvailability(arr, model) {
-    return arr.some(function (arrModel) {
-      return model === arrModel.model.toLowerCase();
-    });
-  }
-  console.log(foundModels); //!
+//   //* 1. Если инпут не пустой
+//   if (input.value !== "") {
+//     enableButton();
 
-  //* 1. Если инпут не пустой
-  if (input.value !== "") {
-    enableButton();
-    //* 2. Если ничего не найдено
-    if (foundModels.length === 0) {
-      resetStatus();
-      form.classList.add("form__input_error");
-      result.classList.add("active");
-      result.textContent = `По запросу "${input.value}" ни одной модели не найдено`;
-      product.classList.add("active");
-      product.textContent =
-        "Проверьте корректность наименования или уточните информацию в отделе СВН";
-      return;
-    }
+//     //* 2. Если ничего не найдено
+//     if (foundModels.length === 0) {
+//       resetStatus();
+//       form.classList.add("form__input_error");
+//       result.classList.add("active");
+//       result.textContent = `Ничего не найдено`;
+//       product.classList.add("active");
+//       product.textContent =
+//         "Проверьте корректность наименования или уточните информацию в отделе СВН";
+//       return;
+//     }
 
-    //* 2. Если найдена одна модель
-    else if (foundModels.length === 1) {
-      form.classList.add("form__input_warning");
-      result.classList.add("active");
-      result.textContent = `Похожие модели: ${foundModels.length} шт.`;
-      //* 3. Если эта модель актуальна
-      if (foundModels[0].relevance === "yes") {
-        resetStatus();
-        form.classList.add("form__input_success");
-        result.classList.add("active");
-        result.textContent = `Модель "${foundModels[0].model}" доступна к заказу`;
-        product.classList.add("active");
-        if (foundModels[0].category === "D") {
-          product.textContent = `Относится к дистрибуционной линейке`;
-        } else if (foundModels[0].category === "P") {
-          product.textContent = `Относится к проектной линейке`;
-        } else {
-          product.textContent = `Линейка модели неизвестна`;
-        }
-        link.classList.add("active");
-        link.textContent = "Искать на hikvision.com";
-        link.href = `https://www.hikvision.com/en/search/?q=${foundModels[0].model}`;
-        link.target = "_blank";
-        return
-      }
-      //* 3. Если модель не актуальна
-      else if (foundModels[0].relevance === "no") {
-        resetStatus();
-        form.classList.add("form__input_warning");
-        result.classList.add("active");
-        result.textContent = `Модель ${foundModels[0].model} уже снята с производства`;
-        //* 4. Если есть замена
-        if (foundModels[0].replacement !== "") {
-          product.classList.add("active");
-          product.textContent = "Была заменена на:";
-          product.insertAdjacentHTML(
-            "beforeend",
-            ` <span class="form__details-model">${foundModels[0].replacement}</span>`
-          );
-        }
-        //* 4. Если замены нет
-        else {
-          product.classList.add("active");
-          product.textContent =
-            "Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН";
-        }
-        return
-      }
-    }
-    //* 2. Если модель не одна
-    else {
-      if (checkAvailability(foundModels, inputValue)) {
-        console.log("Точная модель найдена");
-        //* 3. Если эта модель актуальна
-        if (foundModels[0].relevance === "yes") {
-          resetStatus();
-          form.classList.add("form__input_success");
-          result.classList.add("active");
-          result.textContent = `Модель "${foundModels[0].model}" доступна к заказу`;
-          product.classList.add("active");
-          if (foundModels[0].category === "D") {
-            product.textContent = `Относится к дистрибуционной линейке`;
-          } else if (foundModels[0].category === "P") {
-            product.textContent = `Относится к проектной линейке`;
-          } else {
-            product.textContent = `Линейка модели неизвестна`;
-          }
-          link.classList.add("active");
-          link.textContent = "Искать на hikvision.com";
-          link.href = `https://www.hikvision.com/en/search/?q=${foundModels[0].model}`;
-          link.target = "_blank";
-        }
-        //* 3. Если модель не актуальна
-        else if (foundModels[0].relevance === "no") {
-          resetStatus();
-          form.classList.add("form__input_warning");
-          result.classList.add("active");
-          result.textContent = `Модель ${foundModels[0].model} уже снята с производства`;
-          //* 4. Если есть замена
-          if (foundModels[0].replacement !== "") {
-            product.classList.add("active");
-            product.textContent = "Была заменена на:";
-            product.insertAdjacentHTML(
-              "beforeend",
-              ` <span class="form__details-model">${foundModels[0].replacement}</span>`
-            );
-          }
-          //* 4. Если замены нет
-          else {
-            product.classList.add("active");
-            product.textContent =
-              "Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН";
-          }
-        }
-        return
-      }
-      resetStatus();
-      form.classList.add("form__input_warning");
-      result.classList.add("active");
-      result.textContent = `Похожие модели: ${foundModels.length} шт.`;
-      //* 3. Если найденных моделей меньше или 15
-      if (foundModels.length <= 15) {
-        product.classList.add("active");
-        foundModels.forEach((model) => {
-          //* Если модель в массиве актуальна
-          if (model.relevance === "yes") {
-            product.insertAdjacentHTML(
-              "beforeend",
-              `<span title="Доступно к заказу" class="form__details-model">${model.model}</span>`
-            );
-          } else {
-            product.insertAdjacentHTML(
-              "beforeend",
-              `<span title="Недоступно к заказу" class="form__details-model discontinued">${model.model}</span>`
-            );
-          }
-        });
-      }
-    }
-  }
-  //* 1. Если пустой
-  else {
-    resetStatus();
-    disableButton();
-    return;
-  }
-}
+//     //* 2. Если моделей найдено много
+//     else {
+//       if (checkAvailability(foundModels, inputValue)) {
+//         if (foundModels[0].relevance === "yes") {
+//           form.classList.add("form__input_success");
+//           result.classList.add("active");
+//           result.textContent = `Модель доступна к заказу`;
+//         } else {
+//           form.classList.add("form__input_success");
+//           result.classList.add("active");
+//           result.textContent = `Модель доступна к заказу`;
+//         }
+//       }
+//       resetStatus();
+//       form.classList.add("form__input_warning");
+//       result.classList.add("active");
+//       result.textContent = `Похожие модели: ${foundModels.length} шт.`;
+//       //* 3. Если найденных моделей меньше или 15
+//       if (foundModels.length <= 15) {
+//         product.classList.add("active");
+//         foundModels.forEach((model) => {
+//           //* Если модель в массиве актуальна
+//           if (model.relevance === "yes") {
+//             product.insertAdjacentHTML(
+//               "beforeend",
+//               `<span title="Доступно к заказу" class="form__details-model">${model.model}</span>`
+//             );
+//           } else {
+//             product.insertAdjacentHTML(
+//               "beforeend",
+//               `<span title="Недоступно к заказу" class="form__details-model discontinued">${model.model}</span>`
+//             );
+//           }
+//         });
+//       }
+//     }
+//   }
+//   //* 1. Если пустой
+//   else {
+//     resetStatus();
+//     disableButton();
+//     return;
+//   }
+// }
+
+//* 2. Если найдена одна модель
+// else if (foundModels.length === 1) {
+//   form.classList.add("form__input_warning");
+//   result.classList.add("active");
+//   result.textContent = `Похожие модели: ${foundModels.length} шт.`;
+//   //* 3. Если эта модель актуальна
+//   if (foundModels[0].relevance === "yes") {
+//     resetStatus();
+//     form.classList.add("form__input_success");
+//     result.classList.add("active");
+//     result.textContent = `Модель "${foundModels[0].model}" доступна к заказу`;
+//     product.classList.add("active");
+//     if (foundModels[0].category === "D") {
+//       product.textContent = `Относится к дистрибуционной линейке`;
+//     } else if (foundModels[0].category === "P") {
+//       product.textContent = `Относится к проектной линейке`;
+//     } else {
+//       product.textContent = `Линейка модели неизвестна`;
+//     }
+//     link.classList.add("active");
+//     link.textContent = "Искать на hikvision.com";
+//     link.href = `https://www.hikvision.com/en/search/?q=${foundModels[0].model}`;
+//     link.target = "_blank";
+//     return
+//   }
+//   //* 3. Если модель не актуальна
+//   else if (foundModels[0].relevance === "no") {
+//     resetStatus();
+//     form.classList.add("form__input_warning");
+//     result.classList.add("active");
+//     result.textContent = `Модель ${foundModels[0].model} уже снята с производства`;
+//     //* 4. Если есть замена
+//     if (foundModels[0].replacement !== "") {
+//       product.classList.add("active");
+//       product.textContent = "Была заменена на:";
+//       product.insertAdjacentHTML(
+//         "beforeend",
+//         ` <span class="form__details-model">${foundModels[0].replacement}</span>`
+//       );
+//     }
+//     //* 4. Если замены нет
+//     else {
+//       product.classList.add("active");
+//       product.textContent =
+//         "Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН";
+//     }
+//     return
+//   }
+// }
 
 // export default function findModel(pureModels) {
 

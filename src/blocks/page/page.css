@@ -4,10 +4,10 @@
   transition: all 0.1s ease-in-out;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .page {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #282831;
   color: #fff;
   display: flex;

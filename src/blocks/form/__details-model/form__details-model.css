@@ -1,5 +1,7 @@
 .form__details-model {
   display: inline-block;
+  min-width: 100px;
+  text-align: center;
   position: relative;
   padding: 10px 10px 20px;
   /* margin: 0 10px; */

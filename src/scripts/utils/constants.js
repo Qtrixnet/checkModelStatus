@@ -13,3 +13,4 @@ export const link = form.querySelector('.form__info_link');
 export const title = document.querySelector('.title');
 export const resetButton = document.querySelector('.form__reset');
 export const noteInfo = document.querySelector('.note');
+
