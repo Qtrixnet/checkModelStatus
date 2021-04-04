@@ -12,11 +12,25 @@ let foundModels;
 let matchModel = {};
 let inputValue = '';
 
-// Hikvision DS-2CD2043G0-I (2.8 мм) (Акция) IP видеокамера уличная, 4МП, EasyIP 2.0 Plus
+//* Фильтрация моделей на основе запроса
+function filterModels(models, value) {
+  foundModels = [];
+  models.forEach((model) => {
+    if (
+      (model.model.includes(value.toLowerCase()))
+      || (value.toLowerCase().includes(model.model))
+    ) {
+      foundModels.push(model);
+    }
+  });
+}
 
 export default function search(models, value) {
   inputValue = value.toLowerCase(); //! .replace(/\s+/g, '');
-  foundModels = models.filter((record) => record.model.includes(inputValue));
+
+  //* Фильтрация моделей на основе запроса
+  filterModels(models, value);
+
   // console.log(foundModels, inputValue);
   //* 1. Если инпут не пустой
   if (inputValue !== '') {
