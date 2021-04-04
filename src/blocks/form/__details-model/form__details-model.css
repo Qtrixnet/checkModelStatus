@@ -4,13 +4,9 @@
   text-align: center;
   position: relative;
   padding: 10px 10px 20px;
-  /* margin: 0 10px; */
+  margin-left: 10px;
   border-radius: 10px;
   border-bottom: 2px solid transparent;
-}
-
-.form__details-model:not(:last-of-type) {
-  margin-right: 10px;
 }
 
 .form__details-model:hover {

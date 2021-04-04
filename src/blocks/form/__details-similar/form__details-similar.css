@@ -1,0 +1,21 @@
+.form__details-similar {
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+  position: relative;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.form__details-similar:hover {
+  cursor: pointer;
+  color: rgba(0, 255, 106, 1);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form__details-similar:active {
+  border-color: #3398dc;
+  background-color: rgba(0, 0, 0, 0.5);
+}

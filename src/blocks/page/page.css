@@ -25,21 +25,19 @@
 .page::before {
   content: "";
   width: 200vw;
-  height: 220vh;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.1);
   z-index: -1;
-  animation: rotation 90s infinite;
+  animation: rotation 70s infinite;
   top: 50%;
   right: -50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #3398dc34;
+  border: 1px solid #3398dc11;
 }
 
 .page::after {
   content: "";
   width: 200vw;
-  height: 220vh;
   position: absolute;
   background-color: rgba(10, 10, 10, 0.1);
   z-index: -1;
@@ -47,7 +45,7 @@
   top: 50%;
   left: -50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #3398dc34;
+  border: 3px solid #3398dc11;
 }
 
 @keyframes rotation {

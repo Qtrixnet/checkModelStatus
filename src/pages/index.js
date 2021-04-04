@@ -5,19 +5,23 @@ import {
   form,
   replacement,
   category,
-  detailsText,
   resetButton,
   title,
   noteInfo,
   link,
-  product
+  product,
 } from '../scripts/utils/constants';
-import { resetStatus, transformData, disableButton} from '../scripts/utils/utils';
-import { search } from '../scripts/components/search'
+import {
+  resetStatus,
+  transformData,
+  disableButton,
+  handleEscReset,
+} from '../scripts/utils/utils';
+import search from '../scripts/components/search';
 import './index.css';
 
-const base_url = 'https://spreadsheets.google.com/feeds/list/148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw/od6/public/values?alt=json';
-const api = new Api(base_url);
+const baseUrl = 'https://spreadsheets.google.com/feeds/list/148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw/od6/public/values?alt=json';
+const api = new Api(baseUrl);
 const initialModels = api.getModels();
 const pureModels = [];
 let newModels = Promise.all([initialModels])
@@ -26,7 +30,6 @@ let newModels = Promise.all([initialModels])
     newModels.forEach((element) => {
       pureModels.push(transformData(element));
     });
-    console.log(pureModels);
     resetStatus();
     disableButton();
     title.textContent = 'Введите модель оборудования';
@@ -48,36 +51,40 @@ let newModels = Promise.all([initialModels])
     link.classList.add('form__info_danger');
     statistics.textContent = '';
   })
-  .finally(() => {});
-
+  .finally(() => { });
 
 input.addEventListener('input', () => {
-  search(pureModels, input.value)
+  search(pureModels, input.value);
 });
 
 product.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('form__details-model')) {
     input.value = evt.target.textContent;
-    search(pureModels, input.value)
+    search(pureModels, input.value);
   }
 });
 
 replacement.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('form__details-model')) {
     input.value = evt.target.textContent;
-    search(pureModels, input.value)
+    search(pureModels, input.value);
   }
 });
 
 category.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('form__details-model')) {
-    input.value = evt.target.textContent;
-    search(pureModels, input.value)
+  if ((evt.target.classList.contains('form__details-similar')) || (evt.target.classList.contains('form__details-model'))) {
+    //* Исключаем бренд, оставляем только модель в инпуте
+    input.value = evt.target.textContent.replace(/^\b.{1,15}\s/, '');
+    search(pureModels, input.value);
   }
 });
 
-resetButton.addEventListener('click', (evt) => {
+resetButton.addEventListener('click', () => {
   resetStatus();
   input.value = '';
   disableButton();
+});
+
+form.addEventListener('keyup', (evt) => {
+  handleEscReset(evt);
 });
