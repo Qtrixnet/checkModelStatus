@@ -61,29 +61,46 @@ export default function search(models, value) {
           }
         }
       } else {
+        // DS-T200L
         //* 3. Если модель не актуальна
         form.classList.add('form__input_warning');
-        result.classList.add('active');
-        result.textContent = `Модель ${matchModel.model.toUpperCase()} уже снята с производства`;
-        replacement.classList.add('active');
-        product.classList.add('active');
-        if (matchModel.category === 'd') {
-          product.textContent = 'Относилась к дистрибуционной линейке';
-        } else if (matchModel.category === 'p') {
-          product.textContent = 'Относилась к проектной линейке';
-        } else {
-          product.textContent = 'Линейка модели не указана';
-        }
-        //* Если есть замена
-        if (matchModel.replacement !== '') {
-          replacement.textContent = 'Была заменена на:';
-          replacement.insertAdjacentHTML(
-            'beforeend',
-            ` <span class='form__details-model'>${matchModel.replacement.toUpperCase()}</span>`,
-          );
-        } else {
-          //* Если нет замены
-          replacement.textContent = 'Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН';
+        if (matchModel.brand !== 'hiwatch') {
+          if (matchModel.brand === 'dahua') {
+            if (matchModel.replacement !== '') {
+              replacement.classList.add('active');
+              replacement.textContent = 'Аналогичная модель:';
+              replacement.insertAdjacentHTML(
+                'beforeend',
+                ` <span class='form__details-model'>${matchModel.replacement.toUpperCase()}</span>`,
+              );
+            } else {
+              //* Если нет замены
+              replacement.textContent = 'Аналог не предусмотрен, обратитесь в отдел СВН';
+            }
+            return;
+          }
+          result.classList.add('active');
+          result.textContent = `Модель ${matchModel.model.toUpperCase()} уже снята с производства`;
+          replacement.classList.add('active');
+          product.classList.add('active');
+          if (matchModel.category === 'd') {
+            product.textContent = 'Относилась к дистрибуционной линейке';
+          } else if (matchModel.category === 'p') {
+            product.textContent = 'Относилась к проектной линейке';
+          } else {
+            product.textContent = 'Линейка модели не указана';
+          }
+          //* Если есть замена
+          if (matchModel.replacement !== '') {
+            replacement.textContent = 'Была заменена на:';
+            replacement.insertAdjacentHTML(
+              'beforeend',
+              ` <span class='form__details-model'>${matchModel.replacement.toUpperCase()}</span>`,
+            );
+          } else {
+            //* Если нет замены
+            replacement.textContent = 'Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН';
+          }
         }
       }
       //* Если есть субституты
@@ -119,7 +136,6 @@ export default function search(models, value) {
           )
           : '';
       }
-      // DS-2CD1027G0-L
       return;
     }
     //* 2. Если моделей найдено много
