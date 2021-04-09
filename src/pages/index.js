@@ -27,6 +27,7 @@ const pureModels = [];
 let newModels = Promise.all([initialModels])
   .then((arr) => {
     newModels = arr[0].feed.entry;
+    console.log(newModels)
     newModels.forEach((element) => {
       pureModels.push(transformData(element));
     });
@@ -45,7 +46,7 @@ let newModels = Promise.all([initialModels])
     input.remove();
     title.textContent = 'Что-то пошло не так';
     form.classList.add('form__input_error');
-    link.textContent = 'Поиск не работает';
+    link.textContent = 'Поиск временно не работает, мы уже занимаемся поиском решения';
     link.href = '#';
     link.classList.add('active');
     link.classList.add('form__info_danger');

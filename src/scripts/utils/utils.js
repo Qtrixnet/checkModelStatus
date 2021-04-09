@@ -39,7 +39,6 @@ export function transformData(data) {
     product: data.gsx$product.$t.toLowerCase(),
     relevance: data.gsx$relevance.$t.toLowerCase().replace(/\s+/g, ''),
     replacement: data.gsx$replacement.$t.toLowerCase().replace(/\s+/g, ''),
-    id: data.gsx$id.$t.toLowerCase().replace(/\s+/g, ''),
     similarHilook: data.gsx$hilook.$t.toLowerCase().replace(/\s+/g, ''),
     similarHiwatch: data.gsx$hiwatch.$t.toLowerCase().replace(/\s+/g, ''),
     similarHikvision: data.gsx$hikvision.$t.toLowerCase().replace(/\s+/g, ''),
