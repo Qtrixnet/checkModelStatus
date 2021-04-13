@@ -7,3 +7,9 @@
   width: 100%;
   margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .form__fieldset {
+    flex-direction: column;
+  }
+}

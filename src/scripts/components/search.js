@@ -21,12 +21,12 @@ function filterModels(models, value) {
       || (value.toLowerCase().includes(model.model))
     ) {
       foundModels.push(model);
-    }
+    }``
   });
 }
 
 export default function search(models, value) {
-  inputValue = value.toLowerCase(); //! .replace(/\s+/g, '');
+  inputValue = value.toLowerCase();
 
   //* Фильтрация моделей на основе запроса
   filterModels(models, value);
@@ -60,8 +60,7 @@ export default function search(models, value) {
             link.target = '_blank';
           }
         }
-      } else {
-        // DS-T200L
+      } else if (matchModel.relevance === 'no') {
         //* 3. Если модель не актуальна
         form.classList.add('form__input_warning');
         if (matchModel.brand !== 'hiwatch') {
@@ -102,6 +101,10 @@ export default function search(models, value) {
             replacement.textContent = 'Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН';
           }
         }
+      } else {
+        form.classList.add('form__input_warning');
+        result.classList.add('active');
+        result.textContent = 'Актуальность модели неизвестна, обратитесь в отдел СВН';
       }
       //* Если есть субституты
       if (
