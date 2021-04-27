@@ -10,6 +10,7 @@ import {
   noteInfo,
   link,
   product,
+  page,
 } from '../scripts/utils/constants';
 import {
   resetStatus,
@@ -24,13 +25,26 @@ const baseUrl = 'https://spreadsheets.google.com/feeds/list/148wA9wWJro2mwng84-Y
 const api = new Api(baseUrl);
 const initialModels = api.getModels();
 const pureModels = [];
+const modelsWithoutReplacement = [];
+
 let newModels = Promise.all([initialModels])
   .then((arr) => {
     newModels = arr[0].feed.entry;
-    console.log(newModels)
     newModels.forEach((element) => {
       pureModels.push(transformData(element));
     });
+    console.log(pureModels);
+
+    pureModels.forEach((model) => {
+      if (model.replacement !== '') {
+        if (!(pureModels.find((puremodel) => puremodel.model === model.replacement))) {
+          modelsWithoutReplacement.push(model);
+        };
+      }
+    });
+
+    console.log(modelsWithoutReplacement);
+
     resetStatus();
     disableButton();
     title.textContent = 'Введите модель оборудования';
@@ -88,4 +102,20 @@ resetButton.addEventListener('click', () => {
 
 form.addEventListener('keyup', (evt) => {
   handleEscReset(evt);
+});
+
+const modelsButton = document.querySelector('.model-info');
+
+modelsButton.addEventListener('click', (evt) => {
+  if (prompt('Введите пароль') === '0000') {
+    console.log(modelsWithoutReplacement);
+    modelsWithoutReplacement.forEach((model) => {
+      document.body.insertAdjacentHTML("beforeend", `<details style="padding: 10px; cursor: pointer;">
+      <summary>${model.replacement}</summary>
+      <p>Model: ${model.model}</p>
+      <p>Replacement: ${model.replacement} - вот этой замены нет в списке актуальных</p>
+      <p>Relevance: ${model.relevance}</p>
+  </details>`);
+    });
+  }
 });

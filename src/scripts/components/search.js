@@ -21,7 +21,7 @@ function filterModels(models, value) {
       || (value.toLowerCase().includes(model.model))
     ) {
       foundModels.push(model);
-    }``
+    }
   });
 }
 
