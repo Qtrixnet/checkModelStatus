@@ -1,6 +1,9 @@
 import './Search.css'
 
 export default function About() {
+
+
+  
   return (
     <form className="search">
       <fieldset className="search__field">
