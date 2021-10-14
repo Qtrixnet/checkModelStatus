@@ -18,7 +18,6 @@ export default function About({ modelsData }) {
         </li>
         <li className="about__list-item">Поиск производится среди {modelsData.length} {formatWord(modelsData.length, templateWords)} </li>
       </ul>
-      <p className="about__subtitle">Введите интересующую модель</p>
     </section>
   );
 }

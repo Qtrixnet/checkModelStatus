@@ -11,6 +11,9 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
+  const [relevanceSameModelState, setRelevanceSameModel] = useState([])
+  const [relevanceAndReplacment, setRelevanceAndReplacment] = useState([])
+
   useEffect(() => {
     setLoading(true)
     fetch(baseUrl)
@@ -18,21 +21,36 @@ export default function App() {
       .then((text) => {
         //* Убираем лишние символы их строки
         const json = JSON.parse(text.substr(47).slice(0, -2));
-    
+
         const labels = json.table.cols.map((title) => title.label !== "" ? title.label : 'Пустой заголовок');
         const initialModels = json.table.rows;
-    
+
         const createModelsArr = (initialModels, labels) => {
           return initialModels.map((model) => {
             return Object.assign(
               ...labels.map((n, i) => ({
-                [n]: model.c[i] ? model.c[i].v : "Ячейка не заполнена",
+                [n]: model.c[i] ? model.c[i].v : "",
               }))
             );
           });
         };
-    
+
         const newData = createModelsArr(initialModels, labels);
+        newData.shift()
+
+        //* Модели, которые заменяются сами на себя
+        const relevanceSameModel = []
+        newData.forEach((model, idx) => {
+          model.id = idx;
+          return model.model === model.replacement ? relevanceSameModel.push(model) : ''
+        })
+
+        setRelevanceSameModel(relevanceSameModel)
+
+        //* Модели, которые актуальны и заменяются на что либо
+        const relevanceAndReplacment = []
+        newData.forEach(model => model.relevance === 'yes' && model.replacement ? relevanceAndReplacment.push(model) : '')
+        setRelevanceAndReplacment(relevanceAndReplacment)
 
         setData(newData)
         setLoading(false)
@@ -40,14 +58,14 @@ export default function App() {
       .catch(err => {
         console.log(err)
       })
-  }, [])
+  }, [baseUrl])
 
   return (
     <div className="App">
       {!loading ? (
         <>
           <Header />
-          <Main modelsData={data} />
+          <Main relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} modelsData={data} />
         </>
       ) : (
         <div className="loading">

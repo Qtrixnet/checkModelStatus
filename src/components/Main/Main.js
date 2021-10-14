@@ -5,7 +5,7 @@ import Search from "../Search/Search";
 import Statistics from "../Statistics/Statistics";
 import ToastMessage from "../ToastMessage/ToastMessage";
 
-export default function Main({ modelsData }) {
+export default function Main({ modelsData, relevanceAndReplacment, relevanceSameModelState }) {
 
   return (
     <main className="main">
@@ -16,7 +16,7 @@ export default function Main({ modelsData }) {
           <Search modelsData={modelsData} />
         </Route>
         <Route path="/statistics">
-          <Statistics />
+          <Statistics relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} />
         </Route>
       </Switch>
     </main>

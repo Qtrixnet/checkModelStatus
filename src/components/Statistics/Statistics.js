@@ -2,45 +2,61 @@ import { useEffect, useState } from "react";
 import './Statistics.css'
 import Table from 'react-bootstrap/Table'
 
-export default function Statistics() {
+export default function Statistics({ relevanceAndReplacment, relevanceSameModelState }) {
 
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
 
-  useEffect(() => {
-    const result = prompt("Введите пароль для получения доступа к статистике");
-    result === '0000' ? setAuth(true) : setAuth(false)
-  }, []);
+  // useEffect(() => {
+  //   const result = prompt("Введите пароль для получения доступа к статистике");
+  //   result === '0000' ? setAuth(true) : setAuth(false)
+  // }, []);
 
   return (
     auth ?
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </Table> : <h1>Для доступа к этой нужно вести пароль</h1>
+      <div className="statistics">
+        <h2 className="statistics__title">Актуальные модели, у которых есть замена</h2>
+        <Table className="table" striped bordered hover variant="dark">
+          <thead className="table__head">
+            <tr className="table__row">
+              <th className="table__header-cell">#</th>
+              <th className="table__header-cell">Модель</th>
+              <th className="table__header-cell">Актуальность</th>
+              <th className="table__header-cell">Замена</th>
+            </tr>
+          </thead>
+          <tbody>
+            {relevanceAndReplacment.map((model, idx) => {
+              return <tr key={model.id} className="table__row">
+                <td className="table__cell">{idx + 1}</td>
+                <td className="table__cell table__cell_left">{model.model}</td>
+                <td className="table__cell table__cell_relevance-yes">{model.relevance}</td>
+                <td className="table__cell table__cell_left">{model.replacement}</td>
+              </tr>
+            })}
+          </tbody>
+        </Table>
+        <h2 className="statistics__title">Не актуальные модели, которые заменены сами на себя</h2>
+        <Table className="table" striped bordered hover variant="dark">
+          <thead className="table__head">
+            <tr className="table__row">
+              <th className="table__header-cell">#</th>
+              <th className="table__header-cell">Модель</th>
+              <th className="table__header-cell">Актуальность</th>
+              <th className="table__header-cell">Замена</th>
+            </tr>
+          </thead>
+          <tbody>
+            {relevanceSameModelState.map((model, idx) => {
+              return <tr key={model.id} className="table__row">
+                <td className="table__cell">{idx + 1}</td>
+                <td className="table__cell table__cell_left">{model.model}</td>
+                <td className="table__cell table__cell_relevance-no">{model.relevance}</td>
+                <td className="table__cell table__cell_left">{model.replacement}</td>
+              </tr>
+            })}
+          </tbody>
+        </Table>
+      </div>
+      : <h1>Для доступа к этой странице нужно ввести пароль</h1>
   )
 }
