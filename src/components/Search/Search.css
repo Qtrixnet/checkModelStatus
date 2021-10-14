@@ -1,0 +1,17 @@
+.search__result-one {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+}
+
+.search__badge {
+  padding: 8px 12px;
+  font-weight: 400;
+  transition: all 0.2s ease
+}
+
+.search__badge:hover {
+  opacity: .8;
+  cursor: pointer;
+}
