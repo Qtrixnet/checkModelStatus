@@ -2,6 +2,7 @@ import './Header.css'
 import { NavLink } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { useEffect, useState } from "react";
+import Button from 'react-bootstrap/Button'
 // import FormControl from 'react-bootstrap/FormControl'
 
 export default function Header() {
@@ -58,6 +59,9 @@ export default function Header() {
             title="Выбери свой цвет страницы"
             onChange={handleTextColor}
           />
+        </div>
+        <div className="header__customizer">
+          <Button className="header__button" variant="outline-light">Стандартная тема</Button>
         </div>
       </div>
 

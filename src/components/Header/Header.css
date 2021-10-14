@@ -56,13 +56,18 @@
   gap: 16px;
   font-weight: 500;
   font-size: 18px;
-  border: 1px dashed var(--light);
+  /* border: 5px dotted var(--light); */
   border-radius: 8px;
   padding: 8px;
 }
 
 .header__customizer label {
   margin: 0;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.header__button {
   font-size: 24px;
   line-height: 1.2;
 }
