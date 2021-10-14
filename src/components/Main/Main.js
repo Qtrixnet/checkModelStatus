@@ -12,7 +12,7 @@ export default function Main({ modelsData }) {
       <ToastMessage />
       <Switch>
         <Route exact path="/">
-          <About />
+          <About modelsData={modelsData}/>
           <Search modelsData={modelsData} />
         </Route>
         <Route path="/statistics">

@@ -1,9 +1,12 @@
 :root {
-  --green: #16c67a;
+  --green: rgb(25, 156, 99);
   --yellow: #ffd86a;
   --red: #ee1e3a;
   --light: whitesmoke;
-  --dark: #282831;
+  --dark: rgb(11, 1, 41);
+  --bs-success-rgb: 25, 156, 99 !important;
+  --bs-danger-rgb: 238, 30, 58 !important;
+  --bs-warning-rgb: 255,193,7 !important;
 }
 
 .App {

@@ -1,15 +1,19 @@
 import "./Search.css";
 import { useEffect, useState } from "react";
 import Badge from "react-bootstrap/Badge";
+import { templateWordsNoun } from '../utils/constants';
+import { formatWord } from '../utils/wordFormatter';
 
 export default function Search({ modelsData }) {
   const statusTitle = "Здесь будет указан статус оборудования";
   const [status, setStatus] = useState(statusTitle);
+  const [relevance, setRelevance] = useState("");
   const [statusModels, setStatusModels] = useState([]);
   const [value, setValue] = useState("");
   const [foundModelsArr, setFoundModelsArr] = useState([]);
 
   const handleChange = (evt) => {
+    console.log("проверяем");
     const targetValue = evt.target.value;
     setValue(targetValue);
 
@@ -26,24 +30,31 @@ export default function Search({ modelsData }) {
 
     setFoundModelsArr(foundModels);
 
-    if (foundModels.length > 5) {
-      setStatus(`Моделей найдено: ${foundModels.length}`);
+    if (foundModels.length === 1) {
+      setRelevance("точная модель найдена");
+    } else if (foundModels.length > 15) {
+      setStatus(`По такому запросу нашлось: ${foundModels.length} ${formatWord(foundModels.length, templateWordsNoun)}, укажите модель точнее`);
     } else {
       setStatus(false);
       setStatusModels(foundModels);
     }
   };
 
-  const modelsTemplate = (models) => {
-    console.log(models);
+  const handleBadgeClick = (evt) => {
+    setValue(evt.target.textContent);
+  };
 
-    const markup = models.map((model, idx) => (
-      <Badge key={idx} className="search__badge" bg={model.relevance === 'yes' ? 'success' : 'danger'}>
+  const modelsTemplate = (models) => {
+    return models.map((model, idx) => (
+      <Badge
+        key={idx}
+        onClick={handleBadgeClick}
+        className="search__badge"
+        bg={model.relevance === "yes" ? "success" : "danger"}
+      >
         {model.model}
       </Badge>
     ));
-
-    return markup;
   };
 
   const handleClear = (evt) => {
@@ -70,10 +81,10 @@ export default function Search({ modelsData }) {
           type="text"
         />
       </fieldset>
-      <div className="search__result-one">
+      <span className="search__relevance">{relevance}</span>
+      <div className="search__similar-models">
         {status ? status : modelsTemplate(statusModels)}
       </div>
-      <span className="search__result-two"></span>
       <span className="search__result-three"></span>
     </form>
   );
