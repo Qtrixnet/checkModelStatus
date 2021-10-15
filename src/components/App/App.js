@@ -13,6 +13,7 @@ export default function App() {
 
   const [relevanceSameModelState, setRelevanceSameModel] = useState([])
   const [relevanceAndReplacment, setRelevanceAndReplacment] = useState([])
+  const [notActualReplacement, setNotActualReplacement] = useState([])
 
   useEffect(() => {
     setLoading(true)
@@ -37,22 +38,8 @@ export default function App() {
 
         const newData = createModelsArr(initialModels, labels);
         newData.shift()
-
-        //* Модели, которые заменяются сами на себя
-        const relevanceSameModel = []
-        newData.forEach((model, idx) => {
-          model.id = idx;
-          return model.model === model.replacement ? relevanceSameModel.push(model) : ''
-        })
-
-        setRelevanceSameModel(relevanceSameModel)
-
-        //* Модели, которые актуальны и заменяются на что либо
-        const relevanceAndReplacment = []
-        newData.forEach(model => model.relevance === 'yes' && model.replacement ? relevanceAndReplacment.push(model) : '')
-        setRelevanceAndReplacment(relevanceAndReplacment)
-
         setData(newData)
+
         setLoading(false)
       })
       .catch(err => {
@@ -60,12 +47,45 @@ export default function App() {
       })
   }, [baseUrl])
 
+  useEffect(() => {
+    //* Модели, которые заменяются сами на себя
+    const relevanceSameModel = []
+    data.forEach((model, idx) => {
+      model.id = idx;
+      return model.model === model.replacement ? relevanceSameModel.push(model) : ''
+    })
+    setRelevanceSameModel(relevanceSameModel)
+  }, [data])
+
+  useEffect(() => {
+    //* Модели, которые актуальны и заменяются на что либо
+    const relevanceAndReplacment = []
+    data.forEach(model => model.relevance === 'yes' && model.replacement ? relevanceAndReplacment.push(model) : '')
+    setRelevanceAndReplacment(relevanceAndReplacment)
+  }, [data])
+
+  useEffect(() => {
+    //* Замены, которых нет в списке актуальных
+    const badReplacement = []
+    const onlyModelNames = []
+    data.forEach(model => onlyModelNames.push(model.model.toLowerCase().trim()))
+    data.forEach(model => {
+      if (model.replacement) {
+        const result = onlyModelNames.indexOf(model.replacement.toLowerCase().trim());
+        if (result === -1) {
+          badReplacement.push(model)
+        }
+      }
+    })
+    setNotActualReplacement(badReplacement)
+  }, [data])
+
   return (
     <div className="App">
       {!loading ? (
         <>
           <Header />
-          <Main relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} modelsData={data} />
+          <Main relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} notActualReplacement={notActualReplacement} modelsData={data} />
         </>
       ) : (
         <div className="loading">

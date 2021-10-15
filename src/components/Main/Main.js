@@ -6,7 +6,7 @@ import Statistics from "../Statistics/Statistics";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import ToastContainer from 'react-bootstrap/ToastContainer'
 
-export default function Main({ modelsData, relevanceAndReplacment, relevanceSameModelState }) {
+export default function Main({ modelsData, relevanceAndReplacment, relevanceSameModelState, notActualReplacement }) {
 
   return (
     <main className="main">
@@ -20,7 +20,7 @@ export default function Main({ modelsData, relevanceAndReplacment, relevanceSame
           <Search modelsData={modelsData} />
         </Route>
         <Route path="/statistics">
-          <Statistics relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} />
+          <Statistics relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} notActualReplacement={notActualReplacement} />
         </Route>
       </Switch>
     </main>

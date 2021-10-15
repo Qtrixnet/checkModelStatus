@@ -14,7 +14,7 @@ export default function Header() {
 
   const property = appBlock.style.getPropertyValue("--accent");
 
-  console.log(property)
+  // console.log(property)
 
   const [initialBgColor, setInitialBgColor] = useState('')
   const [initialTextColor, setInitialTextColor] = useState('') 
@@ -74,7 +74,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__customizer-container">
-        <div className="header__customizer">
+        {/* <div className="header__customizer">
           <Form.Label htmlFor="exampleColorInput">Фон</Form.Label>
           <Form.Control
             className="header__color-button"
@@ -84,8 +84,8 @@ export default function Header() {
             title="Выбери свой цвет страницы"
             onChange={handleBgColor}
           />
-        </div>
-        <div className="header__customizer">
+        </div> */}
+        {/* <div className="header__customizer">
           <Form.Label htmlFor="exampleColorInput">Текст</Form.Label>
           <Form.Control
             className="header__color-button"
@@ -95,8 +95,8 @@ export default function Header() {
             title="Выбери свой цвет страницы"
             onChange={handleTextColor}
           />
-        </div>
-        <div className="header__customizer">
+        </div> */}
+        {/* <div className="header__customizer">
           <Form.Label htmlFor="exampleColorInput">Акцент</Form.Label>
           <Form.Control
             className="header__color-button"
@@ -106,12 +106,12 @@ export default function Header() {
             title="Выбери свой акцентный текст"
             onChange={handleAccentColor}
           />
-        </div>
-        <div className="header__customizer">
+        </div> */}
+        {/* <div className="header__customizer">
           <Button onClick={handleRestoreColors} className="header__button" variant="outline-light">
             Стандартная тема
           </Button>
-        </div>
+        </div> */}
       </div>
 
       <nav className="header__navigation">
@@ -130,6 +130,13 @@ export default function Header() {
         >
           Статистика
         </NavLink>
+        {/* <NavLink
+          to="/settings"
+          activeClassName="header__link_active"
+          className="header__link"
+        >
+          Персонализация
+        </NavLink> */}
       </nav>
     </header>
   );
