@@ -11,8 +11,9 @@ export default function Search({ modelsData }) {
   const clearStatus = () => {};
 
   //! состояние поиска модели
-  const [searchModelStatus, setSearchModelStatus] = useState(false);
-  const [searchModelStatusText, setSearchModelStatusText] = useState('');
+  // const [searchModelStatus, setSearchModelStatus] = useState(false);
+  const [searchModelStatusText, setSearchModelStatusText] = useState("");
+  const [searchModelStatusType, setSearchModelStatusType] = useState("");
 
   //! состояние актуальности модели
   const [relevanceText, setRelevanceText] = useState("");
@@ -35,6 +36,7 @@ export default function Search({ modelsData }) {
   const foundModelRelevanceCheck = (model) => {
     if (model.relevance === "yes") {
       //! Если точная модель актуальна
+      setSearchModelStatusText(false)
       setRelevanceText(`Модель ${model.model} доступна к заказу`);
       setRelevanceStatusText("success");
       setRelevanceStatus(true);
@@ -43,6 +45,7 @@ export default function Search({ modelsData }) {
       console.log(`${model.model} - актуальна`);
     } else if (model.relevance === "no") {
       //! если точная модель не актуальна
+      setSearchModelStatusText(false)
       setRelevanceText(`Модель ${model.model} не доступна к заказу`);
       setRelevanceStatusText("danger");
       setRelevanceStatus(false);
@@ -58,25 +61,38 @@ export default function Search({ modelsData }) {
       //   console.log("найдена точная модель");
       //   //! Проверяем на актуальность
       //   foundModelRelevanceCheck(model);
-      // } else 
+      // } else
       if (
-        model.model.toLowerCase().trim().includes(targetValue.toLowerCase().trim()) ||
-        targetValue.toLowerCase().trim().includes(model.model.toLowerCase().trim())
+        model.model
+          .toLowerCase()
+          .trim()
+          .includes(targetValue.toLowerCase().trim()) ||
+        targetValue
+          .toLowerCase()
+          .trim()
+          .includes(model.model.toLowerCase().trim())
       ) {
+        foundModels.push(model);
         //! Если найдены похожие модели
-        console.log("найдена похожая");
-        setSearchModelStatusText('Нашлось несколько похожих моделей')
-        if (targetValue.toLowerCase().trim() === model.model.toLowerCase().trim()) {
+        // console.log("найдена похожая");
+        setSearchModelStatusText("Нашлось несколько похожих моделей");
+        setSearchModelStatusType('warning')
+        if (
+          targetValue.toLowerCase().trim() === model.model.toLowerCase().trim()
+        ) {
           //! Если найдена точная модель
-          console.log("найдена точная модель");
+          // console.log("найдена точная модель");
           //! Проверяем на актуальность
           foundModelRelevanceCheck(model);
         } else {
-          foundModels.push(model)
+          // foundModels.push(model)
         }
       } else {
-        console.log("ничего не найдено");
-        setSearchModelStatusText('Ничего не найдено, уточните модель в отделе СВН')
+        // console.log("ничего не найдено");
+        setSearchModelStatusText(
+          "Ничего не найдено, уточните модель в отделе СВН"
+        );
+        setSearchModelStatusType('danger')
       }
     });
 
@@ -144,6 +160,9 @@ export default function Search({ modelsData }) {
             type="text"
             placeholder="DS-2CD2023G2-I"
           />
+          <Alert className="search__relevance" variant={searchModelStatusType}>
+            {searchModelStatusText}
+          </Alert>
         </Form.Group>
       </fieldset>
 
