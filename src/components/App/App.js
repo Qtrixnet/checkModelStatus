@@ -70,7 +70,7 @@ export default function App() {
       ) : (
         <div className="loading">
           <h1 className="loading__title">Загружаемся</h1>
-          <Spinner animation="border" variant="success" />
+          <Spinner animation="border" variant="success" className="loading__spinner" />
         </div>
       )}
     </div>

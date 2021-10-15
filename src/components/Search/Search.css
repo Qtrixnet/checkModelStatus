@@ -39,7 +39,7 @@
 }
 
 .search__link {
-  background-color: var(--green);
+  background-color: var(--accent);
   color: var(--light);
   text-decoration: none;
   padding: 18px 16px;
