@@ -7,19 +7,22 @@ import Statistics from "../Statistics/Statistics";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import ToastContainer from 'react-bootstrap/ToastContainer'
 
-export default function Main({ modelsData, relevanceAndReplacment = [], relevanceSameModelState = [], notActualReplacement = []}) {
-  
-
-  const relevanceAndReplacmentLength = relevanceAndReplacment.length
-  const relevanceSameModelStateLength = relevanceSameModelState.length
-  const notActualReplacementLength = notActualReplacement.length
+export default function Main({
+  modelsData,
+  relevanceAndReplacment = [],
+  relevanceSameModelState = [],
+  notActualReplacement = [],
+  relevanceSameModelStateLength = 0,
+  relevanceAndReplacmentLength = 0,
+  notActualReplacementLength = 0,
+}) {
 
   // const [errorStatus, setErrorStatus] = useState(false)
   // const [errorStatusText, setErrorStatusText] = useState('')
 
   let errorStatusText, errorStatus;
 
-  if(relevanceAndReplacmentLength !== 0 && relevanceSameModelStateLength !== 0 && notActualReplacementLength !== 0) {
+  if (relevanceAndReplacmentLength !== 0 || relevanceSameModelStateLength !== 0 || notActualReplacementLength !== 0) {
     errorStatusText = 'В Google таблице есть ошибки, проверьте статистику'
     errorStatus = 'danger'
     // setErrorStatus(true)
@@ -43,7 +46,15 @@ export default function Main({ modelsData, relevanceAndReplacment = [], relevanc
           <Search modelsData={modelsData} />
         </Route>
         <Route path="/statistics">
-          <Statistics relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} notActualReplacement={notActualReplacement} />
+          <Statistics
+            relevanceAndReplacment={relevanceAndReplacment}
+            relevanceSameModelState={relevanceSameModelState}
+            notActualReplacement={notActualReplacement}
+            relevanceSameModelStateLength={relevanceSameModelStateLength}
+            relevanceAndReplacmentLength={relevanceAndReplacmentLength}
+            notActualReplacementLength={notActualReplacementLength}
+            errorStatus={errorStatus}
+          />
         </Route>
       </Switch>
     </main>

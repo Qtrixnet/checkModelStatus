@@ -9,6 +9,8 @@ import Alert from "react-bootstrap/Alert";
 
 export default function Search({ modelsData }) {
 
+  console.log(modelsData)
+
   // const mainInput = document.querySelector('.search__input')
   // mainInput.addEventListener('change', (evt) => {
   //   console.log(evt.target.value)
@@ -153,8 +155,8 @@ export default function Search({ modelsData }) {
         } else {
           //* Если не найдено ничего
           // console.log(model)
-          setSearchModelStatusText(`Модель не найдена`)
-          setSearchModelStatusType(dangerStatus)
+          // setSearchModelStatusText(`Модель не найдена`)
+          // setSearchModelStatusType(dangerStatus)
         }
       } else {
         clearStatus()

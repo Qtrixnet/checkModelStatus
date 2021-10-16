@@ -49,14 +49,8 @@
   font-weight: 500;
 }
 
-.header__indicator-container {
+/* .header__indicator-container {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.header__indicator {
-  width: 24px;
-  height: 24px;
-  border-radius: 50px;
-}
+} */

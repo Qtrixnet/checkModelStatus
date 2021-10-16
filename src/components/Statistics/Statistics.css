@@ -45,6 +45,10 @@
 .statistics__tab-link {
   color: var(--light);
   transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .statistics__tab-link:hover {

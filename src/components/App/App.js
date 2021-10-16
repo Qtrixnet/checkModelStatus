@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "../Header/Header";
+import Footer from '../Footer/Footer';
 import Main from "../Main/Main";
-import Spinner from "react-bootstrap/Spinner";
+import Preloader from '../Preloader/Preloader';
 import { useEffect, useState } from "react";
 
 export default function App() {
@@ -14,6 +15,10 @@ export default function App() {
   const [relevanceSameModelState, setRelevanceSameModel] = useState([])
   const [relevanceAndReplacment, setRelevanceAndReplacment] = useState([])
   const [notActualReplacement, setNotActualReplacement] = useState([])
+
+  const [relevanceSameModelStateLength, setRelevanceSameModelLength] = useState(0)
+  const [relevanceAndReplacmentLength, setRelevanceAndReplacmentLength] = useState(0)
+  const [notActualReplacementLength, setNotActualReplacementLength] = useState(0)
 
   useEffect(() => {
     setLoading(true)
@@ -36,7 +41,8 @@ export default function App() {
           });
         };
 
-        const newData = createModelsArr(initialModels, labels);
+        const initialData = createModelsArr(initialModels, labels);
+        const newData = initialData.slice(0, 40)
         newData.shift()
 
         setData(newData)
@@ -56,6 +62,7 @@ export default function App() {
       return model.model === model.replacement ? relevanceSameModel.push(model) : ''
     })
     setRelevanceSameModel(relevanceSameModel)
+    setRelevanceSameModelLength(relevanceSameModel.length)
   }, [data])
 
   useEffect(() => {
@@ -63,6 +70,7 @@ export default function App() {
     const relevanceAndReplacment = []
     data.forEach(model => model.relevance === 'yes' && model.replacement ? relevanceAndReplacment.push(model) : '')
     setRelevanceAndReplacment(relevanceAndReplacment)
+    setRelevanceAndReplacmentLength(relevanceAndReplacment.length)
   }, [data])
 
   useEffect(() => {
@@ -79,21 +87,33 @@ export default function App() {
       }
     })
     setNotActualReplacement(badReplacement)
+    setNotActualReplacementLength(badReplacement.length)
   }, [data])
 
   return (
     <div className="App">
-      {!loading ? (
-        <>
-          <Header relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} notActualReplacement={notActualReplacement} />
-          <Main relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} notActualReplacement={notActualReplacement} modelsData={data} />
-        </>
-      ) : (
-        <div className="loading">
-          <h1 className="loading__title">Загружаемся</h1>
-          <Spinner animation="border" variant="light" className="loading__spinner" />
-        </div>
-      )}
+      {
+        !loading ? (
+          <>
+            <Header
+              relevanceSameModelStateLength={relevanceSameModelStateLength}
+              relevanceAndReplacmentLength={relevanceAndReplacmentLength}
+              notActualReplacementLength={notActualReplacementLength}
+            />
+            <Main
+              relevanceAndReplacment={relevanceAndReplacment}
+              relevanceSameModelState={relevanceSameModelState}
+              notActualReplacement={notActualReplacement}
+              relevanceSameModelStateLength={relevanceSameModelStateLength}
+              relevanceAndReplacmentLength={relevanceAndReplacmentLength}
+              notActualReplacementLength={notActualReplacementLength}
+              modelsData={data}
+            />
+          </>
+        ) : (
+          <Preloader />
+        )
+      }
     </div>
   );
 }

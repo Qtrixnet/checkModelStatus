@@ -1,0 +1,14 @@
+.preloader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-grow: 1;
+}
+
+.preloader__title {
+  color: var(--accent);
+  font-size: 46px;
+  font-weight: 500;
+}

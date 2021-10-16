@@ -1,0 +1,10 @@
+.indicator {
+  width: 24px;
+  height: 24px;
+  font-weight: 500;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}

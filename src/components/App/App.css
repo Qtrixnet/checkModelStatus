@@ -30,21 +30,6 @@
   line-height: 1.2;
 }
 
-.loading {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  flex-grow: 1;
-}
-
-.loading__title {
-  color: var(--accent);
-  font-size: 46px;
-  font-weight: 500;
-}
-
 * {
   box-sizing: border-box;
   /* outline: 1px dotted tomato; */
