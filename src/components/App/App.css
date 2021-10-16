@@ -1,14 +1,12 @@
 :root {
-  --green: rgb(25, 156, 99);
-  --yellow: #ffd86a;
-  --red: #ee1e3a;
-  --light: whitesmoke;
-  --dark: rgb(11, 1, 41);
-  --accent: rgb(25, 156, 99);
-  --bs-success-rgb: 25, 156, 99 !important;
-  --bs-danger-rgb: 238, 30, 58 !important;
-  --bs-warning-rgb: 255, 193, 7 !important;
-  --bs-primary-rgb: 25, 156, 99 !important;
+  --green: #198754;
+  --yellow: #ffc107;
+  --red: #dc3545;
+  --sky-blue: #0dcaf0;
+  --blue: #0d6efd;
+  --light: #f8f9fa;
+  --dark: #160C28;
+  --accent: #ffbd2f;
 }
 
 .App {
@@ -17,7 +15,7 @@
   display: flex;
   gap: 32px;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: flex-start;
   align-items: center;
   font-family: "Inter", Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -38,10 +36,11 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
+  flex-grow: 1;
 }
 
 .loading__title {
-  color: var(--light);
+  color: var(--accent);
   font-size: 46px;
   font-weight: 500;
 }

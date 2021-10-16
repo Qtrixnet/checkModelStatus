@@ -35,7 +35,7 @@
 }
 
 .table__cell_relevance-yes {
-  color: var(--accent);
+  color: var(--green);
 }
 
 .statistics-container {

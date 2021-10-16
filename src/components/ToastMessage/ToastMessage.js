@@ -3,7 +3,7 @@ import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer'
 import { useEffect, useState } from "react";
 
-export default function ToastMessage({ title, subtitle, text }) {
+export default function ToastMessage({ title, subtitle, text, errorStatus = 'warning'}) {
 
   const [show, setShow] = useState(true);
 
@@ -14,8 +14,8 @@ export default function ToastMessage({ title, subtitle, text }) {
   }, []);
 
   return (
-    <Toast className="toast" onClose={() => setShow(false)} bg="success" animation autohide="true" show={show}>
-      <Toast.Header className="toast__header bg-success text-light">
+    <Toast className="toast" onClose={() => setShow(false)} bg={errorStatus} animation autohide="true" show={show}>
+      <Toast.Header className={`toast__header bg-${errorStatus} text-light`}>
         <img
           src="holder.js/20x20?text=%20"
           className="toast__image rounded me-2"

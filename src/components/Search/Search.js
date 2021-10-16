@@ -8,7 +8,16 @@ import { formatWord } from "../utils/wordFormatter";
 import Alert from "react-bootstrap/Alert";
 
 export default function Search({ modelsData }) {
-  const clearStatus = () => {};
+
+  // const mainInput = document.querySelector('.search__input')
+  // mainInput.addEventListener('change', (evt) => {
+  //   console.log(evt.target.value)
+  // })
+
+  //! состояния bootstrap
+  const [successStatus, setSuccessStatus] = useState('success')
+  const [dangerStatus, setDangerStatus] = useState('danger')
+  const [warningStatus, setWarningStatus] = useState('warning')
 
   //! состояние поиска модели
   // const [searchModelStatus, setSearchModelStatus] = useState(false);
@@ -33,6 +42,13 @@ export default function Search({ modelsData }) {
   const [value, setValue] = useState("");
   const [foundModelsArr, setFoundModelsArr] = useState([]);
 
+  const clearStatus = () => {
+    setSearchModelStatusText('')
+    setSearchModelStatusType('')
+    setHikvisionLinkStatus(false);
+    setHikvisionLink('');
+  }
+
   const foundModelRelevanceCheck = (model) => {
     if (model.relevance === "yes") {
       //! Если точная модель актуальна
@@ -53,7 +69,7 @@ export default function Search({ modelsData }) {
     }
   };
 
-  const searchModel = (targetValue, modelsData) => {
+  const searchModel2 = (targetValue, modelsData) => {
     const foundModels = [];
     modelsData.forEach((model) => {
       // if (targetValue.toLowerCase().trim() === model.model.toLowerCase().trim()) {
@@ -99,6 +115,56 @@ export default function Search({ modelsData }) {
     console.log(foundModels);
   };
 
+
+
+  const searchModel = (targetValue, modelsData) => {
+    // console.log(targetValue, modelsData)
+    const foundModels = [];
+    clearStatus()
+    modelsData.forEach((model) => {
+      //* Если поле ввода не пустое
+      if (document.querySelector('.search__input').value !== '') {
+        //* Если введенная модель точно совпадает с найденной
+        if (model.model.toLowerCase().trim() === targetValue.toLowerCase().trim()) {
+          //* Проверка на актуальность
+          if (model.relevance === 'yes') {
+            setSearchModelStatusText(`Модель ${model.model} доступна к заказу`)
+            setSearchModelStatusType(successStatus)
+            setHikvisionLinkStatus(true);
+            setHikvisionLink(`https://www.hikvision.com/en/search/?q=${model.model}`);
+          } else {
+            setSearchModelStatusText(`Модель ${model.model} снята с производста`)
+            setSearchModelStatusType(dangerStatus)
+          }
+          return
+          //* Либо, если найдены похожие
+        } else if (model.model
+          .toLowerCase()
+          .trim()
+          .includes(targetValue.toLowerCase().trim()) ||
+          targetValue
+            .toLowerCase()
+            .trim()
+            .includes(model.model.toLowerCase().trim())) {
+          foundModels.push(model);
+          setSearchModelStatusText(`Нашлось: ${foundModels.length} похожих ${formatWord(foundModels.length, templateWordsNoun)}, пишите точнее`);
+          setSearchModelStatusType(warningStatus);
+          return
+        } else {
+          //* Если не найдено ничего
+          // console.log(model)
+          setSearchModelStatusText(`Модель не найдена`)
+          setSearchModelStatusType(dangerStatus)
+        }
+      } else {
+        clearStatus()
+      }
+    })
+    setFoundModelsArr(foundModels)
+    // console.log(foundModels)
+
+  }
+
   const handleChange = (evt) => {
     // console.log(evt.target.value);
     const targetValue = evt.target.value;
@@ -106,8 +172,11 @@ export default function Search({ modelsData }) {
     //! DS-2CD2023G2-IU
 
     // const foundModels = [];
+    
 
     searchModel(targetValue, modelsData);
+
+    // searchModel(targetValue, modelsData);
 
     // console.log(foundModels);
 
@@ -124,7 +193,9 @@ export default function Search({ modelsData }) {
   };
 
   const handleBadgeClick = (evt) => {
-    document.querySelector(".search__input").value = evt.target.textContent;
+    setValue(evt.target.textContent)
+    // document.querySelector(".search__input").value = evt.target.textContent;
+    searchModel(evt.target.textContent, modelsData);
   };
 
   const modelsTemplate = (models) => {
@@ -160,16 +231,16 @@ export default function Search({ modelsData }) {
             type="text"
             placeholder="DS-2CD2023G2-I"
           />
+          {foundModelsArr.length > 1 && foundModelsArr.length <= 15 ?
+            <div className="search__similar-models">
+              {foundModelsArr ? modelsTemplate(foundModelsArr) : ''}
+            </div> : ''}
           <Alert className="search__relevance" variant={searchModelStatusType}>
             {searchModelStatusText}
           </Alert>
         </Form.Group>
       </fieldset>
 
-      {/* {foundModelsArr.length >= 2 ?
-        <div className="search__similar-models">
-          {status ? modelsTemplate(statusModels) : ''}
-        </div> : ''} */}
 
       {/* <span className="search__relevance">{relevance}</span> */}
       {/* <span className="search__result-three"></span> */}

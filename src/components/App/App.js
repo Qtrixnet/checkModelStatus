@@ -38,6 +38,7 @@ export default function App() {
 
         const newData = createModelsArr(initialModels, labels);
         newData.shift()
+
         setData(newData)
 
         setLoading(false)
@@ -84,13 +85,13 @@ export default function App() {
     <div className="App">
       {!loading ? (
         <>
-          <Header />
+          <Header relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} notActualReplacement={notActualReplacement} />
           <Main relevanceAndReplacment={relevanceAndReplacment} relevanceSameModelState={relevanceSameModelState} notActualReplacement={notActualReplacement} modelsData={data} />
         </>
       ) : (
         <div className="loading">
           <h1 className="loading__title">Загружаемся</h1>
-          <Spinner animation="border" variant="success" className="loading__spinner" />
+          <Spinner animation="border" variant="light" className="loading__spinner" />
         </div>
       )}
     </div>

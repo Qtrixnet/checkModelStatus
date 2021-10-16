@@ -1,11 +1,23 @@
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-// import FormControl from 'react-bootstrap/FormControl'
+import Badge from 'react-bootstrap/Badge'
 
-export default function Header() {
+export default function Header({ relevanceAndReplacment = [], relevanceSameModelState = [], notActualReplacement = [] }) {
+
+  const relevanceAndReplacmentLength = relevanceAndReplacment.length
+  const relevanceSameModelStateLength = relevanceSameModelState.length
+  const notActualReplacementLength = notActualReplacement.length
+
+  let errorStatus;
+
+  if (relevanceAndReplacmentLength !== 0 && relevanceSameModelStateLength !== 0 && notActualReplacementLength !== 0) {
+    errorStatus = 'danger'
+  } else {
+    errorStatus = 'success';
+  }
+
   const savedBackgroundColor = localStorage.getItem("bg-color");
   const savedTextColor = localStorage.getItem("text-color");
   const savedAccentColor = localStorage.getItem("accent-color");
@@ -17,8 +29,8 @@ export default function Header() {
   // console.log(property)
 
   const [initialBgColor, setInitialBgColor] = useState('')
-  const [initialTextColor, setInitialTextColor] = useState('') 
-  const [initialAccentColor, setInitialAccentColor] = useState('') 
+  const [initialTextColor, setInitialTextColor] = useState('')
+  const [initialAccentColor, setInitialAccentColor] = useState('')
 
   const [bgColor, setBgColor] = useState(savedBackgroundColor);
   const [textColor, setTextColor] = useState(savedTextColor);
@@ -73,47 +85,6 @@ export default function Header() {
 
   return (
     <header className="header">
-      <div className="header__customizer-container">
-        {/* <div className="header__customizer">
-          <Form.Label htmlFor="exampleColorInput">Фон</Form.Label>
-          <Form.Control
-            className="header__color-button"
-            type="color"
-            id="exampleColorInput"
-            defaultValue={bgColor}
-            title="Выбери свой цвет страницы"
-            onChange={handleBgColor}
-          />
-        </div> */}
-        {/* <div className="header__customizer">
-          <Form.Label htmlFor="exampleColorInput">Текст</Form.Label>
-          <Form.Control
-            className="header__color-button"
-            type="color"
-            id="exampleColorInput"
-            defaultValue={textColor}
-            title="Выбери свой цвет страницы"
-            onChange={handleTextColor}
-          />
-        </div> */}
-        {/* <div className="header__customizer">
-          <Form.Label htmlFor="exampleColorInput">Акцент</Form.Label>
-          <Form.Control
-            className="header__color-button"
-            type="color"
-            id="exampleColorInput"
-            defaultValue={accentColor}
-            title="Выбери свой акцентный текст"
-            onChange={handleAccentColor}
-          />
-        </div> */}
-        {/* <div className="header__customizer">
-          <Button onClick={handleRestoreColors} className="header__button" variant="outline-light">
-            Стандартная тема
-          </Button>
-        </div> */}
-      </div>
-
       <nav className="header__navigation">
         <NavLink
           exact
@@ -129,14 +100,8 @@ export default function Header() {
           className="header__link"
         >
           Статистика
+          <span className="header__indicator-container"><Badge className="header__indicator" bg={errorStatus}> </Badge></span>
         </NavLink>
-        {/* <NavLink
-          to="/settings"
-          activeClassName="header__link_active"
-          className="header__link"
-        >
-          Персонализация
-        </NavLink> */}
       </nav>
     </header>
   );
