@@ -1,11 +1,11 @@
 import './NothingError.css'
-import okLogo from '../../vendor/ok.png'
 
 export default function NothingError({ }) {
   return (
     <div className="nothing-error">
-      Здесь все отлично, ошибок нет
-      <img src={okLogo} width="200" height="200" alt="" />
+      <p>В этой категории ошибок нет</p>
+      <p>Отличная работа, так держать!</p>
+      <img src={`https://avatars.dicebear.com/api/bottts/${Date.now()}.svg?mood[]=happy`} className="nothing-error__image" width="200" height="200" alt="" />
     </div>
   )
 }

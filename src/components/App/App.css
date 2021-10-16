@@ -6,14 +6,20 @@
   --blue: #0d6efd;
   --light: #f8f9fa;
   --dark: #160C28;
-  --accent: #ffbd2f;
+  --accent: #ffc107;
+  --title: 30px;
+  --text: 18px;
+  --icon-text: 14px;
+  --big-gap: 32px;
+  --middle-gap: 16px;
+  --small-gap: 8px;
 }
 
 .App {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  gap: 32px;
+  gap: var(--big-gap);
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -26,7 +32,7 @@
   text-rendering: optimizeLegibility;
   background-color: var(--dark);
   color: var(--light);
-  font-size: 24px;
+  font-size: var(--text);
   line-height: 1.2;
 }
 

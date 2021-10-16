@@ -1,3 +1,11 @@
 .toast__title {
   font-weight: 500;
 }
+
+.toast__body, .toast__subtitle {
+  font-size: var(--icon-text);
+}
+
+.toast__title {
+  font-size: var(--text)
+}

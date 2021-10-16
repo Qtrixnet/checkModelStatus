@@ -13,13 +13,16 @@ export default function ToastMessage({ title, subtitle, text, errorStatus = 'war
     }, 5000)
   }, []);
 
+
   return (
     <Toast className="toast" onClose={() => setShow(false)} bg={errorStatus} animation autohide="true" show={show}>
       <Toast.Header className={`toast__header bg-${errorStatus} text-light`}>
         <img
-          src="holder.js/20x20?text=%20"
+          src={`https://avatars.dicebear.com/api/bottts/${Date.now()}.svg?mood[]=${errorStatus === 'success' ? 'happy' : 'sad'}`}
           className="toast__image rounded me-2"
           alt=""
+          width="30"
+          height="30"
         />
         <strong className="toast__title me-auto">{title}</strong>
         <small className="toast__subtitle">{subtitle}</small>
@@ -28,3 +31,4 @@ export default function ToastMessage({ title, subtitle, text, errorStatus = 'war
     </Toast>
   )
 }
+

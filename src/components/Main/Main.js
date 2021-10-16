@@ -15,6 +15,7 @@ export default function Main({
   relevanceSameModelStateLength = 0,
   relevanceAndReplacmentLength = 0,
   notActualReplacementLength = 0,
+  password = '',
 }) {
 
   // const [errorStatus, setErrorStatus] = useState(false)
@@ -54,6 +55,7 @@ export default function Main({
             relevanceAndReplacmentLength={relevanceAndReplacmentLength}
             notActualReplacementLength={notActualReplacementLength}
             errorStatus={errorStatus}
+            password={password}
           />
         </Route>
       </Switch>

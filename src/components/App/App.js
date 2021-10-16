@@ -4,13 +4,17 @@ import Footer from '../Footer/Footer';
 import Main from "../Main/Main";
 import Preloader from '../Preloader/Preloader';
 import { useEffect, useState } from "react";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export default function App() {
   const spreadsheetId = "148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw";
-  const baseUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json`;
+  const baseUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&sheet=models`;
+  const faqUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&sheet=FAQ`
 
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [password, setPassword] = useState('')
+  const [errorLoading, setErrorLoading] = useState(false)
 
   const [relevanceSameModelState, setRelevanceSameModel] = useState([])
   const [relevanceAndReplacment, setRelevanceAndReplacment] = useState([])
@@ -46,13 +50,29 @@ export default function App() {
         newData.shift()
 
         setData(newData)
-
+      })
+      .catch(err => {
+        console.log(err)
+        setErrorLoading(true)
+      })
+      .finally(() => {
         setLoading(false)
+      })
+  }, [baseUrl])
+
+  useEffect(() => {
+    fetch(faqUrl)
+      .then((res) => res.text())
+      .then((text) => {
+        //* Убираем лишние символы их строки
+        const json = JSON.parse(text.substr(47).slice(0, -2));
+        //* путь до пароля от полученных данных
+        setPassword(json.table.rows[0].c[2].v)
       })
       .catch(err => {
         console.log(err)
       })
-  }, [baseUrl])
+  }, [faqUrl])
 
   useEffect(() => {
     //* Модели, которые заменяются сами на себя
@@ -93,27 +113,30 @@ export default function App() {
   return (
     <div className="App">
       {
-        !loading ? (
-          <>
-            <Header
-              relevanceSameModelStateLength={relevanceSameModelStateLength}
-              relevanceAndReplacmentLength={relevanceAndReplacmentLength}
-              notActualReplacementLength={notActualReplacementLength}
-            />
-            <Main
-              relevanceAndReplacment={relevanceAndReplacment}
-              relevanceSameModelState={relevanceSameModelState}
-              notActualReplacement={notActualReplacement}
-              relevanceSameModelStateLength={relevanceSameModelStateLength}
-              relevanceAndReplacmentLength={relevanceAndReplacmentLength}
-              notActualReplacementLength={notActualReplacementLength}
-              modelsData={data}
-            />
-          </>
-        ) : (
-          <Preloader />
+        loading ? <Preloader /> : (
+          errorLoading ? <ErrorMessage /> : (
+            <>
+              <Header
+                relevanceSameModelStateLength={relevanceSameModelStateLength}
+                relevanceAndReplacmentLength={relevanceAndReplacmentLength}
+                notActualReplacementLength={notActualReplacementLength}
+              />
+              <Main
+                relevanceAndReplacment={relevanceAndReplacment}
+                relevanceSameModelState={relevanceSameModelState}
+                notActualReplacement={notActualReplacement}
+                relevanceSameModelStateLength={relevanceSameModelStateLength}
+                relevanceAndReplacmentLength={relevanceAndReplacmentLength}
+                notActualReplacementLength={notActualReplacementLength}
+                modelsData={data}
+                password={password}
+              />
+            </>
+          )
         )
       }
-    </div>
+    </div >
   );
 }
+
+

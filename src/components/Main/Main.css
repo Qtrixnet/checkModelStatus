@@ -5,6 +5,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 46px;
+  gap: var(--big-gap);
   padding: 0 36px 36px;
 }

@@ -1,18 +1,19 @@
 .about__info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  gap: var(--middle-gap);
 }
 
 .about__title {
   font-weight: 500;
-  font-size: 32px;
+  font-size: var(--title);
   margin: 0;
 }
 
 .about__list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--middle-gap);
   margin: 0;
 }

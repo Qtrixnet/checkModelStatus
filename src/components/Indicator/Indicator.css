@@ -3,7 +3,7 @@
   height: 24px;
   font-weight: 500;
   display: flex;
-  font-size: 12px;
+  font-size: var(--icon-text);
   align-items: center;
   justify-content: center;
   border-radius: 50px;

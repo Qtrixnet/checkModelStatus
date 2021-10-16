@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import './Statistics.css'
 import Table from 'react-bootstrap/Table'
-import Tabs from 'react-bootstrap/Tabs'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import Tab from 'react-bootstrap/Tab'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -17,10 +18,30 @@ export default function Statistics({
   relevanceAndReplacmentLength = 0,
   relevanceSameModelStateLength = 0,
   notActualReplacementLength = 0,
-  errorStatus,
+  errorStatus = 'warning',
+  password = '',
 }) {
+  const [auth, setAuth] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
-  const [auth, setAuth] = useState(true);
+  useState(() => {
+    localStorage.getItem('auth') === password ? setAuth(true) : setAuth(false)
+  }, [])
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    const form = evt.target;
+    const inputValue = form.querySelector('.auth-form__password').value
+
+    if (inputValue === password) {
+      setAuth(true)
+      setPasswordError(false)
+      localStorage.setItem('auth', inputValue)
+    } else {
+      setPasswordError(true)
+    }
+
+  }
 
   return (
     auth ?
@@ -28,7 +49,7 @@ export default function Statistics({
         <div className="statistics">
           <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row className="statistics-container">
-              <Col sm={3}>
+              <Col className="mb-3" sm={3}>
                 <Nav variant="pills" className="statistics-nav flex-column">
                   <Nav.Item >
                     <Nav.Link className="statistics__tab-link" eventKey="first">
@@ -47,6 +68,9 @@ export default function Statistics({
                       Невалидные замены
                       {notActualReplacementLength !== 0 ? <Indicator errorStatus={errorStatus} /> : ''}
                     </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                      <a className="statistics__link" target="_blank" href="https://docs.google.com/spreadsheets/d/148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw/edit#gid=124941712">Перейти в Google таблицу</a>
                   </Nav.Item>
                 </Nav>
               </Col>
@@ -159,6 +183,29 @@ export default function Statistics({
 
         </div>
       </>
-      : <h1>Для доступа к этой странице нужно ввести пароль</h1>
+      :
+      <>
+        <Form className="auth-form" onSubmit={handleSubmit}>
+          <Form.Group className="auth-form__container" controlId="formBasicPassword">
+            <Form.Label className="text-warning">Введите пароль</Form.Label>
+            <Form.Control className="auth-form__password" type="password" placeholder="Пароль" />
+            <Form.Text className="text-muted">
+              Пароль будет сохранен для всех следующих сессий
+            </Form.Text>
+            <Form.Text className="text-muted">
+              Пароль можно найти в Google таблице, в разделе FAQ
+            </Form.Text>
+          </Form.Group>
+          <Button variant="warning" type="submit">
+            Авторизоваться
+          </Button>
+        </Form>
+        {
+          passwordError ?
+            <Form.Text className="text-danger">
+              Пароль неверный, попробуйте еще раз
+            </Form.Text> : ''
+        }
+      </>
   )
 }

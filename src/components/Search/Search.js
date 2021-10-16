@@ -41,9 +41,10 @@ export default function Search({ modelsData }) {
 
   const [status, setStatus] = useState("");
   const [statusModels, setStatusModels] = useState([]);
-  const [value, setValue] = useState("");
   const [foundModelsArr, setFoundModelsArr] = useState([]);
 
+  const [value, setValue] = useState("");
+  
   const clearStatus = () => {
     setSearchModelStatusText('')
     setSearchModelStatusType('')
@@ -128,6 +129,7 @@ export default function Search({ modelsData }) {
       if (document.querySelector('.search__input').value !== '') {
         //* Если введенная модель точно совпадает с найденной
         if (model.model.toLowerCase().trim() === targetValue.toLowerCase().trim()) {
+          console.log(`${model.model} нашлась`)
           //* Проверка на актуальность
           if (model.relevance === 'yes') {
             setSearchModelStatusText(`Модель ${model.model} доступна к заказу`)
@@ -149,10 +151,11 @@ export default function Search({ modelsData }) {
             .trim()
             .includes(model.model.toLowerCase().trim())) {
           foundModels.push(model);
-          setSearchModelStatusText(`Нашлось: ${foundModels.length} похожих ${formatWord(foundModels.length, templateWordsNoun)}, пишите точнее`);
+          setSearchModelStatusText(`Нашлось: ${foundModels.length} ${formatWord(foundModels.length, templateWordsNoun)}, пишите точнее`);
           setSearchModelStatusType(warningStatus);
           return
         } else {
+          console.log(123)
           //* Если не найдено ничего
           // console.log(model)
           // setSearchModelStatusText(`Модель не найдена`)
@@ -198,6 +201,7 @@ export default function Search({ modelsData }) {
     setValue(evt.target.textContent)
     // document.querySelector(".search__input").value = evt.target.textContent;
     searchModel(evt.target.textContent, modelsData);
+    setValue(evt.target.textContent)
   };
 
   const modelsTemplate = (models) => {
@@ -229,11 +233,11 @@ export default function Search({ modelsData }) {
           <Form.Control
             className="search__input"
             onChange={handleChange}
-            value={value}
+            defaultValue={value}
             type="text"
             placeholder="DS-2CD2023G2-I"
           />
-          {foundModelsArr.length > 1 && foundModelsArr.length <= 15 ?
+          {foundModelsArr.length >= 1 && foundModelsArr.length <= 15 ?
             <div className="search__similar-models">
               {foundModelsArr ? modelsTemplate(foundModelsArr) : ''}
             </div> : ''}
