@@ -43,7 +43,9 @@ export default function App() {
         };
 
         const newData = createModelsArr(initialModels, labels);
-        // const newData = initialData.slice(0, 4000)
+
+        // const initialData = createModelsArr(initialModels, labels);
+        // const newData = initialData.slice(0, 1)
         newData.shift()
 
         setData(newData)

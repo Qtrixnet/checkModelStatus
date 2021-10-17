@@ -222,7 +222,7 @@ export default function Search({ modelsData }) {
           {
             hikvisionLinkStatus ?
               <Badge as="div" className={`search__relevance ${searchModelStatusType === 'warning' ? 'text-dark' : 'text-light'}`} bg={searchModelStatusType}>
-                <a href={hikvisionLink} rel="noreferrer" className="search__relevance-link" target="_blank">Найти на Hikvion.com</a>
+                <a href={hikvisionLink} rel="noreferrer" className="search__relevance-link" target="_blank">Найти на Hikvision.com</a>
               </Badge>
               : ''
           }
