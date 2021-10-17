@@ -32,21 +32,21 @@ export default function App() {
         //* Убираем лишние символы их строки
         const json = JSON.parse(text.substr(47).slice(0, -2));
 
-        const labels = json.table.cols.map((title) => title.label !== "" ? title.label : 'Пустой заголовок');
+        const labels = json.table.cols.map((title) => title.label !== "" ? title.label : 'Техническое поле');
         const initialModels = json.table.rows;
 
         const createModelsArr = (initialModels, labels) => {
           return initialModels.map((model) => {
             return Object.assign(
               ...labels.map((n, i) => ({
-                [n]: model.c[i] ? model.c[i].v : "",
+                [n]: model.c[i] ? model.c[i].v : false,
               }))
             );
           });
         };
 
-        const initialData = createModelsArr(initialModels, labels);
-        const newData = initialData.slice(0, 40)
+        const newData = createModelsArr(initialModels, labels);
+        // const newData = initialData.slice(0, 40)
         newData.shift()
 
         setData(newData)

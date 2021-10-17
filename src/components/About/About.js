@@ -1,6 +1,4 @@
 import "./About.css";
-import { formatWord } from "../utils/wordFormatter";
-import { templateWords } from "../utils/constants";
 
 export default function About() {
   return (
@@ -16,7 +14,6 @@ export default function About() {
           Предлагает альтернативу снятому с производства оборудованию и аналоги
           на других брендах
         </li>
-        {/* <li className="about__list-item">Поиск производится среди {modelsData.length} {formatWord(modelsData.length, templateWords)} </li> */}
       </ul>
     </section>
   );

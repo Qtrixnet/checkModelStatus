@@ -36,7 +36,14 @@
   line-height: 1.2;
 }
 
+
+
 * {
   box-sizing: border-box;
   /* outline: 1px dotted tomato; */
+}
+
+*::selection {
+  background-color: var(--accent);
+  color: var(--dark);
 }
