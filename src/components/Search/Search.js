@@ -144,6 +144,7 @@ export default function Search({ modelsData }) {
             <Button onClick={handleClear} className="search__input-button" variant="light">Очистить поле</Button>
             <Form.Control
               className="search__input"
+              autoComplete="off"
               onChange={handleChange}
               defaultValue={value}
               type="text"
