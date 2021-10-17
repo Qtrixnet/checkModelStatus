@@ -5,12 +5,9 @@ import Main from "../Main/Main";
 import Preloader from '../Preloader/Preloader';
 import { useEffect, useState } from "react";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import {baseUrl, faqUrl} from '../../utils/constants';
 
 export default function App() {
-  const spreadsheetId = "148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw";
-  const baseUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&sheet=models`;
-  const faqUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&sheet=FAQ`
-
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [password, setPassword] = useState('')
@@ -46,7 +43,7 @@ export default function App() {
         };
 
         const newData = createModelsArr(initialModels, labels);
-        // const newData = initialData.slice(0, 40)
+        // const newData = initialData.slice(0, 4000)
         newData.shift()
 
         setData(newData)
@@ -58,7 +55,7 @@ export default function App() {
       .finally(() => {
         setLoading(false)
       })
-  }, [baseUrl])
+  }, [])
 
   useEffect(() => {
     fetch(faqUrl)
@@ -72,7 +69,7 @@ export default function App() {
       .catch(err => {
         console.log(err)
       })
-  }, [faqUrl])
+  }, [])
 
   useEffect(() => {
     //* Модели, которые заменяются сами на себя
@@ -131,6 +128,7 @@ export default function App() {
                 modelsData={data}
                 password={password}
               />
+              <Footer modelsData={data}/>
             </>
           )
         )

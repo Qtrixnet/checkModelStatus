@@ -1,6 +1,5 @@
 import "./Main.css";
 import { Route, Switch } from "react-router-dom";
-import { useState } from "react";
 import About from "../About/About";
 import Search from "../Search/Search";
 import Statistics from "../Statistics/Statistics";
@@ -37,9 +36,10 @@ export default function Main({
 
   return (
     <main className="main">
-      <ToastContainer className="toast-container" className="p-5" position="bottom-end">
-        {/* <ToastMessage title="Кастомизация" subtitle="Change color" text="Создай свою персональную тему" /> */}
-        <ToastMessage title="Внимание" subtitle="Google sheet" errorStatus={errorStatus} text={`${errorStatusText}`} />
+      <ToastContainer className="toast-container" className="p-5" position="bottom-end">  
+        {
+          localStorage.getItem('auth') ? <ToastMessage title="Внимание" subtitle="Google sheet" errorStatus={errorStatus} text={`${errorStatusText}`} /> : ''
+        }
       </ToastContainer>
       <Switch>
         <Route exact path="/">

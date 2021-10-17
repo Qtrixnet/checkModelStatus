@@ -2,8 +2,9 @@
   width: 100%;
   max-width: 1440px;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: var(--big-gap);
   padding: 0 36px 36px;

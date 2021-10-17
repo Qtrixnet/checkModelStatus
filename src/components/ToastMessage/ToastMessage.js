@@ -1,18 +1,10 @@
 import './ToastMessage.css'
 import Toast from 'react-bootstrap/Toast';
-import ToastContainer from 'react-bootstrap/ToastContainer'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ToastMessage({ title, subtitle, text, errorStatus = 'warning'}) {
 
   const [show, setShow] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShow(false)
-    }, 5000)
-  }, []);
-
 
   return (
     <Toast className="toast" onClose={() => setShow(false)} bg={errorStatus} animation autohide="true" show={show}>

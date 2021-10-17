@@ -1,29 +1,26 @@
 import "./Search.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Badge from "react-bootstrap/Badge";
-import { templateWordsNoun } from "../../utils/constants";
+import { templateWordsNoun, templateWordsVerb, templateWordsAdjective } from "../../utils/constants";
 import { formatWord } from "../../utils/wordFormatter";
 import { relevanceCheck } from '../../utils/relevanceCheck';
-import { modelsCount } from '../../utils/constants'
+import { modelsCount, successStatus, dangerStatus, warningStatus } from '../../utils/constants';
+import Button from 'react-bootstrap/Button';
 
 export default function Search({ modelsData }) {
 
-  //! состояния bootstrap
-  const [successStatus, setSuccessStatus] = useState('success')
-  const [dangerStatus, setDangerStatus] = useState('danger')
-  const [warningStatus, setWarningStatus] = useState('warning')
+  //! состояние субститутов модели
+
+  const [hasSubstitute, setHasSubstitute] = useState(false)
+  const [hikvisionSubstitute, setHikvisionSubstitute] = useState('')
+  const [hilookSubstitute, setHilookSubstitute] = useState('')
+  const [hiwatchSubstitute, setHiwatchSubstitute] = useState('')
 
   //! состояние поиска модели
   const [searchModelStatus, setSearchModelStatus] = useState(false);
   const [searchModelStatusText, setSearchModelStatusText] = useState("");
   const [searchModelStatusType, setSearchModelStatusType] = useState("");
-
-  //! состояние актуальности модели
-  // const [relevanceText, setRelevanceText] = useState("");
-  // const [relevanceStatus, setRelevanceStatus] = useState(false);
-  // const [relevanceStatusText, setRelevanceStatusText] = useState("");
 
   //! состояние ссылки на hikvision
   const [hikvisionLinkStatus, setHikvisionLinkStatus] = useState(false);
@@ -33,11 +30,11 @@ export default function Search({ modelsData }) {
   const [replacementText, setReplacementText] = useState("");
   const [replacementStatus, setReplacementStatus] = useState(false);
 
-  // const [status, setStatus] = useState("");
-  // const [statusModels, setStatusModels] = useState([]);
   const [foundModelsArr, setFoundModelsArr] = useState([]);
 
   const [value, setValue] = useState("");
+
+  const [exactMatch, setExactMatch] = useState(false)
 
   const clearStatus = () => {
     setSearchModelStatusText('');
@@ -47,10 +44,16 @@ export default function Search({ modelsData }) {
     setReplacementText('');
     setReplacementStatus(false);
     setSearchModelStatus(false);
+    setHasSubstitute(false);
+    setHikvisionSubstitute('');
+    setHilookSubstitute('');
+    setHiwatchSubstitute('');
+    setFoundModelsArr([]);
+    setValue('');
+    setExactMatch(false);
   }
 
   const searchModel = (targetValue, modelsData) => {
-    clearStatus()
     const foundModels = [];
 
     // цикл For для прерывания поиска
@@ -72,8 +75,13 @@ export default function Search({ modelsData }) {
             setHikvisionLinkStatus,
             setReplacementText,
             setReplacementStatus,
+            setHasSubstitute,
+            setHikvisionSubstitute,
+            setHilookSubstitute,
+            setHiwatchSubstitute,
           )
-          setSearchModelStatus(true)
+          setExactMatch(true)
+          setSearchModelStatus(true);
           break;
         } else if (
           //! Кейс №2 - Если точная модель не найдена, но есть несколько совпадений
@@ -87,30 +95,23 @@ export default function Search({ modelsData }) {
             .includes(modelsData[i].model.toLowerCase().trim())
         ) {
           foundModels.push(modelsData[i]);
-          if (foundModels.length > 1) {
-            setSearchModelStatusText(`Нашлось: ${foundModels.length} ${formatWord(foundModels.length, templateWordsNoun)}`);
-            setSearchModelStatusType(warningStatus);
-          } else {
-            setSearchModelStatusText(`Такой модели не найдено, обратитесь в отдел СВН`);
-            setSearchModelStatusType('secondary');
-          }
+          setSearchModelStatusText(`${formatWord(foundModels.length, templateWordsVerb)} ${foundModels.length} ${formatWord(foundModels.length, templateWordsAdjective)} ${formatWord(foundModels.length, templateWordsNoun)}`);
+          setSearchModelStatusType(warningStatus);
         }
-      } else {
-        clearStatus()
       }
     }
     setFoundModelsArr(foundModels)
-    console.log(foundModels)
   }
 
   const handleChange = (evt) => {
+    clearStatus()
     const targetValue = evt.target.value;
     setValue(targetValue);
     searchModel(targetValue, modelsData);
-    //! DS-2CD2023G2-IU
   };
 
   const handleBadgeClick = (evt) => {
+    clearStatus()
     setValue(evt.target.textContent)
     document.querySelector(".search__input").value = evt.target.textContent;
     searchModel(evt.target.textContent, modelsData);
@@ -131,21 +132,24 @@ export default function Search({ modelsData }) {
   };
 
   const handleClear = (evt) => {
-    evt.preventDefault();
-    console.log(evt.target);
+    clearStatus()
+    document.querySelector('.search__input').value = ''
   };
 
   return (
     <form className="search">
       <fieldset className="search__field">
         <Form.Group className="search__container" controlId="exampleForm.ControlInput1">
-          <Form.Control
-            className="search__input"
-            onChange={handleChange}
-            defaultValue={value}
-            type="text"
-            placeholder="DS-2CD2023G2-I"
-          />
+          <div className="search__input-container">
+            <Button onClick={handleClear} className="search__input-button" variant="light">Очистить поле</Button>
+            <Form.Control
+              className="search__input"
+              onChange={handleChange}
+              defaultValue={value}
+              type="text"
+              placeholder="DS-2CD2023G2-I"
+            />
+          </div>
 
           {/* 
             //! Вывод информации о том, что ничего не найдено
@@ -177,11 +181,16 @@ export default function Search({ modelsData }) {
           {/* 
             //! Вывод баджиков с похожими моделями
           */}
+
           <Badge as="div" className={`search__relevance ${searchModelStatusType === 'warning' ? 'text-dark' : 'text-light'}`} bg={searchModelStatusType}>
             <h2 className="search__result-title">
               {searchModelStatusText}
             </h2>
-            {foundModelsArr.length > 1 && foundModelsArr.length <= modelsCount ?
+            {/* {foundModelsArr.length === 1 && foundModelsArr.length <= modelsCount && !exactMatch ?
+              <div className="search__similar-models">
+                {foundModelsArr ? modelsTemplate(foundModelsArr) : ''}
+              </div> : ''} */}
+            {foundModelsArr.length && foundModelsArr.length <= modelsCount && !exactMatch ?
               <div className="search__similar-models">
                 {foundModelsArr ? modelsTemplate(foundModelsArr) : ''}
               </div> : ''}
@@ -196,7 +205,7 @@ export default function Search({ modelsData }) {
               {
                 replacementText ?
                   <div className="search__relevance-container">
-                    <span className="search__result-title">Замена на:</span>
+                    <span className="search__result-title">Рекомендуемая замена:</span>
                     <Badge onClick={handleBadgeClick} className="search__badge text-dark" bg='warning'>
                       {replacementText}
                     </Badge>
@@ -213,12 +222,70 @@ export default function Search({ modelsData }) {
           {
             hikvisionLinkStatus ?
               <Badge as="div" className={`search__relevance ${searchModelStatusType === 'warning' ? 'text-dark' : 'text-light'}`} bg={searchModelStatusType}>
-                <a href={hikvisionLink} className="search__relevance-link" target="_blank">Найти на Hikvion.com</a>
+                <a href={hikvisionLink} rel="noreferrer" className="search__relevance-link" target="_blank">Найти на Hikvion.com</a>
+              </Badge>
+              : ''
+          }
+
+          {/* 
+            //! Вывод cубститутов
+          */}
+
+          {
+            hasSubstitute ?
+              <Badge as="div" className={`search__relevance text-light`} bg='secondary'>
+                <h2 className="search__result-title">
+                  У этой модели также есть аналоги на других брендах:
+                </h2>
+                <div className="search__substitute-container">
+                  {
+                    hikvisionSubstitute ?
+                      <div className="search__substitute">
+                        <span className="search__substitute-text">Hikvision</span>
+                        <Badge
+                          onClick={handleBadgeClick}
+                          className="search__badge text-dark"
+                          bg={"warning"}
+                        >
+                          {hikvisionSubstitute}
+                        </Badge>
+                      </div>
+                      : ''
+                  }
+                  {
+                    hilookSubstitute ?
+                      <div className="search__substitute">
+                        <span className="search__substitute-text">HiLook</span>
+                        <Badge
+                          onClick={handleBadgeClick}
+                          className="search__badge text-dark"
+                          bg={"warning"}
+                        >
+                          {hilookSubstitute}
+                        </Badge>
+                      </div>
+                      : ''
+                  }
+                  {
+                    hiwatchSubstitute ?
+                      <div className="search__substitute">
+                        <span className="search__substitute-text">HiWatch</span>
+                        <Badge
+                          onClick={handleBadgeClick}
+                          className="search__badge text-dark"
+                          bg={"warning"}
+                        >
+                          {hiwatchSubstitute}
+                        </Badge>
+                      </div>
+                      : ''
+                  }
+                </div>
               </Badge>
               : ''
           }
         </Form.Group>
       </fieldset>
-    </form>
+    </form >
   );
 }

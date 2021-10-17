@@ -1,14 +1,15 @@
 import { useState } from "react";
-import './Statistics.css'
-import Table from 'react-bootstrap/Table'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Tab from 'react-bootstrap/Tab'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Nav from 'react-bootstrap/Nav'
-import Indicator from '../Indicator/Indicator'
-import NothingError from '../NothingError/NothingError'
+import './Statistics.css';
+import Table from 'react-bootstrap/Table';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Tab from 'react-bootstrap/Tab';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Indicator from '../Indicator/Indicator';
+import NothingError from '../NothingError/NothingError';
+import { texts } from '../../utils/constants';
 
 export default function Statistics({
   relevanceAndReplacment = [],
@@ -53,24 +54,24 @@ export default function Statistics({
                 <Nav variant="pills" className="statistics-nav flex-column">
                   <Nav.Item >
                     <Nav.Link className="statistics__tab-link" eventKey="first">
-                      Актуальные и с заменой
+                      {texts.statisticsTabs.relevanceAndReplacment}
                       {relevanceAndReplacmentLength !== 0 ? <Indicator errorStatus={errorStatus} /> : ''}
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link className="statistics__tab-link" eventKey="second">
-                      Заменены сами на себя
+                      {texts.statisticsTabs.relevanceSameModel}
                       {relevanceSameModelStateLength !== 0 ? <Indicator errorStatus={errorStatus} /> : ''}
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link className="statistics__tab-link" eventKey="third">
-                      Невалидные замены
+                      {texts.statisticsTabs.notActualReplacement}
                       {notActualReplacementLength !== 0 ? <Indicator errorStatus={errorStatus} /> : ''}
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                      <a className="statistics__link" target="_blank" href="https://docs.google.com/spreadsheets/d/148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw/edit#gid=124941712">Перейти в Google таблицу</a>
+                    <a className="statistics__link" rel="noreferrer" target="_blank" href="https://docs.google.com/spreadsheets/d/148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw/edit#gid=124941712">{texts.statisticsTabs.googleSheet}</a>
                   </Nav.Item>
                 </Nav>
               </Col>
@@ -79,8 +80,7 @@ export default function Statistics({
                   <Tab.Pane eventKey="first">
                     <h2 className="statistics__title">
                       {
-                        relevanceAndReplacmentLength !== 0 ?
-                          'Модели оборудования, которое доступно к заказу, но при этом заменено на другое' : <NothingError />
+                        relevanceAndReplacmentLength !== 0 ? texts.statisticsTitles.relevanceAndReplacment : <NothingError />
                       }
                     </h2>
                     {
@@ -114,7 +114,7 @@ export default function Statistics({
                     <h2 className="statistics__title">
                       {
                         relevanceSameModelStateLength !== 0 ?
-                          'Снятые с производства модели оборудования, которые заменены сами на себя' : <NothingError />
+                        texts.statisticsTitles.relevanceSameModel : <NothingError />
                       }
                     </h2>
                     {
@@ -147,7 +147,7 @@ export default function Statistics({
                     <h2 className="statistics__title">
                       {
                         notActualReplacementLength !== 0 ?
-                          'Модели оборудования, замены которых отсутствуют в основном списке' : <NothingError />
+                        texts.statisticsTitles.notActualReplacement : <NothingError />
                       }
                     </h2>
                     {

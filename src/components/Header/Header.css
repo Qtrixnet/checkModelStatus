@@ -46,7 +46,6 @@
 .header__link_active {
   color: var(--accent);
   border-color: var(--accent);
-  font-weight: 500;
 }
 
 /* .header__indicator-container {

@@ -8,6 +8,10 @@ export const relevanceCheck = (
   setHikvisionLinkStatus,
   setReplacementText,
   setReplacementStatus,
+  setHasSubstitute,
+  setHikvisionSubstitute,
+  setHilookSubstitute,
+  setHiwatchSubstitute,
 ) => {
   if (model.relevance === 'yes') {
     setSearchModelStatusText(`Модель ${model.model} доступна к заказу`)
@@ -21,5 +25,22 @@ export const relevanceCheck = (
       setReplacementText(model.replacement)
     }
     setReplacementStatus(true)
+  }
+
+  if (
+    model.hikvision || model.hilook || model.hiwatch
+  ) {
+    setHasSubstitute(true)
+    if (model.hikvision) {
+      setHikvisionSubstitute(model.hikvision)
+    }
+
+    if (model.hilook) {
+      setHilookSubstitute(model.hilook)
+    }
+
+    if (model.hiwatch) {
+      setHiwatchSubstitute(model.hiwatch)
+    }
   }
 }

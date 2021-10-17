@@ -1,7 +1,8 @@
 import Spinner from "react-bootstrap/Spinner";
 import './Preloader.css'
+import {texts} from '../../utils/constants';
 
-export default function Preloader({ }) {
+export default function Preloader() {
   return (
     <div className="preloader">
       <img
@@ -11,7 +12,7 @@ export default function Preloader({ }) {
         width="200"
         height="200"
       />
-      <h1 className="preloader__title">Загружаю список моделей...</h1>
+      <h1 className="preloader__title">{texts.preloader}</h1>
       <Spinner animation="border" variant="light" className="preloader__spinner" />
     </div>
   )
