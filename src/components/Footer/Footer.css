@@ -4,3 +4,9 @@
   max-width: 1440px;
   text-align: right;
 }
+
+@media screen and (max-width: 425px) {
+  .footer {
+    text-align: center;
+  }
+}

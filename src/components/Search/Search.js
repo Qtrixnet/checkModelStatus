@@ -202,7 +202,7 @@ export default function Search({ modelsData }) {
           */}
 
           {replacementStatus ?
-            <Badge as="div" className={`search__relevance text-light`} bg='secondary'>
+            <Badge as="div" className={`search__relevance text-light`} bg='dark'>
               {
                 replacementText ?
                   <div className="search__relevance-container">
@@ -234,7 +234,7 @@ export default function Search({ modelsData }) {
 
           {
             hasSubstitute ?
-              <Badge as="div" className={`search__relevance text-light`} bg='secondary'>
+              <Badge as="div" className={`search__relevance text-light`} bg='dark'>
                 <h2 className="search__result-title">
                   У этой модели также есть аналоги на других брендах:
                 </h2>

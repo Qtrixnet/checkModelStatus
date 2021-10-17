@@ -8,11 +8,6 @@
   padding: 36px;
   max-width: 1440px;
   margin: 0 auto;
-  /* justify-self: start; */
-  /* position: fixed;
-  top: 0;
-  left: 50%; */
-  /* transform: translate(-50%); */
   background-color: var(--dark);
   font-size: var(--text);
   line-height: 1.2;
@@ -48,8 +43,8 @@
   border-color: var(--accent);
 }
 
-/* .header__indicator-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+@media screen and (max-width: 425px) {
+  .header {
+    justify-content: center;
+  }
+}

@@ -85,7 +85,7 @@ export default function Statistics({
                     </h2>
                     {
                       relevanceAndReplacmentLength !== 0 ?
-                        <Table className="table" striped bordered hover variant="dark">
+                        <Table className="table" striped responsive bordered hover variant="dark">
                           <thead className="table__head">
                             <tr className="table__row">
                               <th className="table__header-cell">#</th>
@@ -119,7 +119,7 @@ export default function Statistics({
                     </h2>
                     {
                       relevanceSameModelStateLength !== 0 ?
-                        <Table className="table" striped bordered hover variant="dark">
+                        <Table className="table-container" responsive striped bordered hover variant="dark">
                           <thead className="table__head">
                             <tr className="table__row">
                               <th className="table__header-cell">#</th>
@@ -152,7 +152,7 @@ export default function Statistics({
                     </h2>
                     {
                       notActualReplacementLength !== 0 ?
-                        <Table className="table" striped bordered hover variant="dark">
+                        <Table className="table" striped bordered responsive hover variant="dark">
                           <thead className="table__head">
                             <tr className="table__row">
                               <th className="table__header-cell">#</th>
