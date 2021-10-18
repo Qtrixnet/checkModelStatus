@@ -5,7 +5,7 @@
   --sky-blue: #0dcaf0;
   --blue: #0d6efd;
   --light: #f8f9fa;
-  --dark: #160C28;
+  --dark: #160c28;
   --accent: #ffc107;
   --title: 30px;
   --text: 18px;
@@ -13,6 +13,14 @@
   --big-gap: 32px;
   --middle-gap: 16px;
   --small-gap: 8px;
+}
+
+@media screen and (max-width: 425px) {
+  :root {
+    --title: 18px;
+    --text: 14px;
+    --icon-text: 10px;
+  }
 }
 
 .App {
@@ -35,8 +43,6 @@
   font-size: var(--text);
   line-height: 1.2;
 }
-
-
 
 * {
   box-sizing: border-box;

@@ -65,6 +65,7 @@
   justify-content: center;
   align-items: center;
   gap: var(--middle-gap);
+  white-space: initial;
 }
 
 .search__relevance-link {

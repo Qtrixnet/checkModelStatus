@@ -45,6 +45,11 @@
 
 @media screen and (max-width: 425px) {
   .header {
-    justify-content: center;
+    padding: 16px;
+  }
+
+  .header__navigation {
+    width: 100%;
+    justify-content: space-between;
   }
 }
