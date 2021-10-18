@@ -3,10 +3,16 @@
   width: 100%;
   max-width: 1440px;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--middle-gap);
+  text-align: center;
 }
 
 @media screen and (max-width: 425px) {
   .footer {
-    text-align: center;
+    flex-direction: column;
   }
 }

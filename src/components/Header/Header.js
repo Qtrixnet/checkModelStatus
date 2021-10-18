@@ -1,23 +1,30 @@
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import Indicator from "../Indicator/Indicator";
+import logo from "../../images/logo.png";
 
-export default function Header({ 
+export default function Header({
   relevanceSameModelStateLength = 0,
   relevanceAndReplacmentLength = 0,
   notActualReplacementLength = 0,
 }) {
+  let errorStatus = "warning";
 
-  let errorStatus = 'warning';
-
-  if (relevanceAndReplacmentLength !== 0 || relevanceSameModelStateLength !== 0 || notActualReplacementLength !== 0) {
-    errorStatus = 'danger'
+  if (
+    relevanceAndReplacmentLength !== 0 ||
+    relevanceSameModelStateLength !== 0 ||
+    notActualReplacementLength !== 0
+  ) {
+    errorStatus = "danger";
   } else {
-    errorStatus = 'success';
+    errorStatus = "success";
   }
 
   return (
     <header className="header">
+      <a href="https://www.intant.kz/" className="header__logo-link" title="Переход на сайт компании" target="_blank" rel="noreferrer">
+        <img src={logo} alt="логотип" className="header__logo"></img>
+      </a>
       <nav className="header__navigation">
         <NavLink
           exact
@@ -33,7 +40,7 @@ export default function Header({
           className="header__link"
         >
           Статистика
-          <Indicator errorStatus={errorStatus}/>
+          <Indicator errorStatus={errorStatus} />
         </NavLink>
       </nav>
     </header>

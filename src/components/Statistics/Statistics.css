@@ -40,7 +40,7 @@
 
 .statistics-container {
   width: 100%;
-  gap: var(--big-gap)
+  /* gap: var(--big-gap); */
 }
 
 .statistics__tab-link {

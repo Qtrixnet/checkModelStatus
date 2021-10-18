@@ -46,7 +46,7 @@
 
 * {
   box-sizing: border-box;
-  /* outline: 1px dotted tomato; */
+  outline: 1px dotted tomato;
 }
 
 *::selection {
