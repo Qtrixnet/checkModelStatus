@@ -36,7 +36,7 @@ export default function Main({
 
   return (
     <main className="main">
-      <ToastContainer className="toast-container" className="p-5" position="bottom-end">  
+      <ToastContainer className="toast-container p-3"position="bottom-end">  
         {
           localStorage.getItem('auth') ? <ToastMessage title="Внимание" subtitle="Google sheet" errorStatus={errorStatus} text={`${errorStatusText}`} /> : ''
         }

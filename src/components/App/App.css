@@ -7,7 +7,7 @@
   --light: #f8f9fa;
   --dark: #160c28;
   --accent: #ffc107;
-  --title: 30px;
+  --title: 32px;
   --text: 18px;
   --icon-text: 14px;
   --big-gap: 32px;
@@ -17,7 +17,7 @@
 
 @media screen and (max-width: 425px) {
   :root {
-    --title: 18px;
+    --title: 20px;
     --text: 14px;
     --icon-text: 10px;
   }
