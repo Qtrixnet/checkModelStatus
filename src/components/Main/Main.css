@@ -7,11 +7,4 @@
   justify-content: flex-start;
   align-items: center;
   gap: var(--big-gap);
-  padding: 0 36px 36px;
-}
-
-@media screen and (max-width: 425px){
-  .main {
-    padding: 0 16px 16px;
-  }
 }

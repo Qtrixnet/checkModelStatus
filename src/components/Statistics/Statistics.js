@@ -85,22 +85,22 @@ export default function Statistics({
                     </h2>
                     {
                       relevanceAndReplacmentLength !== 0 ?
-                        <Table className="table" striped responsive bordered hover variant="dark">
-                          <thead className="table__head">
-                            <tr className="table__row">
-                              <th className="table__header-cell">#</th>
-                              <th className="table__header-cell">Модель</th>
-                              <th className="table__header-cell">Замена</th>
-                              <th className="table__header-cell">Актуальность</th>
+                        <Table className="statistics-table" striped responsive bordered hover variant="dark">
+                          <thead className="statistics-table__head">
+                            <tr className="statistics-table__row">
+                              <th className="statistics-table__header-cell">#</th>
+                              <th className="statistics-table__header-cell">Модель</th>
+                              <th className="statistics-table__header-cell">Замена</th>
+                              <th className="statistics-table__header-cell">Актуальность</th>
                             </tr>
                           </thead>
                           <tbody>
                             {relevanceAndReplacment.map((model, idx) => {
                               return <tr key={model.id} className="table__row">
-                                <td className="table__cell">{idx + 1}</td>
-                                <td className="table__cell table__cell_left">{model.model}</td>
-                                <td className="table__cell table__cell_left">{model.replacement}</td>
-                                <td className="table__cell table__cell_relevance-yes">{model.relevance}</td>
+                                <td className="statistics-table__cell">{idx + 1}</td>
+                                <td className="statistics-table__cell statistics-table__cell_left">{model.model}</td>
+                                <td className="statistics-table__cell statistics-table__cell_left">{model.replacement}</td>
+                                <td className="statistics-table__cell statistics-table__cell_relevance-yes">{model.relevance}</td>
                               </tr>
                             })}
                           </tbody>
@@ -119,22 +119,22 @@ export default function Statistics({
                     </h2>
                     {
                       relevanceSameModelStateLength !== 0 ?
-                        <Table className="table-container" responsive striped bordered hover variant="dark">
-                          <thead className="table__head">
-                            <tr className="table__row">
-                              <th className="table__header-cell">#</th>
-                              <th className="table__header-cell">Модель</th>
-                              <th className="table__header-cell">Замена</th>
-                              <th className="table__header-cell">Актуальность</th>
+                        <Table className="statistics-table-container" responsive striped bordered hover variant="dark">
+                          <thead className="statistics-table__head">
+                            <tr className="statistics-table__row">
+                              <th className="statistics-table__header-cell">#</th>
+                              <th className="statistics-table__header-cell">Модель</th>
+                              <th className="statistics-table__header-cell">Замена</th>
+                              <th className="statistics-table__header-cell">Актуальность</th>
                             </tr>
                           </thead>
                           <tbody>
                             {relevanceSameModelState.map((model, idx) => {
                               return <tr key={model.id} className="table__row">
-                                <td className="table__cell">{idx + 1}</td>
-                                <td className="table__cell table__cell_left">{model.model}</td>
-                                <td className="table__cell table__cell_left">{model.replacement}</td>
-                                <td className="table__cell table__cell_relevance-no">{model.relevance}</td>
+                                <td className="statistics-table__cell">{idx + 1}</td>
+                                <td className="statistics-table__cell statistics-table__cell_left">{model.model}</td>
+                                <td className="statistics-table__cell statistics-table__cell_left">{model.replacement}</td>
+                                <td className="statistics-table__cell statistics-table__cell_relevance-no">{model.relevance}</td>
                               </tr>
                             })}
                           </tbody>
@@ -152,22 +152,22 @@ export default function Statistics({
                     </h2>
                     {
                       notActualReplacementLength !== 0 ?
-                        <Table className="table" striped bordered responsive hover variant="dark">
-                          <thead className="table__head">
-                            <tr className="table__row">
-                              <th className="table__header-cell">#</th>
-                              <th className="table__header-cell">Замена</th>
-                              <th className="table__header-cell">Модель</th>
-                              <th className="table__header-cell">Актуальность</th>
+                        <Table className="statistics-table" striped bordered responsive hover variant="dark">
+                          <thead className="statistics-table__head">
+                            <tr className="statistics-table__row">
+                              <th className="statistics-table__header-cell">#</th>
+                              <th className="statistics-table__header-cell">Замена</th>
+                              <th className="statistics-table__header-cell">Модель</th>
+                              <th className="statistics-table__header-cell">Актуальность</th>
                             </tr>
                           </thead>
                           <tbody>
                             {notActualReplacement.map((model, idx) => {
                               return <tr key={model.id} className="table__row">
-                                <td className="table__cell">{idx + 1}</td>
-                                <td className="table__cell table__cell_left">{model.replacement}</td>
-                                <td className="table__cell table__cell_left">{model.model}</td>
-                                <td className="table__cell table__cell_relevance-no">{model.relevance}</td>
+                                <td className="statistics-table__cell">{idx + 1}</td>
+                                <td className="statistics-table__cell statistics-table__cell_left">{model.replacement}</td>
+                                <td className="statistics-table__cell statistics-table__cell_left">{model.model}</td>
+                                <td className="statistics-table__cell statistics-table__cell_relevance-no">{model.relevance}</td>
                               </tr>
                             })}
                           </tbody>

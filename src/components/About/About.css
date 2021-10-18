@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--middle-gap);
+  padding: 0 32px;
 }
 
 .about__title {
@@ -19,6 +20,9 @@
 }
 
 @media screen and (max-width: 425px) {
+  .about__info {
+    padding: 0 16px;
+  }
   .about__title {
     text-align: center;
   }

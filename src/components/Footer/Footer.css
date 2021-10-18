@@ -1,5 +1,5 @@
 .footer {
-  padding: 36px;
+  padding: 32px;
   width: 100%;
   max-width: 1440px;
   text-align: left;
@@ -14,5 +14,6 @@
 @media screen and (max-width: 425px) {
   .footer {
     flex-direction: column;
+    padding: 16px;
   }
 }
