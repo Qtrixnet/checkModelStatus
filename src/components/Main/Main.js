@@ -1,5 +1,5 @@
 import "./Main.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import About from "../About/About";
 import Search from "../Search/Search";
@@ -19,20 +19,34 @@ export default function Main({
   notActualReplacementLength = 0,
   password = "",
 }) {
+  const [validPassword, setValidPassword] = useState(false);
+  const [errorStatus, setErrorStatus] = useState(false);
+  const [errorStatusColor, setErrorStatusColor] = useState("");
 
-  let errorStatus = false, errorStatusColor, validPassword;
+  useEffect(() => {
+    localStorage.getItem("auth-password") === password
+      ? setValidPassword(true)
+      : setValidPassword(false);
+  }, [setValidPassword, password]);
 
-  relevanceAndReplacmentLength !== 0 ||
-  relevanceSameModelStateLength !== 0 ||
-  notActualReplacementLength !== 0
-    ? (errorStatus = true)
-    : (errorStatus = false);
+  useEffect(() => {
+    relevanceAndReplacmentLength !== 0 ||
+    relevanceSameModelStateLength !== 0 ||
+    notActualReplacementLength !== 0
+      ? setErrorStatus(true)
+      : setErrorStatus(false);
+  }, [
+    setErrorStatus,
+    relevanceAndReplacmentLength,
+    relevanceSameModelStateLength,
+    notActualReplacementLength,
+  ]);
 
-  localStorage.getItem("auth-password") === password
-    ? (validPassword = true)
-    : (validPassword = false);
-
-  errorStatus ? (errorStatusColor = "danger") : (errorStatusColor = "success");
+  useEffect(() => {
+    errorStatus
+      ? setErrorStatusColor("danger")
+      : setErrorStatusColor("success");
+  }, [setErrorStatusColor, errorStatus]);
 
   return (
     <main className="main">
@@ -64,9 +78,7 @@ export default function Main({
                 text={`Нужно исправить ${relevanceSameModelStateLength} ${formatWord(
                   relevanceSameModelStateLength,
                   templateWordsError
-                )} в категории "${
-                  texts.statisticsTabs.relevanceSameModel
-                }"`}
+                )} в категории "${texts.statisticsTabs.relevanceSameModel}"`}
               />
             )}
             {notActualReplacementLength !== 0 && (
@@ -79,9 +91,7 @@ export default function Main({
                 text={`Нужно исправить ${notActualReplacementLength} ${formatWord(
                   notActualReplacementLength,
                   templateWordsError
-                )} в категории "${
-                  texts.statisticsTabs.notActualReplacement
-                }"`}
+                )} в категории "${texts.statisticsTabs.notActualReplacement}"`}
               />
             )}
           </>
@@ -104,6 +114,10 @@ export default function Main({
             password={password}
           />
         </Route>
+        {/* <Route exact path="/">
+          <About modelsData={modelsData} />
+          <Search modelsData={modelsData} />
+        </Route> */}
       </Switch>
     </main>
   );

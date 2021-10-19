@@ -2,8 +2,6 @@ export const relevanceCheck = (
   model,
   setSearchModelStatusText,
   setSearchModelStatusType,
-  successStatus,
-  dangerStatus,
   setHikvisionLink,
   setHikvisionLinkStatus,
   setReplacementText,
@@ -15,12 +13,12 @@ export const relevanceCheck = (
 ) => {
   if (model.relevance === 'yes') {
     setSearchModelStatusText(`Модель ${model.model} доступна к заказу`)
-    setSearchModelStatusType(successStatus)
+    setSearchModelStatusType('success')
     setHikvisionLinkStatus(true);
     setHikvisionLink(`https://www.hikvision.com/en/search/?q=${model.model}`);
   } else {
     setSearchModelStatusText(`Модель ${model.model} снята с производста`)
-    setSearchModelStatusType(dangerStatus)
+    setSearchModelStatusType('danger')
     if (model.replacement) {
       setReplacementText(model.replacement)
     }

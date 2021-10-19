@@ -11,9 +11,6 @@ import { formatWord } from "../../utils/wordFormatter";
 import { relevanceCheck } from "../../utils/relevanceCheck";
 import {
   modelsCount,
-  successStatus,
-  dangerStatus,
-  warningStatus,
 } from "../../utils/constants";
 import Button from "react-bootstrap/Button";
 
@@ -77,8 +74,6 @@ export default function Search({ modelsData }) {
             modelsData[i],
             setSearchModelStatusText,
             setSearchModelStatusType,
-            successStatus,
-            dangerStatus,
             setHikvisionLink,
             setHikvisionLinkStatus,
             setReplacementText,
@@ -111,7 +106,7 @@ export default function Search({ modelsData }) {
               templateWordsAdjective
             )} ${formatWord(foundModels.length, templateWordsNoun)}`
           );
-          setSearchModelStatusType(warningStatus);
+          setSearchModelStatusType('dark');
         }
       }
     }
@@ -211,12 +206,12 @@ export default function Search({ modelsData }) {
           <Badge
             as="div"
             className={`search__relevance ${
-              searchModelStatusType === "warning" ? "text-dark" : "text-light"
+              searchModelStatusType === "dark" && "text-light"
             }`}
             bg={searchModelStatusType}
           >
             <h2 className="search__result-title">{searchModelStatusText}</h2>
-            {foundModelsArr.length &&
+            {foundModelsArr.length > 0 &&
               foundModelsArr.length <= modelsCount &&
               !exactMatch && (
                 <div className="search__similar-models">

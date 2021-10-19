@@ -38,10 +38,24 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  background-color: var(--dark);
+  background: var(--dark);
+  /* background: linear-gradient(34deg, rgba(30,0,42,1) 0%, rgba(22,12,40,1) 50%, rgba(0,0,47,1) 100%); */
+  animation: pulse 1s ease-in-out infinite;
   color: var(--light);
   font-size: var(--text);
   line-height: 1.2;
+}
+
+@keyframes pulse {
+    0% {
+      background: linear-gradient(0deg, rgba(30,0,42,1), rgba(22,12,40,1) 50%, rgba(0,0,47,1) 100%);
+    }
+    50% {
+      background: linear-gradient(45deg, rgba(30,0,42,1) 0%, rgba(22,12,40,1) 50%, rgba(0,0,47,1) 100%);
+    }
+    100% {
+      background: linear-gradient(0deg, rgba(30,0,42,1), rgba(22,12,40,1) 50%, rgba(0,0,47,1) 100%);
+    }
 }
 
 * {

@@ -4,9 +4,6 @@ export const templateWordsVerb = ['Нашлась', 'Нашлись', 'Нашл�
 export const templateWordsAdjective = ['похожая', 'похожие', 'похожих'];
 export const templateWordsError = ['ошибку', 'ошибки', 'ошибок'];
 export const modelsCount = 15;
-export const successStatus = 'success';
-export const dangerStatus = 'danger';
-export const warningStatus = 'warning';
 
 export const texts = {
   aboutTitle: 'Web приложение для проверки моделей оборудования',
@@ -35,4 +32,4 @@ export const texts = {
 
 const spreadsheetId = "148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw";
 export const baseUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&sheet=models`;
-export const faqUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&sheet=FAQ`
+export const faqUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&sheet=FAQ`;

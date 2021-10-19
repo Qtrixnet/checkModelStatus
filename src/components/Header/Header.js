@@ -1,5 +1,6 @@
 import "./Header.css";
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Indicator from "../Indicator/Indicator";
 import logo from "../../images/logo.png";
 
@@ -8,21 +9,29 @@ export default function Header({
   relevanceAndReplacmentLength = 0,
   notActualReplacementLength = 0,
 }) {
-  let errorStatus = "warning";
+  const [errorStatus, setErrorStatus] = useState("warning");
 
-  if (
+  useEffect(() => {
     relevanceAndReplacmentLength !== 0 ||
     relevanceSameModelStateLength !== 0 ||
     notActualReplacementLength !== 0
-  ) {
-    errorStatus = "danger";
-  } else {
-    errorStatus = "success";
-  }
+      ? setErrorStatus("danger")
+      : setErrorStatus("success");
+  }, [
+    relevanceAndReplacmentLength,
+    relevanceSameModelStateLength,
+    notActualReplacementLength,
+  ]);
 
   return (
     <header className="header">
-      <a href="https://www.intant.kz/" className="header__logo-link" title="Переход на сайт компании" target="_blank" rel="noreferrer">
+      <a
+        href="https://www.intant.kz/"
+        className="header__logo-link"
+        title="Переход на сайт компании"
+        target="_blank"
+        rel="noreferrer"
+      >
         <img src={logo} alt="логотип" className="header__logo"></img>
       </a>
       <nav className="header__navigation">
