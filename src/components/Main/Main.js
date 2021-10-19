@@ -37,9 +37,9 @@ export default function Main({
   return (
     <main className="main">
       <ToastContainer className="toast-container p-3" position="bottom-end">
-        {validPassword ? (
+        {validPassword && (
           <>
-            {relevanceAndReplacmentLength !== 0 ? (
+            {relevanceAndReplacmentLength !== 0 && (
               <ToastMessage
                 title="Внимание"
                 subtitle="Google sheet"
@@ -53,10 +53,8 @@ export default function Main({
                   texts.statisticsTabs.relevanceAndReplacment
                 }"`}
               />
-            ) : (
-              ""
             )}
-            {relevanceSameModelStateLength !== 0 ? (
+            {relevanceSameModelStateLength !== 0 && (
               <ToastMessage
                 title="Внимание"
                 subtitle="Google sheet"
@@ -70,10 +68,8 @@ export default function Main({
                   texts.statisticsTabs.relevanceSameModel
                 }"`}
               />
-            ) : (
-              ""
             )}
-            {notActualReplacementLength !== 0 ? (
+            {notActualReplacementLength !== 0 && (
               <ToastMessage
                 title="Внимание"
                 subtitle="Google sheet"
@@ -87,12 +83,8 @@ export default function Main({
                   texts.statisticsTabs.notActualReplacement
                 }"`}
               />
-            ) : (
-              ""
             )}
           </>
-        ) : (
-          ""
         )}
       </ToastContainer>
       <Switch>

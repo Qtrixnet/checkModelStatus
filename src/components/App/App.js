@@ -83,9 +83,9 @@ export default function App() {
     const relevanceSameModel = [];
     data.forEach((model, idx) => {
       model.id = idx;
-      return model.model === model.replacement
-        ? relevanceSameModel.push(model)
-        : "";
+      return (
+        model.model === model.replacement && relevanceSameModel.push(model)
+      );
     });
     setRelevanceSameModel(relevanceSameModel);
     setRelevanceSameModelLength(relevanceSameModel.length);
@@ -94,10 +94,11 @@ export default function App() {
   useEffect(() => {
     //* Модели, которые актуальны и заменяются на что либо
     const relevanceAndReplacment = [];
-    data.forEach((model) =>
-      model.relevance === "yes" && model.replacement
-        ? relevanceAndReplacment.push(model)
-        : ""
+    data.forEach(
+      (model) =>
+        model.relevance === "yes" &&
+        model.replacement &&
+        relevanceAndReplacment.push(model)
     );
     setRelevanceAndReplacment(relevanceAndReplacment);
     setRelevanceAndReplacmentLength(relevanceAndReplacment.length);
