@@ -2,6 +2,7 @@ export const templateWordsNoun = ['модель', 'модели', 'моделе�
 export const templateWords = ['модели', 'моделей', 'моделей'];
 export const templateWordsVerb = ['Нашлась', 'Нашлись', 'Нашлось'];
 export const templateWordsAdjective = ['похожая', 'похожие', 'похожих'];
+export const templateWordsError = ['ошибку', 'ошибки', 'ошибок'];
 export const modelsCount = 15;
 export const successStatus = 'success';
 export const dangerStatus = 'danger';

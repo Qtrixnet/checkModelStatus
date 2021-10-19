@@ -26,7 +26,7 @@ export default function Statistics({
   const [passwordError, setPasswordError] = useState(false);
 
   useState(() => {
-    localStorage.getItem('auth') === password ? setAuth(true) : setAuth(false)
+    localStorage.getItem('auth-password') === password ? setAuth(true) : setAuth(false)
   }, [])
 
   const handleSubmit = (evt) => {
@@ -37,7 +37,7 @@ export default function Statistics({
     if (inputValue === password) {
       setAuth(true)
       setPasswordError(false)
-      localStorage.setItem('auth', inputValue)
+      localStorage.setItem('auth-password', inputValue)
     } else {
       setPasswordError(true)
     }
