@@ -1,5 +1,5 @@
 import Spinner from "react-bootstrap/Spinner";
-import './Preloader.css'
+import './Preloader.scss'
 import {texts} from '../../utils/constants';
 
 export default function Preloader() {

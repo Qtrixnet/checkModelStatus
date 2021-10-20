@@ -1,4 +1,4 @@
-import './NothingError.css'
+import './NothingError.scss'
 import { texts } from '../../utils/constants'
 
 export default function NothingError() {

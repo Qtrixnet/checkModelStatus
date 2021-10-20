@@ -1,4 +1,4 @@
-import "./Main.css";
+import "./Main.scss";
 import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import About from "../About/About";

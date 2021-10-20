@@ -8,18 +8,18 @@
   justify-content: center;
   border-radius: 50px;
   transition: all 0.2s ease;
-}
 
-.indicator_danger {
-  background-color: var(--red) !important;
-}
+  &_danger {
+    background-color: var(--red) !important;
+  }
 
-.indicator_warning {
-  background-color: var(--yellow) !important;
-}
+  &_warning {
+    background-color: var(--yellow) !important;
+  }
 
-.indicator_success {
-  background-color: var(--green) !important;
+  &_success {
+    background-color: var(--green) !important;
+  }
 }
 
 .statistics__tab-link:hover .indicator_danger {

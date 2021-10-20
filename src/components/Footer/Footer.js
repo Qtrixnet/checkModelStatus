@@ -1,4 +1,4 @@
-import './Footer.css'
+import './Footer.scss'
 import { formatWord } from '../../utils/wordFormatter';
 import { templateWordsNoun } from '../../utils/constants';
 

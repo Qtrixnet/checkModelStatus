@@ -1,5 +1,5 @@
 import Badge from 'react-bootstrap/Badge';
-import './Indicator.css'
+import './Indicator.scss'
 
 export default function Indicator({ errorStatus = 'warning' }) {
 

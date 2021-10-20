@@ -1,4 +1,4 @@
-import "./Search.css";
+import "./Search.scss";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Badge from "react-bootstrap/Badge";

@@ -1,4 +1,4 @@
-import "./ToastMessage.css";
+import "./ToastMessage.scss";
 import Toast from "react-bootstrap/Toast";
 import { useState } from "react";
 import { Link } from "react-router-dom";

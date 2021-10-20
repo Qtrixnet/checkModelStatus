@@ -1,0 +1,28 @@
+.toast {
+  &__title {
+    font-weight: 500;
+    font-size: var(--text);
+  }
+
+  &__body {
+    font-size: var(--icon-text);
+    display: flex;
+    flex-direction: column;
+    gap: var(--middle-gap);
+  }
+
+  &__subtitle {
+    font-size: var(--icon-text);
+  }
+
+  &__link {
+    display: block;
+    color: var(--accent);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent);
+      opacity: 0.8;
+    }
+  }
+}

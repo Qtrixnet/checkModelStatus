@@ -1,4 +1,4 @@
-import './ErrorMessage.css'
+import './ErrorMessage.scss'
 import { texts } from '../../utils/constants'
 
 export default function ErrorMessage() {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Statistics.css";
+import "./Statistics.scss";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
