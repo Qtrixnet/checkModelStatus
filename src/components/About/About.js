@@ -1,4 +1,4 @@
-import "./About.css";
+import "./About.scss";
 import { texts } from '../../utils/constants';
 
 export default function About() {

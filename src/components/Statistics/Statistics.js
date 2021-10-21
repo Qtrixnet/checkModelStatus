@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Indicator from "../Indicator/Indicator";
 import NothingError from "../NothingError/NothingError";
+import Auth from "../Auth/Auth";
 import { texts } from "../../utils/constants";
 
 export default function Statistics({
@@ -262,7 +263,8 @@ export default function Statistics({
     </>
   ) : (
     <>
-      <Form className="auth-form" onSubmit={handleSubmit}>
+    <Auth />
+      {/* <Form className="auth-form" onSubmit={handleSubmit}>
         <Form.Group
           className="auth-form__container"
           controlId="formBasicPassword"
@@ -283,7 +285,7 @@ export default function Statistics({
         <Button variant="warning" type="submit">
           Авторизоваться
         </Button>
-      </Form>
+      </Form> */}
       {passwordError ? (
         <Form.Text className="text-danger">
           Пароль неверный, попробуйте еще раз

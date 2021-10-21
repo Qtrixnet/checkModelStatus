@@ -1,0 +1,54 @@
+.auth {
+  padding: 0 16px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--middle-gap);
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    color: var(--accent);
+    font-size: var(--title);
+    gap: var(--middle-gap);
+  }
+
+  &__password {
+    color: var(--dark);
+    font-size: var(--text);
+    padding: 12px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    outline: 0;
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus {
+      border: 2px solid var(--accent);
+      opacity: 1;
+    }
+  }
+
+  &__submit {
+    padding: 12px 24px;
+    border: 0;
+    background-color: var(--accent);
+    transition: all 0.2s ease;
+    font-size: var(--text);
+    font-weight: 500;
+    border-radius: 4px;
+
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

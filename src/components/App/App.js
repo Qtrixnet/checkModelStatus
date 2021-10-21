@@ -62,7 +62,7 @@ export default function App() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [setLoading, setData, setErrorLoading]);
 
   useEffect(() => {
     fetch(faqUrl)
@@ -89,7 +89,7 @@ export default function App() {
     });
     setRelevanceSameModel(relevanceSameModel);
     setRelevanceSameModelLength(relevanceSameModel.length);
-  }, [data]);
+  }, [data, setRelevanceSameModel, setRelevanceSameModelLength]);
 
   useEffect(() => {
     //* Модели, которые актуальны и заменяются на что либо
@@ -102,7 +102,7 @@ export default function App() {
     );
     setRelevanceAndReplacment(relevanceAndReplacment);
     setRelevanceAndReplacmentLength(relevanceAndReplacment.length);
-  }, [data]);
+  }, [data, setRelevanceAndReplacment, setRelevanceAndReplacmentLength]);
 
   useEffect(() => {
     //* Замены, которых нет в списке актуальных
@@ -123,7 +123,7 @@ export default function App() {
     });
     setNotActualReplacement(badReplacement);
     setNotActualReplacementLength(badReplacement.length);
-  }, [data]);
+  }, [data, setNotActualReplacement, setNotActualReplacementLength]);
 
   return (
     <div className="App">
