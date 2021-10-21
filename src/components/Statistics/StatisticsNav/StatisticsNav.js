@@ -3,35 +3,49 @@ import "./StatisticsNav.scss";
 import { useState } from "react";
 import { Route, NavLink, useRouteMatch } from "react-router-dom";
 import { texts } from "../../../utils/constants";
-import Indicator from '../../Indicator/Indicator'
+import Indicator from '../../Indicator/Indicator';
+import StatisticsTable from "../StatisticsTable/StatisticsTable";
 
-export default function StatisticsNav() {
+export default function StatisticsNav({
+  errorStatus,
+  relevanceAndReplacment,
+  relevanceSameModel,
+  notValidReplacement,
+  relevanceAndReplacmentLength,
+  relevanceSameModelLength,
+  notValidReplacementLength,
+}) {
   const { path, url } = useRouteMatch();
   return (
     <>
-      <nav className="statistics__nav">
+      <nav className="statistics-nav">
         <NavLink
-          className="statistics__nav-link"
+          activeClassName="statistics-nav__link_active"
+          className="statistics-nav__link"
           to={`${url}/relevanceAndReplacment`}
         >
           {texts.statisticsTabs.relevanceAndReplacment}
-          <Indicator />
+          <Indicator errorStatus={errorStatus} />
         </NavLink>
         <NavLink
-          className="statistics__nav-link"
+          activeClassName="statistics-nav__link_active"
+          className="statistics-nav__link"
           to={`${url}/relevanceSameModel`}
         >
           {texts.statisticsTabs.relevanceSameModel}
-          <Indicator />
+
+          <Indicator errorStatus={errorStatus} />
         </NavLink>
         <NavLink
-          className="statistics__nav-link"
+          activeClassName="statistics-nav__link_active"
+          className="statistics-nav__link"
           to={`${url}/notValidReplacement`}
         >
           {texts.statisticsTabs.notValidReplacement}
-          <Indicator />
+
+          <Indicator errorStatus={errorStatus} />
         </NavLink>
-        <a className="statistics__link" href="#">
+        <a className="statistics-nav__link_google" href="#">
           Google таблица
         </a>
       </nav>

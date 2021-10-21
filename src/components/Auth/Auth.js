@@ -25,7 +25,7 @@ export default function Auth() {
     <section className="auth">
       <form className="auth-form">
         <label className="auth-form__label">
-          Введите пароль
+          Авторизуйтесь
           <input
             className="auth-form__password"
             type="password"
@@ -35,10 +35,10 @@ export default function Auth() {
           />
         </label>
         <span className="auth-form__text">
-          Пароль будет сохранен для всех следующих сессий
+          * Пароль будет сохранен для всех следующих сессий
         </span>
         <span className="auth-form__text">
-          Пароль можно найти в Google таблице, в разделе FAQ
+          * Пароль можно узнать имея доступ к Google таблице
         </span>
         <button
           className="auth-form__submit"

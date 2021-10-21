@@ -112,3 +112,10 @@
 //     text-align: center;
 //   }
 // }
+
+.statistics {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--big-gap);
+  width: 100%;
+}

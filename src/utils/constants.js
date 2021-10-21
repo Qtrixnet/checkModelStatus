@@ -18,7 +18,7 @@ export const texts = {
   },
   preloader : 'Загружаю список моделей...',
   statisticsTabs: {
-    relevanceAndReplacment: 'Актуальные и с заменой',
+    relevanceAndReplacment: 'Актуальные с заменой',
     relevanceSameModel: 'Заменены сами на себя',
     notValidReplacement: 'Невалидные замены',
     googleSheet: 'Перейти в Google таблицу'

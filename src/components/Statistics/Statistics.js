@@ -13,10 +13,10 @@ import NothingError from "../NothingError/NothingError";
 import Auth from "../Auth/Auth";
 import StatisticsNav from "./StatisticsNav/StatisticsNav";
 import { texts } from "../../utils/constants";
+import StatisticsTable from './StatisticsTable/StatisticsTable';
 
 export default function Statistics({
   relevanceAndReplacment = [],
-  //!
   relevanceSameModel = [],
   notValidReplacement = [],
   relevanceAndReplacmentLength = 0,
@@ -49,18 +49,20 @@ export default function Statistics({
     }
   };
 
-  return !auth ? (
+  return auth ? (
     <>
       <section className="statistics">
-        <StatisticsNav />
+        <StatisticsNav
+          errorStatus={errorStatus}
+        />
         <Route path={`${path}/relevanceAndReplacment`}>
-          {texts.statisticsTitles.relevanceAndReplacment}
+          <StatisticsTable title={texts.statisticsTitles.relevanceAndReplacment} data={relevanceAndReplacment} />
         </Route>
         <Route path={`${path}/relevanceSameModel`}>
-          {texts.statisticsTitles.relevanceSameModel}
+          <StatisticsTable title={texts.statisticsTitles.relevanceSameModel} data={relevanceSameModel} />
         </Route>
         <Route path={`${path}/notValidReplacement`}>
-          {texts.statisticsTitles.notValidReplacement}
+          <StatisticsTable title={texts.statisticsTitles.notValidReplacement} data={notValidReplacement} />
         </Route>
       </section>
 

@@ -4,8 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import About from "../About/About";
 import Search from "../Search/Search";
 import Statistics from "../Statistics/Statistics";
-import ToastMessage from "../ToastMessage/ToastMessage";
-import ToastContainer from "react-bootstrap/ToastContainer";
+// import ToastMessage from "../ToastMessage/ToastMessage";
+// import ToastContainer from "react-bootstrap/ToastContainer";
 import { texts, templateWordsError } from "../../utils/constants";
 import { formatWord } from "../../utils/wordFormatter";
 
@@ -50,7 +50,7 @@ export default function Main({
 
   return (
     <main className="main">
-      <ToastContainer className="toast-container p-3" position="bottom-end">
+      {/* <ToastContainer className="toast-container p-3" position="bottom-end">
         {validPassword && (
           <>
             {relevanceAndReplacmentLength !== 0 && (
@@ -96,7 +96,7 @@ export default function Main({
             )}
           </>
         )}
-      </ToastContainer>
+      </ToastContainer> */}
       <Switch>
         <Route exact path="/">
           <About modelsData={modelsData} />

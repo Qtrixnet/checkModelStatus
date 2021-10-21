@@ -1,5 +1,6 @@
 .auth {
   padding: 0 16px;
+  max-width: 500px;
 }
 
 .auth-form {
@@ -34,7 +35,7 @@
   }
 
   &__submit {
-    padding: 12px 24px;
+    padding: 12px;
     border: 0;
     background-color: var(--accent);
     transition: all 0.2s ease;

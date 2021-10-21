@@ -1,4 +1,4 @@
-import Spinner from "react-bootstrap/Spinner";
+// import Spinner from "react-bootstrap/Spinner";
 import './Preloader.scss'
 import {texts} from '../../utils/constants';
 
@@ -13,7 +13,7 @@ export default function Preloader() {
         height="200"
       />
       <h1 className="preloader__title">{texts.preloader}</h1>
-      <Spinner animation="border" variant="light" className="preloader__spinner" />
+      {/* <Spinner animation="border" variant="light" className="preloader__spinner" /> */}
     </div>
   )
 }
