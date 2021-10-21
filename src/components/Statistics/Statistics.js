@@ -1,5 +1,6 @@
-import { useState } from "react";
 import "./Statistics.scss";
+import { useState } from "react";
+import { Route, NavLink, useRouteMatch } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -10,21 +11,23 @@ import Nav from "react-bootstrap/Nav";
 import Indicator from "../Indicator/Indicator";
 import NothingError from "../NothingError/NothingError";
 import Auth from "../Auth/Auth";
+import StatisticsNav from "./StatisticsNav/StatisticsNav";
 import { texts } from "../../utils/constants";
 
 export default function Statistics({
   relevanceAndReplacment = [],
   //!
-  relevanceSameModelState = [],
-  notActualReplacement = [],
+  relevanceSameModel = [],
+  notValidReplacement = [],
   relevanceAndReplacmentLength = 0,
-  relevanceSameModelStateLength = 0,
-  notActualReplacementLength = 0,
+  relevanceSameModelLength = 0,
+  notValidReplacementLength = 0,
   errorStatus = "warning",
   password = "",
 }) {
   const [auth, setAuth] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const { path, url } = useRouteMatch();
 
   useState(() => {
     localStorage.getItem("auth-password") === password
@@ -46,9 +49,22 @@ export default function Statistics({
     }
   };
 
-  return auth ? (
+  return !auth ? (
     <>
-      <div className="statistics">
+      <section className="statistics">
+        <StatisticsNav />
+        <Route path={`${path}/relevanceAndReplacment`}>
+          {texts.statisticsTitles.relevanceAndReplacment}
+        </Route>
+        <Route path={`${path}/relevanceSameModel`}>
+          {texts.statisticsTitles.relevanceSameModel}
+        </Route>
+        <Route path={`${path}/notValidReplacement`}>
+          {texts.statisticsTitles.notValidReplacement}
+        </Route>
+      </section>
+
+      {/* <div className="statistics">
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
           <Row className="statistics-container">
             <Col className="mb-3" sm={3}>
@@ -64,15 +80,15 @@ export default function Statistics({
                 <Nav.Item>
                   <Nav.Link className="statistics__tab-link" eventKey="second">
                     {texts.statisticsTabs.relevanceSameModel}
-                    {relevanceSameModelStateLength !== 0 && (
+                    {relevanceSameModelLength !== 0 && (
                       <Indicator errorStatus={errorStatus} />
                     )}
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link className="statistics__tab-link" eventKey="third">
-                    {texts.statisticsTabs.notActualReplacement}
-                    {notActualReplacementLength !== 0 && (
+                    {texts.statisticsTabs.notValidReplacement}
+                    {notValidReplacementLength !== 0 && (
                       <Indicator errorStatus={errorStatus} />
                     )}
                   </Nav.Link>
@@ -148,13 +164,13 @@ export default function Statistics({
 
                 <Tab.Pane eventKey="second">
                   <h2 className="statistics__title">
-                    {relevanceSameModelStateLength !== 0 ? (
+                    {relevanceSameModelLength !== 0 ? (
                       texts.statisticsTitles.relevanceSameModel
                     ) : (
                       <NothingError />
                     )}
                   </h2>
-                  {relevanceSameModelStateLength !== 0 && (
+                  {relevanceSameModelLength !== 0 && (
                     <Table
                       className="statistics-table-container"
                       responsive
@@ -178,7 +194,7 @@ export default function Statistics({
                         </tr>
                       </thead>
                       <tbody>
-                        {relevanceSameModelState.map((model, idx) => {
+                        {relevanceSameModel.map((model, idx) => {
                           return (
                             <tr key={model.id} className="table__row">
                               <td className="statistics-table__cell">
@@ -203,13 +219,13 @@ export default function Statistics({
 
                 <Tab.Pane eventKey="third">
                   <h2 className="statistics__title">
-                    {notActualReplacementLength !== 0 ? (
-                      texts.statisticsTitles.notActualReplacement
+                    {notValidReplacementLength !== 0 ? (
+                      texts.statisticsTitles.notValidReplacement
                     ) : (
                       <NothingError />
                     )}
                   </h2>
-                  {notActualReplacementLength !== 0 && (
+                  {notValidReplacementLength !== 0 && (
                     <Table
                       className="statistics-table"
                       striped
@@ -233,7 +249,7 @@ export default function Statistics({
                         </tr>
                       </thead>
                       <tbody>
-                        {notActualReplacement.map((model, idx) => {
+                        {notValidReplacement.map((model, idx) => {
                           return (
                             <tr key={model.id} className="table__row">
                               <td className="statistics-table__cell">
@@ -259,33 +275,11 @@ export default function Statistics({
             </Col>
           </Row>
         </Tab.Container>
-      </div>
+      </div> */}
     </>
   ) : (
     <>
-    <Auth />
-      {/* <Form className="auth-form" onSubmit={handleSubmit}>
-        <Form.Group
-          className="auth-form__container"
-          controlId="formBasicPassword"
-        >
-          <Form.Label className="text-warning">Введите пароль</Form.Label>
-          <Form.Control
-            className="auth-form__password"
-            type="password"
-            placeholder="Пароль"
-          />
-          <Form.Text className="text-muted">
-            Пароль будет сохранен для всех следующих сессий
-          </Form.Text>
-          <Form.Text className="text-muted">
-            Пароль можно найти в Google таблице, в разделе FAQ
-          </Form.Text>
-        </Form.Group>
-        <Button variant="warning" type="submit">
-          Авторизоваться
-        </Button>
-      </Form> */}
+      <Auth />
       {passwordError ? (
         <Form.Text className="text-danger">
           Пароль неверный, попробуйте еще раз

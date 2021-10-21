@@ -12,11 +12,11 @@ import { formatWord } from "../../utils/wordFormatter";
 export default function Main({
   modelsData,
   relevanceAndReplacment = [],
-  relevanceSameModelState = [],
-  notActualReplacement = [],
+  relevanceSameModel = [],
+  notValidReplacement = [],
   relevanceAndReplacmentLength = 0,
-  relevanceSameModelStateLength = 0,
-  notActualReplacementLength = 0,
+  relevanceSameModelLength = 0,
+  notValidReplacementLength = 0,
   password = "",
 }) {
   const [validPassword, setValidPassword] = useState(false);
@@ -31,15 +31,15 @@ export default function Main({
 
   useEffect(() => {
     relevanceAndReplacmentLength !== 0 ||
-    relevanceSameModelStateLength !== 0 ||
-    notActualReplacementLength !== 0
+    relevanceSameModelLength !== 0 ||
+    notValidReplacementLength !== 0
       ? setErrorStatus(true)
       : setErrorStatus(false);
   }, [
     setErrorStatus,
     relevanceAndReplacmentLength,
-    relevanceSameModelStateLength,
-    notActualReplacementLength,
+    relevanceSameModelLength,
+    notValidReplacementLength,
   ]);
 
   useEffect(() => {
@@ -68,30 +68,30 @@ export default function Main({
                 }"`}
               />
             )}
-            {relevanceSameModelStateLength !== 0 && (
+            {relevanceSameModelLength !== 0 && (
               <ToastMessage
                 title="Внимание"
                 subtitle="Google sheet"
                 errorStatusColor={
-                  relevanceSameModelStateLength !== 0 ? "danger" : "success"
+                  relevanceSameModelLength !== 0 ? "danger" : "success"
                 }
-                text={`Нужно исправить ${relevanceSameModelStateLength} ${formatWord(
-                  relevanceSameModelStateLength,
+                text={`Нужно исправить ${relevanceSameModelLength} ${formatWord(
+                  relevanceSameModelLength,
                   templateWordsError
                 )} в категории "${texts.statisticsTabs.relevanceSameModel}"`}
               />
             )}
-            {notActualReplacementLength !== 0 && (
+            {notValidReplacementLength !== 0 && (
               <ToastMessage
                 title="Внимание"
                 subtitle="Google sheet"
                 errorStatusColor={
-                  notActualReplacementLength !== 0 ? "danger" : "success"
+                  notValidReplacementLength !== 0 ? "danger" : "success"
                 }
-                text={`Нужно исправить ${notActualReplacementLength} ${formatWord(
-                  notActualReplacementLength,
+                text={`Нужно исправить ${notValidReplacementLength} ${formatWord(
+                  notValidReplacementLength,
                   templateWordsError
-                )} в категории "${texts.statisticsTabs.notActualReplacement}"`}
+                )} в категории "${texts.statisticsTabs.notValidReplacement}"`}
               />
             )}
           </>
@@ -105,11 +105,11 @@ export default function Main({
         <Route path="/statistics">
           <Statistics
             relevanceAndReplacment={relevanceAndReplacment}
-            relevanceSameModelState={relevanceSameModelState}
-            notActualReplacement={notActualReplacement}
-            relevanceSameModelStateLength={relevanceSameModelStateLength}
+            relevanceSameModel={relevanceSameModel}
+            notValidReplacement={notValidReplacement}
+            relevanceSameModelLength={relevanceSameModelLength}
             relevanceAndReplacmentLength={relevanceAndReplacmentLength}
-            notActualReplacementLength={notActualReplacementLength}
+            notValidReplacementLength={notValidReplacementLength}
             errorStatus={errorStatusColor}
             password={password}
           />

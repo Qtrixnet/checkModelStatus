@@ -13,15 +13,15 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [errorLoading, setErrorLoading] = useState(false);
 
-  const [relevanceSameModelState, setRelevanceSameModel] = useState([]);
+  const [relevanceSameModel, setRelevanceSameModel] = useState([]);
   const [relevanceAndReplacment, setRelevanceAndReplacment] = useState([]);
-  const [notActualReplacement, setNotActualReplacement] = useState([]);
+  const [notValidReplacement, setNotValidReplacement] = useState([]);
 
-  const [relevanceSameModelStateLength, setRelevanceSameModelLength] =
+  const [relevanceSameModelLength, setRelevanceSameModelLength] =
     useState(0);
   const [relevanceAndReplacmentLength, setRelevanceAndReplacmentLength] =
     useState(0);
-  const [notActualReplacementLength, setNotActualReplacementLength] =
+  const [notValidReplacementLength, setNotValidReplacementLength] =
     useState(0);
 
   useEffect(() => {
@@ -121,9 +121,9 @@ export default function App() {
         }
       }
     });
-    setNotActualReplacement(badReplacement);
-    setNotActualReplacementLength(badReplacement.length);
-  }, [data, setNotActualReplacement, setNotActualReplacementLength]);
+    setNotValidReplacement(badReplacement);
+    setNotValidReplacementLength(badReplacement.length);
+  }, [data, setNotValidReplacement, setNotValidReplacementLength]);
 
   return (
     <div className="App">
@@ -134,17 +134,17 @@ export default function App() {
       ) : (
         <>
           <Header
-            relevanceSameModelStateLength={relevanceSameModelStateLength}
+            relevanceSameModelLength={relevanceSameModelLength}
             relevanceAndReplacmentLength={relevanceAndReplacmentLength}
-            notActualReplacementLength={notActualReplacementLength}
+            notValidReplacementLength={notValidReplacementLength}
           />
           <Main
             relevanceAndReplacment={relevanceAndReplacment}
-            relevanceSameModelState={relevanceSameModelState}
-            notActualReplacement={notActualReplacement}
-            relevanceSameModelStateLength={relevanceSameModelStateLength}
+            relevanceSameModel={relevanceSameModel}
+            notValidReplacement={notValidReplacement}
+            relevanceSameModelLength={relevanceSameModelLength}
             relevanceAndReplacmentLength={relevanceAndReplacmentLength}
-            notActualReplacementLength={notActualReplacementLength}
+            notValidReplacementLength={notValidReplacementLength}
             modelsData={data}
             password={password}
           />

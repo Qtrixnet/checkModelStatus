@@ -5,22 +5,22 @@ import Indicator from "../Indicator/Indicator";
 import logo from "../../images/logo.png";
 
 export default function Header({
-  relevanceSameModelStateLength = 0,
+  relevanceSameModelLength = 0,
   relevanceAndReplacmentLength = 0,
-  notActualReplacementLength = 0,
+  notValidReplacementLength = 0,
 }) {
   const [errorStatus, setErrorStatus] = useState("warning");
 
   useEffect(() => {
     relevanceAndReplacmentLength !== 0 ||
-    relevanceSameModelStateLength !== 0 ||
-    notActualReplacementLength !== 0
+    relevanceSameModelLength !== 0 ||
+    notValidReplacementLength !== 0
       ? setErrorStatus("danger")
       : setErrorStatus("success");
   }, [
     relevanceAndReplacmentLength,
-    relevanceSameModelStateLength,
-    notActualReplacementLength,
+    relevanceSameModelLength,
+    notValidReplacementLength,
   ]);
 
   return (

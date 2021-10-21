@@ -20,13 +20,13 @@ export const texts = {
   statisticsTabs: {
     relevanceAndReplacment: 'Актуальные и с заменой',
     relevanceSameModel: 'Заменены сами на себя',
-    notActualReplacement: 'Невалидные замены',
+    notValidReplacement: 'Невалидные замены',
     googleSheet: 'Перейти в Google таблицу'
   },
   statisticsTitles: {
     relevanceAndReplacment: 'Модели оборудования, которое доступно к заказу, но при этом заменено на другое',
     relevanceSameModel: 'Снятые с производства модели оборудования, которые заменены сами на себя',
-    notActualReplacement: 'Модели оборудования, замены которых отсутствуют в основном списке',
+    notValidReplacement: 'Модели оборудования, замены которых отсутствуют в основном списке',
   },
 }
 
