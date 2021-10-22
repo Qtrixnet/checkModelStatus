@@ -28,6 +28,10 @@ export const texts = {
     relevanceSameModel: 'Снятые с производства модели оборудования, которые заменены сами на себя',
     notValidReplacement: 'Модели оборудования, замены которых отсутствуют в основном списке',
   },
+  pageNotFound: {
+    title: '404 - страница не найдена',
+    text: 'Ой, здесь ничего нет',
+  }
 }
 
 const spreadsheetId = "148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw";

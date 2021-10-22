@@ -8,7 +8,7 @@ export default function Preloader() {
       <img
         src={`https://avatars.dicebear.com/api/bottts/${Date.now()}.svg?mood[]='sad'}`}
         className="toast__image rounded me-2"
-        alt=""
+        alt="изображение робота"
         width="200"
         height="200"
       />
