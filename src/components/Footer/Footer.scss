@@ -9,6 +9,10 @@
   flex-wrap: wrap;
   gap: var(--middle-gap);
   text-align: center;
+
+  &__accent {
+    color: var(--accent);
+  }
 }
 
 @media screen and (max-width: 425px) {

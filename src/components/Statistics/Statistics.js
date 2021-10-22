@@ -59,13 +59,13 @@ export default function Statistics({
           <Redirect to={`${path}/relevanceAndReplacment`} />
         </Route>
         <Route path={`${path}/relevanceAndReplacment`}>
-          <StatisticsTable title={texts.statisticsTitles.relevanceAndReplacment} data={relevanceAndReplacment} />
+          {relevanceAndReplacmentLength > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceAndReplacment} data={relevanceAndReplacment} /> : <NothingError />}
         </Route>
         <Route path={`${path}/relevanceSameModel`}>
-          <StatisticsTable title={texts.statisticsTitles.relevanceSameModel} data={relevanceSameModel} />
+          {relevanceSameModelLength > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceSameModel} data={relevanceSameModel} /> : <NothingError />}
         </Route>
         <Route path={`${path}/notValidReplacement`}>
-          <StatisticsTable title={texts.statisticsTitles.notValidReplacement} data={notValidReplacement} />
+          {notValidReplacementLength > 0 ? <StatisticsTable title={texts.statisticsTitles.notValidReplacement} data={notValidReplacement} /> : <NothingError />}
         </Route>
       </section>
 

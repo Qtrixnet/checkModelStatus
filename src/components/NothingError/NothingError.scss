@@ -27,6 +27,11 @@
   align-items: center;
   justify-content: center;
   font-size: var(--title);
+  flex-grow: 1;
+
+  &__text {
+    margin: 0;
+  }
 
   &__image {
     animation: shake .5s;

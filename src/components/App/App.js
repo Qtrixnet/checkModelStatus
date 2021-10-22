@@ -47,10 +47,10 @@ export default function App() {
           });
         };
 
-        const newData = createModelsArr(initialModels, labels);
+        // const newData = createModelsArr(initialModels, labels);
 
-        // const initialData = createModelsArr(initialModels, labels);
-        // const newData = initialData.slice(0, 40)
+        const initialData = createModelsArr(initialModels, labels);
+        const newData = initialData.slice(0, 400)
         newData.shift();
 
         setData(newData);
