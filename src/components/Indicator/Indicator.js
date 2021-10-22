@@ -1,10 +1,10 @@
-// import Badge from 'react-bootstrap/Badge';
 import './Indicator.scss'
 
 export default function Indicator({ errorStatus = 'warning' }) {
 
+  console.log(errorStatus)
+
   return (
-    <p>1</p>
-    // <Badge className={`indicator indicator_${errorStatus}`}>{errorStatus === 'success' ? 'OK' : '!'}</Badge>
+    <span className={`indicator indicator_${errorStatus} ${errorStatus === 'danger' && 'indicator_pulse'}`}>{errorStatus === 'success' ? 'OK' : '!'}</span>
   )
 }

@@ -1,6 +1,6 @@
 import "./Statistics.scss";
 import { useState } from "react";
-import { Route, NavLink, useRouteMatch } from "react-router-dom";
+import { Route, NavLink, useRouteMatch, Redirect } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -49,12 +49,15 @@ export default function Statistics({
     }
   };
 
-  return !auth ? (
+  return auth ? (
     <>
       <section className="statistics">
         <StatisticsNav
           errorStatus={errorStatus}
         />
+        <Route path="/statistics">
+          <Redirect to={`${path}/relevanceAndReplacment`} />
+        </Route>
         <Route path={`${path}/relevanceAndReplacment`}>
           <StatisticsTable title={texts.statisticsTitles.relevanceAndReplacment} data={relevanceAndReplacment} />
         </Route>

@@ -16,6 +16,7 @@
     align-items: center;
     gap: var(--middle-gap);
     border-radius: 4px;
+    max-height: 42px;
 
     &:hover {
       color: var(--accent);
@@ -39,6 +40,12 @@
         color: var(--accent)
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .statistics-nav {
+    width: 100%;
   }
 }
 

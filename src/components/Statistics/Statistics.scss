@@ -119,3 +119,9 @@
   gap: var(--big-gap);
   width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+  .statistics {
+    flex-direction: column;
+  }
+}

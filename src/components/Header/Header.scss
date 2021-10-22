@@ -4,16 +4,13 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--middle-gap);
+  gap: var(--big-gap);
   padding: 36px;
   max-width: 1440px;
   margin: 0 auto;
-  font-size: var(--text);
-  line-height: 1.2;
-  border-radius: 0 0 8px 8px;
 
   &__logo {
-    width: 100px;
+    width: 120px;
   }
 
   &__logo-link {
@@ -21,7 +18,11 @@
     transition: all 0.2s ease;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.98)
     }
   }
 
@@ -35,13 +36,14 @@
   &__link {
     padding: 10px 10px;
     text-decoration: none;
-    color: inherit;
+    color: var(--light);
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--small-gap);
+    gap: var(--middle-gap);
     border-radius: 4px;
+    max-height: 42px;
 
     &:hover {
       color: var(--accent);
