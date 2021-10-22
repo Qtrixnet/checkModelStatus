@@ -49,7 +49,7 @@ export default function Statistics({
     }
   };
 
-  return auth ? (
+  return !auth ? (
     <>
       <section className="statistics">
         <StatisticsNav
