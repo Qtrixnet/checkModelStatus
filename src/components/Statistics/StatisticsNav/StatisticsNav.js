@@ -42,6 +42,7 @@ export default function StatisticsNav() {
           {texts.statisticsTabs.notValidReplacement}
           <Indicator errorModels={notValidReplacement}/>
         </NavLink>
+        <hr className="statistics-nav__line"/>
         <a className="statistics-nav__link_google" href="#">
           Google таблица
         </a>

@@ -8,8 +8,8 @@ import Indicator from '../../Indicator/Indicator'
 export default function StatisticsTable({ data, title }) {
   return (
     <div className="table-container">
+      <h2 className="table__title">{title}</h2>
       <table className="table">
-        <caption className="table__title">{title}</caption>
         <thead className="table__header">
           <tr className="table__header-row">
             <th className="table__header-cell">#</th>
