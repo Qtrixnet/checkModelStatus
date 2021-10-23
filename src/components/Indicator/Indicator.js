@@ -1,7 +1,14 @@
-import './Indicator.scss'
+import './Indicator.scss';
 
-export default function Indicator({ errorStatus = 'warning' }) {
+export default function Indicator({ errorModels = [] }) {
+
   return (
-    <span className={`indicator indicator_${errorStatus} ${errorStatus === 'danger' && 'indicator_pulse'}`}>{errorStatus === 'success' ? 'OK' : '!'}</span>
+    <span className={`
+    indicator
+    indicator_${errorModels.length > 0 ? 'danger' : 'success'}
+    indicator_${errorModels.length > 0 && 'pulse'}
+    `}>
+      {errorModels.length > 0 ? '!' : 'OK'}
+    </span>
   )
 }

@@ -1,5 +1,5 @@
 import "./Search.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Badge from "react-bootstrap/Badge";
 import {
@@ -13,8 +13,9 @@ import {
   modelsCount,
 } from "../../utils/constants";
 import Button from "react-bootstrap/Button";
+import CurrentModelsContext from '../../contexts/currentModelsContext';
 
-export default function Search({ modelsData }) {
+export default function Search() {
   //! состояние субститутов модели
 
   const [hasSubstitute, setHasSubstitute] = useState(false);
@@ -40,6 +41,8 @@ export default function Search({ modelsData }) {
   const [value, setValue] = useState("");
 
   const [exactMatch, setExactMatch] = useState(false);
+
+  const currentModels = useContext(CurrentModelsContext);
 
   const clearStatus = () => {
     setSearchModelStatusText("");
@@ -117,14 +120,14 @@ export default function Search({ modelsData }) {
     clearStatus();
     const targetValue = evt.target.value;
     setValue(targetValue);
-    searchModel(targetValue, modelsData);
+    searchModel(targetValue, currentModels);
   };
 
   const handleBadgeClick = (evt) => {
     clearStatus();
     setValue(evt.target.textContent);
     document.querySelector(".search__input").value = evt.target.textContent;
-    searchModel(evt.target.textContent, modelsData);
+    searchModel(evt.target.textContent, currentModels);
     setValue(evt.target.textContent);
   };
 

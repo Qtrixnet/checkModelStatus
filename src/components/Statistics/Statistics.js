@@ -1,33 +1,25 @@
 import "./Statistics.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Route, NavLink, useRouteMatch, Redirect } from "react-router-dom";
-import Table from "react-bootstrap/Table";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Tab from "react-bootstrap/Tab";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Nav from "react-bootstrap/Nav";
 import Indicator from "../Indicator/Indicator";
 import NothingError from "../NothingError/NothingError";
 import Auth from "../Auth/Auth";
 import StatisticsNav from "./StatisticsNav/StatisticsNav";
 import { texts } from "../../utils/constants";
 import StatisticsTable from './StatisticsTable/StatisticsTable';
+import RelevanceSameModelContext from '../../contexts/relevanceSameModelContext';
+import RelevanceAndReplacmentContext from '../../contexts/relevanceAndReplacmentContext';
+import NotValidReplacementContext from '../../contexts/notValidReplacementContext';
 
 export default function Statistics({
-  relevanceAndReplacment = [],
-  relevanceSameModel = [],
-  notValidReplacement = [],
-  relevanceAndReplacmentLength = 0,
-  relevanceSameModelLength = 0,
-  notValidReplacementLength = 0,
-  errorStatus = "warning",
   password = "",
 }) {
   const [auth, setAuth] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const { path, url } = useRouteMatch();
+  const relevanceAndReplacment = useContext(RelevanceAndReplacmentContext);
+  const relevanceSameModel = useContext(RelevanceSameModelContext);
+  const notValidReplacement = useContext(NotValidReplacementContext);
 
   useState(() => {
     localStorage.getItem("auth-password") === password
@@ -52,20 +44,19 @@ export default function Statistics({
   return auth ? (
     <>
       <section className="statistics">
-        <StatisticsNav
-          errorStatus={errorStatus}
-        />
+        <StatisticsNav />
+        
         <Route path="/statistics">
           <Redirect to={`${path}/relevanceAndReplacment`} />
         </Route>
         <Route path={`${path}/relevanceAndReplacment`}>
-          {relevanceAndReplacmentLength > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceAndReplacment} data={relevanceAndReplacment} /> : <NothingError />}
+          {relevanceAndReplacment.length > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceAndReplacment} data={relevanceAndReplacment} /> : <NothingError />}
         </Route>
         <Route path={`${path}/relevanceSameModel`}>
-          {relevanceSameModelLength > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceSameModel} data={relevanceSameModel} /> : <NothingError />}
+          {relevanceSameModel.length > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceSameModel} data={relevanceSameModel} /> : <NothingError />}
         </Route>
         <Route path={`${path}/notValidReplacement`}>
-          {notValidReplacementLength > 0 ? <StatisticsTable title={texts.statisticsTitles.notValidReplacement} data={notValidReplacement} /> : <NothingError />}
+          {notValidReplacement.length > 0 ? <StatisticsTable title={texts.statisticsTitles.notValidReplacement} data={notValidReplacement} /> : <NothingError />}
         </Route>
       </section>
 
@@ -286,9 +277,10 @@ export default function Statistics({
     <>
       <Auth />
       {passwordError ? (
-        <Form.Text className="text-danger">
-          Пароль неверный, попробуйте еще раз
-        </Form.Text>
+        <p>Пароль неверный</p>
+        // <Form.Text className="text-danger">
+        //   Пароль неверный, попробуйте еще раз
+        // </Form.Text>
       ) : (
         ""
       )}

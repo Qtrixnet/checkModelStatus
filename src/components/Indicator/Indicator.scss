@@ -28,7 +28,7 @@
   }
 
   &_pulse {
-    animation: pulse 2s ease-in-out infinite;
+    animation: pulse 5s ease-in-out infinite;
   }
 }
 
@@ -38,7 +38,8 @@
   }
 
   50% {
-    box-shadow: 0 0 15px var(--red);
+    box-shadow: 0 0 15px 0px var(--red);
+    transform: scale(1.2);
   }
 
   100% {

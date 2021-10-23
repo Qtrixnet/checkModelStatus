@@ -1,0 +1,22 @@
+.scroll-to-top {
+  position: fixed;
+  right: 36px;
+  bottom: 36px;
+  color: var(--dark);
+  background-color: var(--accent);
+  padding: 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  z-index: 9999;
+  border: 0;
+
+  &:hover {
+    background-color: var(--light);
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

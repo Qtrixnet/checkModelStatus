@@ -1,26 +1,24 @@
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Indicator from "../Indicator/Indicator";
 import logo from "../../images/logo.png";
+import RelevanceSameModelContext from '../../contexts/relevanceSameModelContext';
+import RelevanceAndReplacmentContext from '../../contexts/relevanceAndReplacmentContext';
+import NotValidReplacementContext from '../../contexts/notValidReplacementContext';
 
-export default function Header({
-  relevanceSameModelLength = 0,
-  relevanceAndReplacmentLength = 0,
-  notValidReplacementLength = 0,
-}) {
-  const [errorStatus, setErrorStatus] = useState("warning");
+export default function Header() {
+  const relevanceAndReplacment = useContext(RelevanceAndReplacmentContext);
+  const relevanceSameModel = useContext(RelevanceSameModelContext);
+  const notValidReplacement = useContext(NotValidReplacementContext);
+  const [errorModelsArr, setErrorModelsArr] = useState([])
 
   useEffect(() => {
-    relevanceAndReplacmentLength !== 0 ||
-    relevanceSameModelLength !== 0 ||
-    notValidReplacementLength !== 0
-      ? setErrorStatus("danger")
-      : setErrorStatus("success");
+    setErrorModelsArr([...relevanceAndReplacment, ...relevanceSameModel, ...notValidReplacement])
   }, [
-    relevanceAndReplacmentLength,
-    relevanceSameModelLength,
-    notValidReplacementLength,
+    relevanceAndReplacment,
+    relevanceSameModel,
+    notValidReplacement,
   ]);
 
   return (
@@ -49,7 +47,7 @@ export default function Header({
           className="header__link"
         >
           Статистика
-          <Indicator errorStatus={errorStatus} />
+          <Indicator errorModels={errorModelsArr} />
         </NavLink>
       </nav>
     </header>

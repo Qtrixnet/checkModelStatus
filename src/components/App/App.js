@@ -1,17 +1,23 @@
 import "./App.scss";
+import { useEffect, useState } from "react";
+import { baseUrl, faqUrl } from "../../utils/constants";
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import Preloader from "../Preloader/Preloader";
-import { useEffect, useState } from "react";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { baseUrl, faqUrl } from "../../utils/constants";
+import CurrentModelsContext from '../../contexts/currentModelsContext';
+import RelevanceSameModelContext from '../../contexts/relevanceSameModelContext';
+import RelevanceAndReplacmentContext from '../../contexts/relevanceAndReplacmentContext';
+import NotValidReplacementContext from '../../contexts/notValidReplacementContext';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [password, setPassword] = useState("");
   const [errorLoading, setErrorLoading] = useState(false);
+  // const [currentModels, setCurrentmodels] = useState([]);
 
   const [relevanceSameModel, setRelevanceSameModel] = useState([]);
   const [relevanceAndReplacment, setRelevanceAndReplacment] = useState([]);
@@ -47,10 +53,10 @@ export default function App() {
           });
         };
 
-        // const newData = createModelsArr(initialModels, labels);
+        const newData = createModelsArr(initialModels, labels);
 
-        const initialData = createModelsArr(initialModels, labels);
-        const newData = initialData.slice(0, 400)
+        // const initialData = createModelsArr(initialModels, labels);
+        // const newData = initialData.slice(0, 400)
         newData.shift();
 
         setData(newData);
@@ -133,22 +139,18 @@ export default function App() {
         <ErrorMessage />
       ) : (
         <>
-          <Header
-            relevanceSameModelLength={relevanceSameModelLength}
-            relevanceAndReplacmentLength={relevanceAndReplacmentLength}
-            notValidReplacementLength={notValidReplacementLength}
-          />
-          <Main
-            relevanceAndReplacment={relevanceAndReplacment}
-            relevanceSameModel={relevanceSameModel}
-            notValidReplacement={notValidReplacement}
-            relevanceSameModelLength={relevanceSameModelLength}
-            relevanceAndReplacmentLength={relevanceAndReplacmentLength}
-            notValidReplacementLength={notValidReplacementLength}
-            modelsData={data}
-            password={password}
-          />
-          <Footer modelsData={data} />
+          <CurrentModelsContext.Provider value={data}>
+            <RelevanceSameModelContext.Provider value={relevanceSameModel}>
+              <RelevanceAndReplacmentContext.Provider value={relevanceAndReplacment}>
+                <NotValidReplacementContext.Provider value={notValidReplacement}>
+                  <Header />
+                  <ScrollToTop />
+                  <Main password={password} />
+                  <Footer />
+                </NotValidReplacementContext.Provider>
+              </RelevanceAndReplacmentContext.Provider>
+            </RelevanceSameModelContext.Provider>
+          </CurrentModelsContext.Provider>
         </>
       )}
     </div>

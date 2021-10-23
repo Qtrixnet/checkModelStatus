@@ -1,21 +1,20 @@
 import "./StatisticsNav.scss";
 // import { texts } from '../../utils/constants';
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Route, NavLink, useRouteMatch } from "react-router-dom";
 import { texts } from "../../../utils/constants";
 import Indicator from '../../Indicator/Indicator';
-import StatisticsTable from "../StatisticsTable/StatisticsTable";
+import RelevanceSameModelContext from '../../../contexts/relevanceSameModelContext';
+import RelevanceAndReplacmentContext from '../../../contexts/relevanceAndReplacmentContext';
+import NotValidReplacementContext from '../../../contexts/notValidReplacementContext';
 
-export default function StatisticsNav({
-  errorStatus,
-  relevanceAndReplacment,
-  relevanceSameModel,
-  notValidReplacement,
-  relevanceAndReplacmentLength,
-  relevanceSameModelLength,
-  notValidReplacementLength,
-}) {
+export default function StatisticsNav() {
   const { path, url } = useRouteMatch();
+
+  const relevanceSameModel = useContext(RelevanceSameModelContext);
+  const relevanceAndReplacment = useContext(RelevanceAndReplacmentContext);
+  const notValidReplacement = useContext(NotValidReplacementContext);
+
   return (
     <>
       <nav className="statistics-nav">
@@ -25,7 +24,7 @@ export default function StatisticsNav({
           to={`${url}/relevanceAndReplacment`}
         >
           {texts.statisticsTabs.relevanceAndReplacment}
-          <Indicator errorStatus={errorStatus} />
+          <Indicator errorModels={relevanceAndReplacment}/>
         </NavLink>
         <NavLink
           activeClassName="statistics-nav__link_active"
@@ -33,8 +32,7 @@ export default function StatisticsNav({
           to={`${url}/relevanceSameModel`}
         >
           {texts.statisticsTabs.relevanceSameModel}
-
-          <Indicator errorStatus={errorStatus} />
+          <Indicator errorModels={relevanceSameModel}/>
         </NavLink>
         <NavLink
           activeClassName="statistics-nav__link_active"
@@ -42,8 +40,7 @@ export default function StatisticsNav({
           to={`${url}/notValidReplacement`}
         >
           {texts.statisticsTabs.notValidReplacement}
-
-          <Indicator errorStatus={errorStatus} />
+          <Indicator errorModels={notValidReplacement}/>
         </NavLink>
         <a className="statistics-nav__link_google" href="#">
           Google таблица
