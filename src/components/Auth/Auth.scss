@@ -8,6 +8,11 @@
   flex-direction: column;
   gap: var(--middle-gap);
 
+  &__wrong-password {
+    color: var(--red);
+    text-align: center;
+  }
+
   &__label {
     display: flex;
     flex-direction: column;
