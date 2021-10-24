@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import Preloader from "../Preloader/Preloader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import PopupContainer from '../PopupContainer/PopupContainer';
 import CurrentModelsContext from '../../contexts/currentModelsContext';
 import RelevanceSameModelContext from '../../contexts/relevanceSameModelContext';
 import RelevanceAndReplacmentContext from '../../contexts/relevanceAndReplacmentContext';
@@ -17,18 +18,10 @@ export default function App() {
   const [data, setData] = useState([]);
   const [password, setPassword] = useState("");
   const [errorLoading, setErrorLoading] = useState(false);
-  // const [currentModels, setCurrentmodels] = useState([]);
 
   const [relevanceSameModel, setRelevanceSameModel] = useState([]);
   const [relevanceAndReplacment, setRelevanceAndReplacment] = useState([]);
   const [notValidReplacement, setNotValidReplacement] = useState([]);
-
-  const [relevanceSameModelLength, setRelevanceSameModelLength] =
-    useState(0);
-  const [relevanceAndReplacmentLength, setRelevanceAndReplacmentLength] =
-    useState(0);
-  const [notValidReplacementLength, setNotValidReplacementLength] =
-    useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -94,8 +87,7 @@ export default function App() {
       );
     });
     setRelevanceSameModel(relevanceSameModel);
-    setRelevanceSameModelLength(relevanceSameModel.length);
-  }, [data, setRelevanceSameModel, setRelevanceSameModelLength]);
+  }, [data, setRelevanceSameModel]);
 
   useEffect(() => {
     //* Модели, которые актуальны и заменяются на что либо
@@ -107,8 +99,7 @@ export default function App() {
         relevanceAndReplacment.push(model)
     );
     setRelevanceAndReplacment(relevanceAndReplacment);
-    setRelevanceAndReplacmentLength(relevanceAndReplacment.length);
-  }, [data, setRelevanceAndReplacment, setRelevanceAndReplacmentLength]);
+  }, [data, setRelevanceAndReplacment]);
 
   useEffect(() => {
     //* Замены, которых нет в списке актуальных
@@ -128,8 +119,7 @@ export default function App() {
       }
     });
     setNotValidReplacement(badReplacement);
-    setNotValidReplacementLength(badReplacement.length);
-  }, [data, setNotValidReplacement, setNotValidReplacementLength]);
+  }, [data, setNotValidReplacement]);
 
   return (
     <div className="App">
@@ -146,6 +136,7 @@ export default function App() {
                   <Header />
                   <ScrollToTop />
                   <Main password={password} />
+                  <PopupContainer />
                   <Footer />
                 </NotValidReplacementContext.Provider>
               </RelevanceAndReplacmentContext.Provider>

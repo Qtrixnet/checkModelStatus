@@ -1,7 +1,6 @@
 import "./Statistics.scss";
 import { useState, useContext } from "react";
-import { Route, NavLink, useRouteMatch, Redirect } from "react-router-dom";
-import Indicator from "../Indicator/Indicator";
+import { Route, useRouteMatch, Redirect } from "react-router-dom";
 import NothingError from "../NothingError/NothingError";
 import Auth from "../Auth/Auth";
 import StatisticsNav from "./StatisticsNav/StatisticsNav";
@@ -46,36 +45,27 @@ export default function Statistics({
   };
 
   return auth ? (
-    <>
-      <section className="statistics">
-        <StatisticsNav />
+    <section className="statistics">
+      <StatisticsNav />
 
-        <Route exact path="/statistics">
-          <Redirect to={`${path}/relevanceAndReplacment`} />
-        </Route>
-        <Route path={`${path}/relevanceAndReplacment`}>
-          {relevanceAndReplacment.length > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceAndReplacment} data={relevanceAndReplacment} /> : <NothingError />}
-        </Route>
-        <Route path={`${path}/relevanceSameModel`}>
-          {relevanceSameModel.length > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceSameModel} data={relevanceSameModel} /> : <NothingError />}
-        </Route>
-        <Route path={`${path}/notValidReplacement`}>
-          {notValidReplacement.length > 0 ? <StatisticsTable title={texts.statisticsTitles.notValidReplacement} data={notValidReplacement} /> : <NothingError />}
-        </Route>
-      </section>
-    </>
+      <Route exact path="/statistics">
+        <Redirect to={`${path}/relevanceAndReplacment`} />
+      </Route>
+      <Route path={`${path}/relevanceAndReplacment`}>
+        {relevanceAndReplacment.length > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceAndReplacment} data={relevanceAndReplacment} /> : <NothingError />}
+      </Route>
+      <Route path={`${path}/relevanceSameModel`}>
+        {relevanceSameModel.length > 0 ? <StatisticsTable title={texts.statisticsTitles.relevanceSameModel} data={relevanceSameModel} /> : <NothingError />}
+      </Route>
+      <Route path={`${path}/notValidReplacement`}>
+        {notValidReplacement.length > 0 ? <StatisticsTable title={texts.statisticsTitles.notValidReplacement} data={notValidReplacement} /> : <NothingError />}
+      </Route>
+    </section>
   ) : (
-    <>
-      <Auth
-        handleChange={handleChange}
-        passwordError={passwordError}
-        handleSubmit={handleSubmit}
-      />
-      {/* {passwordError ? (
-        <p>Пароль неверный</p>
-      ) : (
-        ""
-      )} */}
-    </>
+    <Auth
+      handleChange={handleChange}
+      passwordError={passwordError}
+      handleSubmit={handleSubmit}
+    />
   );
 }
