@@ -1,5 +1,5 @@
 import './PopupContainer.scss';
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { templateWordsError } from '../../utils/constants';
 import { formatWord } from '../../utils/wordFormatter';
 import PopupMessage from '../PopupMessage/PopupMessage';
@@ -12,8 +12,6 @@ export default function PopupContainer() {
   const relevanceSameModel = useContext(RelevanceSameModelContext);
   const notValidReplacement = useContext(NotValidReplacementContext);
 
-  console.log(relevanceAndReplacment)
-
   const relevanceAndReplacmentText = `Нужно исправить ${relevanceAndReplacment.length} ${formatWord(relevanceAndReplacment.length, templateWordsError)}`
   const relevanceAndReplacmentTitle = `Актуальные с заменой`
 
@@ -23,24 +21,43 @@ export default function PopupContainer() {
   const notValidReplacementText = `Нужно исправить ${notValidReplacement.length} ${formatWord(notValidReplacement.length, templateWordsError)}`
   const notValidReplacementTitle = `Невалидные замены`
 
+  const [isErrors, setIsErrors] = useState(false)
+
+  useState(() => {
+    (relevanceAndReplacment.length === 0 && relevanceSameModel.length === 0 && notValidReplacement.length === 0) ? setIsErrors(false) : setIsErrors(true)
+  }, [relevanceAndReplacment, relevanceSameModel, notValidReplacement, setIsErrors])
+
   return (
     <section className="popup-container">
-      <PopupMessage
-        title={relevanceAndReplacmentTitle}
-        text={relevanceAndReplacmentText}
-        link={'relevanceAndReplacment'}
-      />
-      <PopupMessage
-        title={relevanceSameModelTitle}
-        text={relevanceSameModelText}
-        link={'relevanceSameModel'}
-      />
 
-      <PopupMessage
-        title={notValidReplacementTitle}
-        text={notValidReplacementText}
-        link={'notValidReplacement'}
-      />
+      {relevanceAndReplacment.length > 0 &&
+        <PopupMessage
+          title={relevanceAndReplacmentTitle}
+          text={relevanceAndReplacmentText}
+          link={'relevanceAndReplacment'}
+          isErrors={isErrors}
+        />}
+      {
+        relevanceSameModel.length > 0 &&
+        <PopupMessage
+          title={relevanceSameModelTitle}
+          text={relevanceSameModelText}
+          link={'relevanceSameModel'}
+          isErrors={isErrors}
+        />
+      }
+      {
+        notValidReplacement.length > 0 &&
+        <PopupMessage
+          title={notValidReplacementTitle}
+          text={notValidReplacementText}
+          link={'notValidReplacement'}
+          isErrors={isErrors}
+        />
+      }
+      {
+        !isErrors && <PopupMessage isErrors={isErrors} />
+      }
     </section>
   )
 }

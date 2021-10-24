@@ -3,7 +3,7 @@
   border-radius: 4px;
   overflow: hidden;
   padding: 0;
-  transition: all 2s ease-out;
+  transition: all .4s ease;
   background-color: var(--black);
 
   &__header {
@@ -14,6 +14,10 @@
     background-color: var(--red);
     padding: 8px;
     width: 100%;
+
+    &_ok {
+      background-color: var(--green);
+    }
   }
 
   &__title {
@@ -21,7 +25,6 @@
     font-weight: 500;
     margin: 0;
     width: 100%;
-    text-align: center;
   }
 
   &__text {

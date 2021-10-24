@@ -2,7 +2,7 @@ import './PopupMessage.scss';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function PopupMessage({ title, text, link }) {
+export default function PopupMessage({ isErrors, title = 'Отлично!', text = 'Ни в одной категории нет ошибок', link = '' }) {
   const [show, setShow] = useState(true)
 
   useEffect(() => {
@@ -11,18 +11,15 @@ export default function PopupMessage({ title, text, link }) {
     }, 10000)
   })
 
-
-
   const handleClick = (evt) => {
-    // setShow(false)
     const popup = evt.target.closest('.popup-message');
-    popup.style.transform = 'translate(0%, 1000px)';
-    popup.style.opacity = '0'
+    popup.style.transform = 'translate(300px, 0)';
+    popup.style.opacity = '0';
   }
 
   return (
     show && <section className="popup-message">
-      <header className="popup-message__header">
+      <header className={`${!isErrors && 'popup-message__header_ok'} popup-message__header`}>
         <img
           src={`https://avatars.dicebear.com/api/bottts/${Date.now()}.svg?mood[]='sad'}`}
           className="popup-message__image"
