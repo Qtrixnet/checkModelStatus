@@ -21,7 +21,7 @@
 
 @media screen and (max-width: 425px) {
   .about__info {
-    padding: 0 16px;
+    padding: 0 var(--middle-gap);
   }
   .about__title {
     text-align: center;

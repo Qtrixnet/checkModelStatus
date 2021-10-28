@@ -1,5 +1,5 @@
 .auth {
-  padding: 0 16px;
+  padding: 0 var(--middle-gap);
   max-width: 500px;
 }
 
@@ -24,10 +24,10 @@
   &__password {
     color: var(--dark);
     font-size: var(--text);
-    padding: 12px;
+    padding: var(--small-gap);
     border: 2px solid transparent;
     transition: all 0.2s ease;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     outline: 0;
     &:hover {
       opacity: 0.8;
@@ -40,13 +40,13 @@
   }
 
   &__submit {
-    padding: 12px;
+    padding: var(--small-gap);
     border: 0;
     background-color: var(--accent);
     transition: all 0.2s ease;
     font-size: var(--text);
     font-weight: 500;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
 
     &:hover {
       opacity: 0.8;

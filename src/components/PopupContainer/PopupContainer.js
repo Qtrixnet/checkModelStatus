@@ -1,5 +1,5 @@
 import './PopupContainer.scss';
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { templateWordsError } from '../../utils/constants';
 import { formatWord } from '../../utils/wordFormatter';
 import PopupMessage from '../PopupMessage/PopupMessage';
@@ -18,7 +18,7 @@ export default function PopupContainer() {
   const relevanceSameModelText = `Нужно исправить ${relevanceSameModel.length} ${formatWord(relevanceSameModel.length, templateWordsError)}`
   const relevanceSameModelTitle = `Заменены сами на себя`
 
-  const notValidReplacementText = `Нужно исправить ${notValidReplacement.length} ${formatWord(notValidReplacement.length, templateWordsError)}`
+  const notValidreplacementModel = `Нужно исправить ${notValidReplacement.length} ${formatWord(notValidReplacement.length, templateWordsError)}`
   const notValidReplacementTitle = `Невалидные замены`
 
   const [isErrors, setIsErrors] = useState(false)
@@ -50,7 +50,7 @@ export default function PopupContainer() {
         notValidReplacement.length > 0 &&
         <PopupMessage
           title={notValidReplacementTitle}
-          text={notValidReplacementText}
+          text={notValidreplacementModel}
           link={'notValidReplacement'}
           isErrors={isErrors}
         />

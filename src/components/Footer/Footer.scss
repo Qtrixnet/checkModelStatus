@@ -18,6 +18,6 @@
 @media screen and (max-width: 425px) {
   .footer {
     flex-direction: column;
-    padding: 16px;
+    padding: var(--middle-gap);
   }
 }

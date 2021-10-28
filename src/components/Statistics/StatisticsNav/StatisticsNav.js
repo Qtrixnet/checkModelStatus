@@ -1,8 +1,8 @@
 import "./StatisticsNav.scss";
-// import { texts } from '../../utils/constants';
-import { useState, useContext } from "react";
-import { Route, NavLink, useRouteMatch } from "react-router-dom";
-import { texts } from "../../../utils/constants";
+
+import { useContext } from "react";
+import { NavLink, useRouteMatch } from "react-router-dom";
+import { texts, googleDocsUrl } from "../../../utils/constants";
 import Indicator from '../../Indicator/Indicator';
 import RelevanceSameModelContext from '../../../contexts/relevanceSameModelContext';
 import RelevanceAndReplacmentContext from '../../../contexts/relevanceAndReplacmentContext';
@@ -43,7 +43,7 @@ export default function StatisticsNav() {
           <Indicator errorModels={notValidReplacement}/>
         </NavLink>
         <hr className="statistics-nav__line"/>
-        <a className="statistics-nav__link_google" href="#">
+        <a className="statistics-nav__link_google" target="_blank" rel="noreferrer" href={googleDocsUrl}>
           Google таблица
         </a>
       </nav>

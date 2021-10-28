@@ -1,6 +1,6 @@
 .popup-message {
   width: 100%;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   overflow: hidden;
   padding: 0;
   transition: all .4s ease;
@@ -12,7 +12,7 @@
     justify-content: space-between;
     gap: var(--small-gap);
     background-color: var(--red);
-    padding: 8px;
+    padding: var(--small-gap);
     width: 100%;
 
     &_ok {
@@ -28,7 +28,7 @@
   }
 
   &__text {
-    padding: 8px;
+    padding: var(--small-gap);
     width: 100%;
     margin: 0;
   }
@@ -36,7 +36,7 @@
   &__link {
     width: 100%;
     display: block;
-    padding: 0 8px 8px;
+    padding: 0 var(--small-gap) var(--small-gap);
     color: var(--accent);
     text-decoration: none;
     transition: all 0.2s ease;
@@ -52,8 +52,8 @@
 
   &__image {
     background-color: var(--black);
-    border-radius: 4px;
-    padding: 4px;
+    border-radius: var(--border-radius);
+    padding: var(--border-radius);
   }
 
   &__close-button {
@@ -63,7 +63,7 @@
     font-weight: 500;
     height: 40px;
     font-size: var(--title);
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     padding: 0px;
     display: flex;
     align-items: flex-start;

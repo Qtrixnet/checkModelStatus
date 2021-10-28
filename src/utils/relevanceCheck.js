@@ -4,7 +4,7 @@ export const relevanceCheck = (
   setSearchModelStatusType,
   setHikvisionLink,
   setHikvisionLinkStatus,
-  setReplacementText,
+  setReplacementModel,
   setReplacementStatus,
   setHasSubstitute,
   setHikvisionSubstitute,
@@ -23,7 +23,7 @@ export const relevanceCheck = (
     setSearchModelStatusText(`Модель ${model.model} снята с производста`)
     setSearchModelStatusType('danger')
     if (model.replacement) {
-      setReplacementText(model.replacement)
+      setReplacementModel(model)
     }
     setReplacementStatus(true)
   }

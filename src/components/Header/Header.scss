@@ -34,7 +34,7 @@
   }
 
   &__link {
-    padding: 10px 10px;
+    padding: var(--small-gap);
     text-decoration: none;
     color: var(--light);
     transition: all 0.2s ease;
@@ -42,7 +42,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--middle-gap);
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     max-height: 42px;
 
     &:hover {
@@ -63,7 +63,7 @@
 
 @media screen and (max-width: 425px) {
   .header {
-    padding: 16px;
+    padding: var(--middle-gap);
 
     &__navigation {
       width: 100%;

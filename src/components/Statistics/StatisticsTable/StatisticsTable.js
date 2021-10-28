@@ -1,9 +1,4 @@
 import "./StatisticsTable.scss";
-// import { texts } from '../../utils/constants';
-import { useState } from "react";
-import { Route, NavLink, useRouteMatch } from "react-router-dom";
-import { texts } from "../../../utils/constants";
-import Indicator from '../../Indicator/Indicator'
 
 export default function StatisticsTable({ data, title }) {
   return (

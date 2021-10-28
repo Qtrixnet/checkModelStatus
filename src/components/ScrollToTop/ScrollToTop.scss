@@ -4,8 +4,8 @@
   bottom: 36px;
   color: var(--dark);
   background-color: var(--accent);
-  padding: 12px;
-  border-radius: 4px;
+  padding: var(--small-gap);
+  border-radius: var(--border-radius);
   transition: all 0.2s ease;
   text-decoration: none;
   z-index: 9999;
