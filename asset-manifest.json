@@ -1,25 +1,22 @@
 {
   "files": {
-    "main.css": "/checkModelStatus/static/css/main.4f60b44f.chunk.css",
-    "main.js": "/checkModelStatus/static/js/main.1f5e8fb2.chunk.js",
-    "main.js.map": "/checkModelStatus/static/js/main.1f5e8fb2.chunk.js.map",
+    "main.css": "/checkModelStatus/static/css/main.cd3fa084.chunk.css",
+    "main.js": "/checkModelStatus/static/js/main.dd9a909a.chunk.js",
+    "main.js.map": "/checkModelStatus/static/js/main.dd9a909a.chunk.js.map",
     "runtime-main.js": "/checkModelStatus/static/js/runtime-main.f197124a.js",
     "runtime-main.js.map": "/checkModelStatus/static/js/runtime-main.f197124a.js.map",
-    "static/css/2.c1256375.chunk.css": "/checkModelStatus/static/css/2.c1256375.chunk.css",
-    "static/js/2.f4b925e0.chunk.js": "/checkModelStatus/static/js/2.f4b925e0.chunk.js",
-    "static/js/2.f4b925e0.chunk.js.map": "/checkModelStatus/static/js/2.f4b925e0.chunk.js.map",
+    "static/js/2.caa0fcdf.chunk.js": "/checkModelStatus/static/js/2.caa0fcdf.chunk.js",
+    "static/js/2.caa0fcdf.chunk.js.map": "/checkModelStatus/static/js/2.caa0fcdf.chunk.js.map",
     "index.html": "/checkModelStatus/index.html",
-    "static/css/2.c1256375.chunk.css.map": "/checkModelStatus/static/css/2.c1256375.chunk.css.map",
-    "static/css/main.4f60b44f.chunk.css.map": "/checkModelStatus/static/css/main.4f60b44f.chunk.css.map",
-    "static/js/2.f4b925e0.chunk.js.LICENSE.txt": "/checkModelStatus/static/js/2.f4b925e0.chunk.js.LICENSE.txt",
-    "static/js/main.1f5e8fb2.chunk.js.LICENSE.txt": "/checkModelStatus/static/js/main.1f5e8fb2.chunk.js.LICENSE.txt",
-    "static/media/fonts.css": "/checkModelStatus/static/media/Inter-Regular.fc49d131.woff"
+    "static/css/main.cd3fa084.chunk.css.map": "/checkModelStatus/static/css/main.cd3fa084.chunk.css.map",
+    "static/js/2.caa0fcdf.chunk.js.LICENSE.txt": "/checkModelStatus/static/js/2.caa0fcdf.chunk.js.LICENSE.txt",
+    "static/js/main.dd9a909a.chunk.js.LICENSE.txt": "/checkModelStatus/static/js/main.dd9a909a.chunk.js.LICENSE.txt",
+    "static/media/fonts.scss": "/checkModelStatus/static/media/Inter-Regular.fc49d131.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.f197124a.js",
-    "static/css/2.c1256375.chunk.css",
-    "static/js/2.f4b925e0.chunk.js",
-    "static/css/main.4f60b44f.chunk.css",
-    "static/js/main.1f5e8fb2.chunk.js"
+    "static/js/2.caa0fcdf.chunk.js",
+    "static/css/main.cd3fa084.chunk.css",
+    "static/js/main.dd9a909a.chunk.js"
   ]
 }
