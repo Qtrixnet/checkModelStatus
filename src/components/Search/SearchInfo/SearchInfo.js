@@ -14,6 +14,7 @@ export default function SearchInfo({
   hikvisionSubstitute,
   hilookSubstitute,
   hiwatchSubstitute,
+  exactMatch,
 }) {
   const notActual =
     foundModelsArr.length === 0 && value !== "" && !searchModelStatus;
@@ -70,6 +71,7 @@ export default function SearchInfo({
           {notActual ? "Ничего не найдено, обратитесь в отдел СВН" : title}
         </h2>
         {hikvisionLink === "" &&
+          !exactMatch &&
           foundModelsArr.length <= 15 &&
           foundModelsArr.length > 0 && (
             <h2 className="search-info__title">
@@ -87,15 +89,25 @@ export default function SearchInfo({
         >
           {hikvisionLink !== "" && (
             <h2 className={`search-info__title`}>
-              <a className="search-info__link" href={hikvisionLink}>
+              <a
+                className="search-info__link"
+                target="_blank"
+                rel="noreferrer"
+                href={hikvisionLink}
+              >
                 Найти на Hikvision.com
               </a>
             </h2>
           )}
           {replacementStatus && (
             <>
-              <h2 className={`search-info__title`}>Рекомендуемая замена:</h2>
-              {replacementModelsTemplate([replacementModel])}
+              <h2 className={`search-info__title`}>
+                {replacementModel
+                  ? "Рекомендуемая замена:"
+                  : "Рекомендуемая замена не предусмотрена, обратитесь в отдел СВН"}
+              </h2>
+              {replacementModel &&
+                replacementModelsTemplate([replacementModel])}
             </>
           )}
         </div>

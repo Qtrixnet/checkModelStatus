@@ -186,6 +186,7 @@ export default function Search() {
             hikvisionSubstitute={hikvisionSubstitute}
             hilookSubstitute={hilookSubstitute}
             hiwatchSubstitute={hiwatchSubstitute}
+            exactMatch={exactMatch}
           />
         </div>
       </fieldset>
