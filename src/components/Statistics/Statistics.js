@@ -9,6 +9,7 @@ import StatisticsTable from './StatisticsTable/StatisticsTable';
 import RelevanceSameModelContext from '../../contexts/relevanceSameModelContext';
 import RelevanceAndReplacmentContext from '../../contexts/relevanceAndReplacmentContext';
 import NotValidReplacementContext from '../../contexts/notValidReplacementContext';
+import DuplicatesContext from "../../contexts/duplicatesContext";
 
 export default function Statistics({
   password = "",
@@ -19,6 +20,7 @@ export default function Statistics({
   const relevanceAndReplacment = useContext(RelevanceAndReplacmentContext);
   const relevanceSameModel = useContext(RelevanceSameModelContext);
   const notValidReplacement = useContext(NotValidReplacementContext);
+  const duplicates = useContext(DuplicatesContext);
 
   useState(() => {
     localStorage.getItem("auth-password") === password
@@ -59,6 +61,9 @@ export default function Statistics({
       </Route>
       <Route path={`${path}/notValidReplacement`}>
         {notValidReplacement.length > 0 ? <StatisticsTable title={texts.statisticsTitles.notValidReplacement} data={notValidReplacement} /> : <NothingError />}
+      </Route>
+      <Route path={`${path}/duplicates`}>
+        {duplicates.length > 0 ? <StatisticsTable title={texts.statisticsTitles.duplicates} data={duplicates} /> : <NothingError />}
       </Route>
     </section>
   ) : (

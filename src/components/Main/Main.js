@@ -6,7 +6,6 @@ import Statistics from "../Statistics/Statistics";
 import PageNotFound from '../PageNotFound/PageNotFound';
 
 export default function Main({
-  modelsData,
   password = "",
 }) {
 
@@ -14,8 +13,8 @@ export default function Main({
     <main className="main">
       <Switch>
         <Route exact path="/">
-          <About modelsData={modelsData} />
-          <Search modelsData={modelsData} />
+          <About />
+          <Search />
         </Route>
         <Route path="/statistics">
           <Statistics password={password} />

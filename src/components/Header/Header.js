@@ -6,19 +6,22 @@ import logo from "../../images/logo.png";
 import RelevanceSameModelContext from '../../contexts/relevanceSameModelContext';
 import RelevanceAndReplacmentContext from '../../contexts/relevanceAndReplacmentContext';
 import NotValidReplacementContext from '../../contexts/notValidReplacementContext';
+import duplicatesContext from "../../contexts/duplicatesContext";
 
 export default function Header() {
   const relevanceAndReplacment = useContext(RelevanceAndReplacmentContext);
   const relevanceSameModel = useContext(RelevanceSameModelContext);
   const notValidReplacement = useContext(NotValidReplacementContext);
+  const duplicates = useContext(duplicatesContext);
   const [errorModelsArr, setErrorModelsArr] = useState([])
 
   useEffect(() => {
-    setErrorModelsArr([...relevanceAndReplacment, ...relevanceSameModel, ...notValidReplacement])
+    setErrorModelsArr([...relevanceAndReplacment, ...relevanceSameModel, ...notValidReplacement, ...duplicates])
   }, [
     relevanceAndReplacment,
     relevanceSameModel,
     notValidReplacement,
+    duplicates
   ]);
 
   return (

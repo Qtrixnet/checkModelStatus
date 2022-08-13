@@ -12,6 +12,7 @@ import CurrentModelsContext from '../../contexts/currentModelsContext';
 import RelevanceSameModelContext from '../../contexts/relevanceSameModelContext';
 import RelevanceAndReplacmentContext from '../../contexts/relevanceAndReplacmentContext';
 import NotValidReplacementContext from '../../contexts/notValidReplacementContext';
+import DuplicatesContext from "../../contexts/duplicatesContext";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ export default function App() {
   const [relevanceSameModel, setRelevanceSameModel] = useState([]);
   const [relevanceAndReplacment, setRelevanceAndReplacment] = useState([]);
   const [notValidReplacement, setNotValidReplacement] = useState([]);
+  const [duplicates, setDuplicates] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -61,7 +63,7 @@ export default function App() {
       .finally(() => {
         setLoading(false);
       });
-  }, [setLoading, setData, setErrorLoading]);
+  }, []);
 
   useEffect(() => {
     fetch(faqUrl)
@@ -87,7 +89,7 @@ export default function App() {
       );
     });
     setRelevanceSameModel(relevanceSameModel);
-  }, [data, setRelevanceSameModel]);
+  }, [data]);
 
   useEffect(() => {
     //* Модели, которые актуальны и заменяются на что либо
@@ -99,7 +101,7 @@ export default function App() {
         relevanceAndReplacment.push(model)
     );
     setRelevanceAndReplacment(relevanceAndReplacment);
-  }, [data, setRelevanceAndReplacment]);
+  }, [data]);
 
   useEffect(() => {
     //* Замены, которых нет в списке актуальных
@@ -119,7 +121,32 @@ export default function App() {
       }
     });
     setNotValidReplacement(badReplacement);
-  }, [data, setNotValidReplacement]);
+  }, [data]);
+
+  useEffect(() => {
+    //* Поиск дубликатов
+    const duplicates = [];
+    const modelCounts = {};
+    
+    data.forEach((data) => {
+      if(!modelCounts[data.model]) {
+        modelCounts[data.model] = 1;
+      } else {
+        modelCounts[data.model] += 1;
+      }
+    })
+
+    for(let model in modelCounts) {
+      if(modelCounts[model] > 1) {
+        duplicates.push({
+          model,
+          count: modelCounts[model]
+        });
+      }
+    }
+    setDuplicates(duplicates);
+
+  }, [data]);
 
   return (
     <div className="App">
@@ -133,11 +160,13 @@ export default function App() {
             <RelevanceSameModelContext.Provider value={relevanceSameModel}>
               <RelevanceAndReplacmentContext.Provider value={relevanceAndReplacment}>
                 <NotValidReplacementContext.Provider value={notValidReplacement}>
-                  <Header />
-                  <ScrollToTop />
-                  <Main password={password} />
-                  <PopupContainer />
-                  <Footer />
+                  <DuplicatesContext.Provider value={duplicates}>
+                    <Header />
+                    <ScrollToTop />
+                    <Main password={password} />
+                    <PopupContainer />
+                    <Footer />
+                  </DuplicatesContext.Provider>
                 </NotValidReplacementContext.Provider>
               </RelevanceAndReplacmentContext.Provider>
             </RelevanceSameModelContext.Provider>

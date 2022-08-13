@@ -6,10 +6,8 @@ import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <React.StrictMode>
     <HashRouter>
       <App />
-    </HashRouter>
-  </React.StrictMode>,
+    </HashRouter>,
   document.getElementById('root')
 );

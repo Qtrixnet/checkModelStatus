@@ -8,9 +8,10 @@ export default function StatisticsTable({ data, title }) {
         <thead className="table__header">
           <tr className="table__header-row">
             <th className="table__header-cell">#</th>
-            <th className="table__header-cell">Модель</th>
-            <th className="table__header-cell">Замена</th>
-            <th className="table__header-cell">Актуальность</th>
+            {data[0].model && <th className="table__header-cell">Модель</th>}
+            {data[0].replacement && <th className="table__header-cell">Замена</th>}
+            {data[0].relevance && <th className="table__header-cell">Актуальность</th>}
+            {data[0].count && <th className="table__header-cell">Количество</th>}
           </tr>
         </thead>
         <tbody className="table__body">
@@ -18,9 +19,10 @@ export default function StatisticsTable({ data, title }) {
             return (
               <tr className="table__row" key={idx}>
                 <th className="table__cell">{idx + 1}</th>
-                <th className="table__cell">{model.model}</th>
-                <th className="table__cell">{model.replacement}</th>
-                <th className="table__cell">{model.relevance}</th>
+                {model.model && <th className="table__cell">{model.model}</th>}
+                {model.replacement && <th className="table__cell">{model.replacement}</th>}
+                {model.relevance && <th className="table__cell">{model.relevance}</th>}
+                {model.count && <th className="table__cell">{model.count}</th>}
               </tr>
             )
           })}
