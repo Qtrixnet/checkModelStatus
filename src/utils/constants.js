@@ -3,7 +3,7 @@ export const templateWords = ['модели', 'моделей', 'моделей'
 export const templateWordsVerb = ['Нашлась', 'Нашлись', 'Нашлось'];
 export const templateWordsAdjective = ['похожая', 'похожие', 'похожих'];
 export const templateWordsError = ['ошибку', 'ошибки', 'ошибок'];
-export const modelsCount = 15;
+export const googleCellLink = 'https://docs.google.com/spreadsheets/d/148wA9wWJro2mwng84-YKu4LvSgWLnoapIedAZmsk8Uw/edit#gid=0&range=A'
 
 export const texts = {
   aboutTitle: 'Web приложение для проверки моделей оборудования',

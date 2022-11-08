@@ -1,6 +1,6 @@
 import "./App.scss";
 import { useEffect, useState } from "react";
-import { baseUrl, faqUrl } from "../../utils/constants";
+import {baseUrl, faqUrl, googleCellLink} from "../../utils/constants";
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -49,12 +49,15 @@ export default function App() {
         };
 
         const newData = createModelsArr(initialModels, labels);
-
+        const modelsWithId = newData.map((model, idx) => {
+          return { ...model, link: `${googleCellLink}${idx + 3}` };
+        });
+        
         // const initialData = createModelsArr(initialModels, labels);
         // const newData = initialData.slice(0, 400)
-        newData.shift();
+        modelsWithId.shift();
 
-        setData(newData);
+        setData(modelsWithId);
       })
       .catch((err) => {
         console.log(err);
@@ -138,8 +141,10 @@ export default function App() {
 
     for(let model in modelCounts) {
       if(modelCounts[model] > 1) {
+        const foundModel = data.find(modelObj => modelObj.model === model);
         duplicates.push({
           model,
+          link: foundModel.link,
           count: modelCounts[model]
         });
       }

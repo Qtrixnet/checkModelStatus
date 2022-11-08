@@ -19,7 +19,13 @@ export default function StatisticsTable({ data, title }) {
             return (
               <tr className="table__row" key={idx}>
                 <th className="table__cell">{idx + 1}</th>
-                {model.model && <th className="table__cell">{model.model}</th>}
+                {model.model && <th className="table__cell">
+                  <a 
+                    className="table__link"
+                    href={model.link}
+                    target="_blank"
+                  >{model.model}</a>
+                </th>}
                 {model.replacement && <th className="table__cell">{model.replacement}</th>}
                 {model.relevance && <th className="table__cell">{model.relevance}</th>}
                 {model.count && <th className="table__cell">{model.count}</th>}

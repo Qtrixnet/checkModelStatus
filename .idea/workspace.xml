@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f78dacc5-0764-44ec-bc46-ff362712018f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/contexts/duplicatesContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    <list default="true" id="d0864079-f48c-4fd4-a035-abf2dcb0af86" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PopupContainer/PopupContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupContainer/PopupContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Statistics/Statistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Statistics/Statistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Statistics/StatisticsNav/StatisticsNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Statistics/StatisticsNav/StatisticsNav.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Statistics/StatisticsTable/StatisticsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Statistics/StatisticsTable/StatisticsTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Statistics/StatisticsTable/StatisticsTable.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Statistics/StatisticsTable/StatisticsTable.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,10 +19,8 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2DIbiW5T5DUvBnKmE5C7Dw1peMe" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2HGse35LXToKnO0fvBt9AbJkmdl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,37 +30,32 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "Settings.JavaScript",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f78dacc5-0764-44ec-bc46-ff362712018f" name="Changes" comment="" />
-      <created>1660389675907</created>
+      <changelist id="d0864079-f48c-4fd4-a035-abf2dcb0af86" name="Changes" comment="" />
+      <created>1667922851002</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1660389675907</updated>
-      <workItem from="1660389677819" duration="4492000" />
+      <updated>1667922851002</updated>
+      <workItem from="1667922852482" duration="2188000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
